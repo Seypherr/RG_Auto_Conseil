@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import NavBar from '../sections/NavBar';
 import Footer from '../sections/Footer';
 import { useSite } from '../context/SiteContext';
-import { applyLoremMask } from '../utils/applyLoremMask';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -163,51 +162,6 @@ export default function AppShell() {
     ScrollTrigger.refresh();
 
     return () => ctx.revert();
-  }, [language, location.pathname]);
-
-  useEffect(() => {
-    const root = appRef.current;
-
-    if (!root) {
-      return undefined;
-    }
-
-    let isApplying = false;
-    let frameId = 0;
-
-    const runMask = () => {
-      if (isApplying) {
-        return;
-      }
-
-      isApplying = true;
-      applyLoremMask(root);
-      isApplying = false;
-    };
-
-    const scheduleMask = () => {
-      cancelAnimationFrame(frameId);
-      frameId = requestAnimationFrame(runMask);
-    };
-
-    runMask();
-
-    const observer = new MutationObserver(() => {
-      scheduleMask();
-    });
-
-    observer.observe(root, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributes: true,
-      attributeFilter: ['placeholder'],
-    });
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      observer.disconnect();
-    };
   }, [language, location.pathname]);
 
   return (

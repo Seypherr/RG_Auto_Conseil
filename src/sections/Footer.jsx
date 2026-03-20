@@ -8,12 +8,12 @@ export default function Footer() {
   const content = isEnglish
     ? {
         copy:
-          'Independent automotive advice focused on pre-purchase support, inspection, sourcing and accessories for private and professional clients in the PACA region.',
+          'Independent automotive advice designed to reassure non-expert clients, secure a purchase and guide clean vehicle improvements.',
         navigation: 'Navigation',
         links: [
           { label: 'Home', to: '/' },
           { label: 'Services', to: '/services' },
-          { label: 'Expertise', to: '/about' },
+          { label: 'About', to: '/about' },
           { label: 'Gallery', to: '/gallery' },
           { label: 'Contact', to: '/contact' },
         ],
@@ -26,21 +26,21 @@ export default function Footer() {
       }
     : {
         copy:
-          'Conseil automobile indépendant dédié à l’expertise avant achat, à l’inspection, à la recherche et aux accessoires pour particuliers et professionnels en région PACA.',
+          'Conseil automobile independant pense pour rassurer des clients non experts, securiser un achat et guider des ameliorations propres du vehicule.',
         navigation: 'Navigation',
         links: [
           { label: 'Accueil', to: '/' },
           { label: 'Services', to: '/services' },
-          { label: 'Expertise', to: '/about' },
+          { label: 'A propos', to: '/about' },
           { label: 'Galerie', to: '/gallery' },
           { label: 'Contact', to: '/contact' },
         ],
-        legal: 'Légal',
+        legal: 'Legal',
         legalLinks: [
-          { label: 'Mentions légales', to: '/legal-notice' },
-          { label: 'Politique de confidentialité', to: '/privacy-policy' },
+          { label: 'Mentions legales', to: '/legal-notice' },
+          { label: 'Politique de confidentialite', to: '/privacy-policy' },
         ],
-        rights: '© 2026 RG Auto Conseil. Tous droits réservés.',
+        rights: '© 2026 RG Auto Conseil. Tous droits reserves.',
       };
 
   return (
@@ -71,9 +71,6 @@ export default function Footer() {
             <span className="footer-heading">{isEnglish ? 'Direct contact' : 'Contact direct'}</span>
             <a href="mailto:contact@rgautoconseil.fr">contact@rgautoconseil.fr</a>
             <a href="tel:0663990720">06 63 99 07 20</a>
-            <a href="https://rgautoconseil.fr" rel="noreferrer" target="_blank">
-              rgautoconseil.fr
-            </a>
             <span className="footer-heading footer-heading--secondary">{content.legal}</span>
             {content.legalLinks.map((item) => (
               <Link key={item.to} to={item.to}>

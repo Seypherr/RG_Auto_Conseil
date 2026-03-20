@@ -9,39 +9,39 @@ export default function ContactSection() {
 
   const content = isEnglish
     ? {
-        label: 'Contact / quote',
-        title: 'Talk about your project.',
+        label: 'Contact',
+        title: 'An automotive project? Let us talk about it simply.',
         copy:
-          'For pre-purchase advice, inspection, sourcing, listing analysis or accessory fitting, the goal is to answer with a clear, serious and reassuring framework.',
-        emailLabel: 'Business email',
+          'Describe your need and we will get back to you quickly with a clear, reassuring and tailored approach.',
+        emailLabel: 'Email',
         phoneLabel: 'Phone',
         areaLabel: 'Service area',
         areaValue: 'PACA region',
         placeholders: {
-          name: 'Full name',
-          email: 'Email address',
+          name: 'Name',
+          email: 'Email',
           phone: 'Phone',
-          project: 'Vehicle or requested service',
-          details: 'Describe your need, budget or target vehicle...',
-          submit: 'Request a quote',
+          project: 'Project',
+          details: 'Tell us about your need...',
+          submit: 'Send my request',
         },
       }
     : {
-        label: 'Contact / devis',
-        title: 'Parler de votre projet.',
+        label: 'Contact',
+        title: 'Un projet automobile ? Discutons-en simplement.',
         copy:
-          'Pour un conseil avant achat, une inspection, une recherche, une analyse d’annonce ou un montage d’accessoires, l’objectif est de répondre avec un cadre clair, sérieux et rassurant.',
-        emailLabel: 'Email professionnel',
-        phoneLabel: 'Téléphone',
-        areaLabel: 'Zone d’intervention',
-        areaValue: 'Région PACA',
+          'Decrivez votre besoin, nous vous recontacterons rapidement avec une approche claire et adaptee.',
+        emailLabel: 'Email',
+        phoneLabel: 'Telephone',
+        areaLabel: 'Zone d intervention',
+        areaValue: 'Region PACA',
         placeholders: {
-          name: 'Nom complet',
-          email: 'Adresse email',
-          phone: 'Téléphone',
-          project: 'Véhicule ou prestation recherchée',
-          details: 'Décrivez votre besoin, votre budget ou le véhicule visé...',
-          submit: 'Demander un devis',
+          name: 'Nom',
+          email: 'Email',
+          phone: 'Telephone',
+          project: 'Projet',
+          details: 'Decrivez votre besoin...',
+          submit: 'Envoyer ma demande',
         },
       };
 

@@ -7,51 +7,61 @@ import { useSite } from '../context/SiteContext';
 export default function ServicesSection() {
   const { isEnglish } = useSite();
 
-  const services = isEnglish
-    ? [
-        {
-          title: 'Pre-purchase advice',
-          copy: 'Clarify the project before any commitment, with an outside point of view on the target vehicle and the coherence of the purchase.',
-          icon: <SearchIcon />,
-        },
-        {
-          title: 'Inspection & checking',
-          copy: 'Check the vehicle before purchase, identify watch points and frame the discussion around the actual condition of the car.',
-          icon: <DocumentIcon />,
-        },
-        {
-          title: 'Listing analysis & sourcing',
-          copy: 'Filter listings, detect weak signals quickly and search for a more suitable vehicle when the right opportunity is not yet on the table.',
-          icon: <BriefcaseIcon />,
-        },
-        {
-          title: 'Accessories & optimisation',
-          copy: 'Support for equipment fitting, improvement work and project-specific requests with tailored pricing when needed.',
-          icon: <TruckIcon />,
-        },
-      ]
-    : [
-        {
-          title: 'Conseil avant achat',
-          copy: 'Clarifier le projet avant tout engagement, avec un regard extérieur sur le véhicule visé et la cohérence globale de l’achat.',
-          icon: <SearchIcon />,
-        },
-        {
-          title: 'Inspection & contrôle',
-          copy: 'Inspecter le véhicule avant achat, identifier les points de vigilance et cadrer l’échange autour de l’état réel de l’auto.',
-          icon: <DocumentIcon />,
-        },
-        {
-          title: 'Analyse d’annonce & recherche',
-          copy: 'Filtrer les annonces, détecter rapidement les signaux faibles et rechercher une meilleure piste quand le bon véhicule n’est pas encore trouvé.',
-          icon: <BriefcaseIcon />,
-        },
-        {
-          title: 'Accessoires & optimisation',
-          copy: 'Accompagnement sur le montage d’équipements, les améliorations et les demandes spécifiques avec une logique de devis si nécessaire.',
-          icon: <TruckIcon />,
-        },
-      ];
+  const content = isEnglish
+    ? {
+        label: 'Services',
+        title: 'Our essential services',
+        action: 'View all services',
+        items: [
+          {
+            title: 'Purchase support',
+            copy: 'Independent guidance to help you buy the right vehicle with more clarity and less stress.',
+            icon: <SearchIcon />,
+          },
+          {
+            title: 'Vehicle inspection',
+            copy: 'A complete pre-purchase check to avoid unpleasant surprises and make the condition easier to understand.',
+            icon: <DocumentIcon />,
+          },
+          {
+            title: 'Tailored sourcing',
+            copy: 'A more focused search to identify vehicles that truly match your needs, budget and usage.',
+            icon: <BriefcaseIcon />,
+          },
+          {
+            title: 'Tailored modernisation',
+            copy: 'Clean aesthetic or functional improvements designed to respect the original identity of the car.',
+            icon: <TruckIcon />,
+          },
+        ],
+      }
+    : {
+        label: 'Services',
+        title: 'Nos services essentiels',
+        action: 'Voir tous les services',
+        items: [
+          {
+            title: 'Accompagnement a l achat',
+            copy: 'Un accompagnement independant pour acheter le bon vehicule avec plus de clarte et moins de stress.',
+            icon: <SearchIcon />,
+          },
+          {
+            title: 'Inspection de vehicule',
+            copy: 'Une verification complete avant achat pour eviter les mauvaises surprises et mieux comprendre l etat reel du vehicule.',
+            icon: <DocumentIcon />,
+          },
+          {
+            title: 'Recherche personnalisee',
+            copy: 'Une recherche plus ciblee pour identifier les vehicules vraiment adaptes a vos criteres, votre budget et votre usage.',
+            icon: <BriefcaseIcon />,
+          },
+          {
+            title: 'Modernisation sur mesure',
+            copy: 'Des ameliorations esthetiques ou fonctionnelles pensees pour respecter l identite du vehicule.',
+            icon: <TruckIcon />,
+          },
+        ],
+      };
 
   return (
     <section className="content-section" id="services">
@@ -65,29 +75,24 @@ export default function ServicesSection() {
         className="section-orb"
         style={{ bottom: '5rem', left: '2.5rem', width: '20rem', height: '20rem', background: 'rgba(255,255,255,0.04)' }}
       />
-      <div
-        aria-hidden="true"
-        className="section-orb"
-        style={{ top: '33%', left: '-5rem', width: '16rem', height: '16rem', background: 'rgba(255,255,255,0.2)' }}
-      />
 
       <div className="content-shell services-shell">
         <div className="services-intro gs-scroll-fade-up">
-          <SectionLabel className="home-accent-label">{isEnglish ? 'Services' : 'Services'}</SectionLabel>
+          <SectionLabel className="home-accent-label">{content.label}</SectionLabel>
           <h2 className="section-heading" style={{ marginTop: '1rem' }}>
-            {isEnglish ? 'Core support, clearly structured.' : 'Les prestations clés, clairement structurées.'}
+            {content.title}
           </h2>
         </div>
 
         <div className="services-grid">
-          {services.map((service) => (
+          {content.items.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
         </div>
 
         <div className="home-section-action">
           <Link className="btn-pill" to="/services">
-            {isEnglish ? 'View service details' : 'Voir le détail des prestations'}
+            {content.action}
           </Link>
         </div>
       </div>

@@ -7,50 +7,60 @@ export default function ProcessSection() {
 
   const content = isEnglish
     ? {
-        label: 'Process',
-        title: 'A workflow designed to reassure.',
+        label: 'Why trust us',
+        title: 'A reassuring, independent and human approach',
         copy:
-          'The site first needs to inspire trust and make the offer readable. From there, each request can turn into a call, a quote or a more tailored support format.',
-        action: 'Contact RG Auto Conseil',
+          'Our support is designed to make each automotive decision easier to understand, calmer to live through and more secure in the end.',
+        action: 'Talk about your project',
         steps: [
           {
             step: '01',
-            title: 'First exchange',
-            copy: 'A first contact to understand the vehicle, the buying context and the level of support expected.',
+            title: 'Independent',
+            copy: 'No hidden interest, no pressure and no forced direction. The advice is there to protect your decision.',
           },
           {
             step: '02',
-            title: 'Targeted analysis',
-            copy: 'Advice, listing review, inspection and possible negotiation points before any commitment is made.',
+            title: 'Tailored',
+            copy: 'Every project is read according to your use, your priorities and the real level of support you need.',
           },
           {
             step: '03',
-            title: 'Execution',
-            copy: 'Vehicle sourcing, accessory fitting or optimisation support with a clear follow-up through the project.',
+            title: 'Aesthetic and technical',
+            copy: 'A double reading to preserve the identity of the vehicle while improving what truly makes sense.',
+          },
+          {
+            step: '04',
+            title: 'Human support',
+            copy: 'A clear, calm and accessible exchange for clients who want to move forward without feeling overwhelmed.',
           },
         ],
       }
     : {
-        label: 'Processus',
-        title: 'Un accompagnement pensé pour rassurer.',
+        label: 'Pourquoi nous faire confiance',
+        title: 'Une approche rassurante, independante et humaine',
         copy:
-          'Le site doit d’abord inspirer confiance et rendre l’offre lisible. Chaque demande peut ensuite déboucher sur un appel, un devis ou un accompagnement plus personnalisé.',
-        action: 'Contacter RG Auto Conseil',
+          'Notre accompagnement est pense pour rendre chaque decision automobile plus lisible, plus sereine et plus sure au final.',
+        action: 'Parler de votre projet',
         steps: [
           {
             step: '01',
-            title: 'Premier échange',
-            copy: 'Un premier contact pour comprendre le véhicule visé, le contexte d’achat et le niveau d’accompagnement attendu.',
+            title: 'Independant',
+            copy: 'Aucun interet cache, aucune pression et aucune orientation forcee. Le conseil est la pour proteger votre decision.',
           },
           {
             step: '02',
-            title: 'Analyse ciblée',
-            copy: 'Conseil, lecture d’annonce, inspection et éventuels points de négociation avant toute prise de décision.',
+            title: 'Sur mesure',
+            copy: 'Chaque projet est lu selon votre usage, vos priorites et le niveau d accompagnement dont vous avez vraiment besoin.',
           },
           {
             step: '03',
-            title: 'Mise en œuvre',
-            copy: 'Recherche de véhicule, montage d’équipements ou optimisation avec un suivi clair jusqu’à la finalisation du projet.',
+            title: 'Esthetique et technique',
+            copy: 'Une double lecture pour respecter l ADN du vehicule tout en ameliorant ce qui a vraiment du sens.',
+          },
+          {
+            step: '04',
+            title: 'Accompagnement humain',
+            copy: 'Un echange clair, calme et accessible pour les clients qui veulent avancer sans se sentir perdus.',
           },
         ],
       };

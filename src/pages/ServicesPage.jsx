@@ -19,28 +19,28 @@ export default function ServicesPage() {
   const content = isEnglish
     ? {
         heroLabel: 'Services',
-        heroTitle: ['A brighter', 'service entry,', 'built to guide.'],
+        heroTitle: ['Clear support,', 'clean reading,', 'useful guidance.'],
         heroIntro:
-          'A more editorial service page designed to make browsing easier, surface the right offer faster and prepare the future detailed service pages.',
+          'Every project is unique. Our role is to guide you with method, transparency and expertise.',
         heroFacts: [
-          { label: 'Reading', value: 'Clear & progressive' },
-          { label: 'Format', value: '4 cards first' },
-          { label: 'Direction', value: 'Detailed pages next' },
+          { label: 'Positioning', value: 'Independent advisor' },
+          { label: 'Tone', value: 'Clear and reassuring' },
+          { label: 'Goal', value: 'Protect the decision' },
         ],
-        heroNote: 'Thought to stay light on mobile and clearer on first pass.',
-        heroCardLabel: 'Service spotlight',
-        heroCardTitle: 'A more inviting route into the catalogue.',
+        heroNote: 'Built to stay readable on mobile and premium on first contact.',
+        heroCardLabel: 'Service focus',
+        heroCardTitle: 'Support designed to simplify complex decisions.',
         heroCardCopy:
-          'The hero now behaves like a visual launcher: a strong first impression, a readable promise and direct access to the core services below.',
-        heroFlowLabel: 'User path',
-        heroFlowTitle: 'A smoother sequence from need to service.',
-        heroFlowSteps: ['Need', 'Filter', 'Review', 'Contact'],
-        heroPreviewLabel: 'Quick selection',
-        heroPreviewTitle: 'A few core offers, visible immediately.',
-        servicesLabel: 'Service proposals',
-        servicesTitle: 'The core services to present clearly.',
+          'The page explains each service clearly so visitors understand what is done, why it matters and when it becomes relevant.',
+        heroFlowLabel: 'How we work',
+        heroFlowTitle: 'A simple path from need to action.',
+        heroFlowSteps: ['Understand', 'Analyse', 'Advise', 'Support'],
+        heroPreviewLabel: 'Core services',
+        heroPreviewTitle: 'The main needs visible right away.',
+        servicesLabel: 'Detailed services',
+        servicesTitle: 'Guidance that adapts to each automotive project.',
         servicesIntro:
-          'Each block below is intentionally short: the title states the need, the copy explains the promise, and the design prepares the structure for future redirects.',
+          'Each service is presented in a simple and reassuring way so non-expert clients can quickly understand the benefit.',
         filterLabel: 'Filter by profile',
         filters: [
           { value: 'all', label: 'All' },
@@ -51,51 +51,37 @@ export default function ServicesPage() {
           {
             index: '01',
             icon: 'search',
-            title: 'Vehicle pre-purchase advice',
-            copy: 'Clarify the project, frame the right buying logic and move forward with a more objective automotive decision.',
-            audiences: ['private'],
+            title: 'Purchase support',
+            copy: 'We help you make the right choice by analysing your needs, the market and the available opportunities.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '02',
             icon: 'document',
-            title: 'Pre-purchase vehicle inspection',
-            copy: 'Check the real condition of a vehicle before commitment and surface the points that deserve closer attention.',
+            title: 'Vehicle inspection',
+            copy: 'A complete pre-purchase verification designed to avoid unpleasant surprises and clarify the true condition of the vehicle.',
             audiences: ['private', 'pro'],
           },
           {
             index: '03',
             icon: 'briefcase',
-            title: 'Automotive listing analysis',
-            copy: 'Read a listing more critically, detect weak signals and quickly assess whether the opportunity deserves deeper review.',
-            audiences: ['pro'],
+            title: 'Tailored sourcing',
+            copy: 'We find the right vehicle for you according to your criteria, your budget and the way you intend to use it.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '04',
-            icon: 'briefcase',
-            title: 'Negotiation with the seller',
-            copy: 'Defend the buyer interest with a calmer, more structured and more realistic negotiation approach.',
-            audiences: ['private', 'pro'],
+            icon: 'truck',
+            title: 'Modernisation advice',
+            copy: 'Aesthetic and functional improvements designed to modernise the vehicle without taking away its identity.',
+            audiences: ['private'],
           },
           {
             index: '05',
-            icon: 'truck',
-            title: 'Vehicle sourcing',
-            copy: 'Search more efficiently and focus only on vehicles that truly match the expected brief and usage.',
+            icon: 'briefcase',
+            title: 'Follow-up and support',
+            copy: 'We stay present at every stage, from the first reflection to the final decision and the next concrete actions.',
             audiences: ['private', 'pro'],
-          },
-          {
-            index: '06',
-            icon: 'document',
-            title: 'Equipment installation',
-            copy: 'Support relevant equipment fitting to improve usability, comfort or daily practicality without unnecessary excess.',
-            audiences: ['pro'],
-          },
-          {
-            index: '07',
-            icon: 'search',
-            title: 'Vehicle optimisation / improvement',
-            copy: 'Identify the upgrades that make sense to improve presentation, value perception and overall coherence.',
-            audiences: ['private'],
           },
         ],
         showMore: 'See more',
@@ -103,28 +89,28 @@ export default function ServicesPage() {
       }
     : {
         heroLabel: 'Services',
-        heroTitle: ['Une entree', 'service plus claire,', 'faite pour guider.'],
+        heroTitle: ['Un accompagnement', 'clair,', 'utile et rassurant.'],
         heroIntro:
-          'Une page services plus editoriale, pensee pour rendre la navigation plus fluide, faire ressortir la bonne prestation plus vite et preparer les futures pages detaillees.',
+          'Chaque projet est unique. Notre role est de vous guider avec methode, transparence et expertise.',
         heroFacts: [
-          { label: 'Lecture', value: 'Claire et progressive' },
-          { label: 'Format', value: '4 cartes au depart' },
-          { label: 'Direction', value: 'Pages detaillees ensuite' },
+          { label: 'Positionnement', value: 'Conseiller independant' },
+          { label: 'Ton', value: 'Clair et rassurant' },
+          { label: 'Objectif', value: 'Proteger la decision' },
         ],
-        heroNote: 'Pensee pour rester legere sur mobile et plus lisible des le premier regard.',
+        heroNote: 'Pensee pour rester lisible sur mobile et premium au premier regard.',
         heroCardLabel: 'Mise en avant',
-        heroCardTitle: 'Une entree plus desireuse dans le catalogue.',
+        heroCardTitle: 'Un accompagnement pense pour simplifier les decisions complexes.',
         heroCardCopy:
-          'Le haut de page agit maintenant comme un vrai lanceur visuel : une premiere impression forte, une promesse lisible et un acces direct aux services essentiels.',
-        heroFlowLabel: 'Parcours utilisateur',
-        heroFlowTitle: 'Une lecture plus fluide du besoin au service.',
-        heroFlowSteps: ['Besoin', 'Tri', 'Lecture', 'Contact'],
-        heroPreviewLabel: 'Selection rapide',
-        heroPreviewTitle: 'Quelques prestations cles visibles tout de suite.',
-        servicesLabel: 'Propositions de service',
-        servicesTitle: 'Les prestations cles a presenter clairement.',
+          'La page explique clairement chaque service pour que le visiteur comprenne ce qui est fait, pourquoi cela compte et a quel moment cela devient utile.',
+        heroFlowLabel: 'Maniere de travailler',
+        heroFlowTitle: 'Un parcours simple du besoin a l action.',
+        heroFlowSteps: ['Comprendre', 'Analyser', 'Conseiller', 'Accompagner'],
+        heroPreviewLabel: 'Services cles',
+        heroPreviewTitle: 'Les besoins essentiels visibles tout de suite.',
+        servicesLabel: 'Services detailles',
+        servicesTitle: 'Un accompagnement qui s adapte a chaque projet automobile.',
         servicesIntro:
-          'Chaque bloc ci-dessous reste volontairement court : le titre pose le besoin, le texte resume la promesse, et le design prepare la structure pour les futures redirections.',
+          'Chaque service est presente de facon simple et rassurante pour permettre a des clients non experts de comprendre rapidement l interet de l accompagnement.',
         filterLabel: 'Filtrer par profil',
         filters: [
           { value: 'all', label: 'Tous' },
@@ -135,51 +121,37 @@ export default function ServicesPage() {
           {
             index: '01',
             icon: 'search',
-            title: 'Conseil avant achat de vehicule',
-            copy: 'Clarifier le projet, poser la bonne logique d achat et avancer avec une decision automobile plus objective.',
-            audiences: ['private'],
+            title: 'Accompagnement a l achat',
+            copy: 'Nous vous aidons a faire le bon choix, en analysant vos besoins, le marche et les opportunites disponibles.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '02',
             icon: 'document',
-            title: 'Inspection d un vehicule avant achat',
-            copy: 'Controler l etat reel d un vehicule avant engagement et faire ressortir les points qui meritent une lecture plus poussee.',
+            title: 'Inspection de vehicule',
+            copy: 'Verification complete avant achat pour eviter les mauvaises surprises et mieux lire l etat reel du vehicule.',
             audiences: ['private', 'pro'],
           },
           {
             index: '03',
             icon: 'briefcase',
-            title: 'Analyse d annonce automobile',
-            copy: 'Lire une annonce avec plus de recul, detecter les signaux faibles et savoir rapidement si l opportunite merite une vraie analyse.',
-            audiences: ['pro'],
+            title: 'Recherche personnalisee',
+            copy: 'Nous trouvons pour vous le vehicule ideal selon vos criteres, votre budget et votre usage.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '04',
-            icon: 'briefcase',
-            title: 'Negociation avec le vendeur',
-            copy: 'Defendre l interet de l acheteur avec une negociation plus calme, plus structuree et plus realiste.',
-            audiences: ['private', 'pro'],
+            icon: 'truck',
+            title: 'Conseil en modernisation',
+            copy: 'Des ameliorations esthetiques et fonctionnelles pensees pour moderniser proprement sans denaturer le vehicule.',
+            audiences: ['private'],
           },
           {
             index: '05',
-            icon: 'truck',
-            title: 'Recherche de vehicule',
-            copy: 'Chercher plus efficacement et concentrer le travail sur les vehicules reellement alignes avec le besoin et l usage.',
+            icon: 'briefcase',
+            title: 'Suivi et accompagnement',
+            copy: 'Nous restons presents a chaque etape, de la reflexion jusqu a la finalisation du projet.',
             audiences: ['private', 'pro'],
-          },
-          {
-            index: '06',
-            icon: 'document',
-            title: 'Montage d equipements',
-            copy: 'Accompagner les montages utiles pour ameliorer l usage, le confort ou la praticite quotidienne sans ajout superflu.',
-            audiences: ['pro'],
-          },
-          {
-            index: '07',
-            icon: 'search',
-            title: 'Optimisation / amelioration du vehicule',
-            copy: 'Identifier les evolutions pertinentes pour ameliorer la presentation, la perception de valeur et la coherence d ensemble.',
-            audiences: ['private'],
           },
         ],
         showMore: 'Voir plus',
@@ -266,10 +238,10 @@ export default function ServicesPage() {
                 <h3>{content.heroPreviewTitle}</h3>
                 <div className="services-orbit-preview-list">
                   {previewServices.map((service) => (
-                    <div className="services-orbit-preview-item" key={service.index}>
+                    <a className="services-orbit-preview-item" href={`#service-${service.index}`} key={service.index}>
                       <span>{service.index}</span>
                       <strong>{service.title}</strong>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </article>
@@ -311,6 +283,7 @@ export default function ServicesPage() {
               return (
                 <article
                   className={`services-summary-card gs-scroll-card services-summary-card--${(index % 3) + 1}${shouldCenterLastCard ? ' services-summary-card--centered' : ''}`}
+                  id={`service-${service.index}`}
                   key={service.title}
                 >
                   <div className="services-summary-top">
@@ -342,7 +315,6 @@ export default function ServicesPage() {
           ) : null}
         </div>
       </section>
-
     </div>
   );
 }

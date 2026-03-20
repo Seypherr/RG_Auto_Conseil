@@ -7,32 +7,32 @@ export default function AboutSection() {
 
   const content = isEnglish
     ? {
-        label: 'About',
-        title: 'Gaëtan Roblin',
+        label: 'Value',
+        title: 'An expert eye, designed for your peace of mind',
         paragraphs: [
-          'RG Auto Conseil is built around Gaëtan Roblin’s support: pre-purchase advice, inspection, listing analysis, vehicle sourcing and accessory fitting with a clear, independent point of view.',
-          'The positioning is that of an automotive expert and independent advisor able to reassure, explain and structure the decision process for private and professional clients alike.',
+          'Buying or modifying a vehicle can quickly become complex.',
+          'We support you at every stage to avoid mistakes, secure your investment and help you make the right decisions with confidence.',
         ],
         stats: [
-          { value: 'PACA', label: 'Service area' },
-          { value: '15–40', accent: 'k€', label: 'Average budget' },
-          { value: 'Private', accent: ' & pro', label: 'Clients' },
+          { value: 'Independent', label: 'Clear position' },
+          { value: 'Tailored', label: 'Support style' },
+          { value: 'Human', label: 'Relationship' },
         ],
-        action: 'Explore expertise',
+        action: 'Discover the approach',
       }
     : {
-        label: 'À propos',
-        title: 'Gaëtan Roblin',
+        label: 'Valeur',
+        title: 'Un regard expert, au service de votre tranquillite',
         paragraphs: [
-          'RG Auto Conseil présente l’accompagnement de Gaëtan Roblin autour du conseil avant achat, de l’inspection, de l’analyse d’annonce, de la recherche automobile et du montage d’accessoires avec un regard clair et indépendant.',
-          'Le positionnement retenu est celui d’un expert automobile et conseiller indépendant capable de rassurer, d’expliquer et de structurer la décision pour des particuliers comme pour des professionnels.',
+          'Acheter ou modifier un vehicule peut vite devenir complexe.',
+          'Nous vous accompagnons a chaque etape pour eviter les erreurs, securiser votre investissement et faire les bons choix.',
         ],
         stats: [
-          { value: 'PACA', label: "Zone d’intervention" },
-          { value: '15–40', accent: 'k€', label: 'Budget moyen' },
-          { value: 'Part.', accent: ' & pros', label: 'Clients' },
+          { value: 'Independant', label: 'Positionnement' },
+          { value: 'Sur mesure', label: 'Accompagnement' },
+          { value: 'Humain', label: 'Relation client' },
         ],
-        action: 'Découvrir l’expertise',
+        action: 'Decouvrir l approche',
       };
 
   return (
@@ -63,10 +63,7 @@ export default function AboutSection() {
         <div className="about-stats">
           {content.stats.map((stat) => (
             <div className="stat-card" key={stat.label}>
-              <span className="stat-value">
-                {stat.value}
-                {stat.accent ? <span>{stat.accent}</span> : null}
-              </span>
+              <span className="stat-value">{stat.value}</span>
               <span className="stat-label">{stat.label}</span>
             </div>
           ))}

@@ -9,10 +9,10 @@ export default function ContactPage() {
 
   const content = isEnglish
     ? {
-        label: 'Contact / quote',
-        title: 'Direct contact, colour map, clean form.',
+        label: 'Contact',
+        title: 'Talk about your automotive project',
         copy:
-          'The page is now reduced to the useful contact block only: quick access information on one side, the coloured map in context, and the lower contact form kept as the main action.',
+          'Describe your need and we will get back to you quickly with a clear and tailored approach.',
         infoCards: [
           { label: 'Phone', value: '06 63 99 07 20', href: 'tel:0663990720' },
           { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
@@ -21,57 +21,57 @@ export default function ContactPage() {
         ],
         socialsLabel: 'Social media',
         socials: [
-          { name: 'Instagram', status: 'Channel to connect' },
-          { name: 'Facebook', status: 'Channel to connect' },
+          { name: 'Instagram', status: 'Coming soon' },
+          { name: 'Facebook', status: 'Coming soon' },
         ],
         formLabel: 'Contact form',
-        formTitle: 'Request a quote or book support.',
+        formTitle: 'A simple way to start the conversation.',
         placeholders: {
-          name: 'Full name',
-          email: 'Email address',
+          name: 'Name',
+          email: 'Email',
           phone: 'Phone',
           type: 'Request type',
-          vehicle: 'Vehicle or project',
-          details: 'Describe your need, the target vehicle or the expected service...',
-          submit: 'Send request',
+          vehicle: 'Project',
+          details: 'Describe your project...',
+          submit: 'Send my request',
         },
         types: [
           { value: 'contact', label: 'First contact' },
           { value: 'quote', label: 'Quote request' },
-          { value: 'support', label: 'Support booking' },
+          { value: 'support', label: 'Support request' },
         ],
       }
     : {
-        label: 'Contact / devis',
-        title: 'Contact direct, map en couleur, formulaire propre.',
+        label: 'Contact',
+        title: 'Parlons de votre projet automobile',
         copy:
-          'La page est désormais réduite au bloc de contact utile : les informations d’accès d’un côté, la carte en couleur dans le bon contexte, et la partie basse du formulaire conservée comme action principale.',
+          'Decrivez votre besoin, nous vous recontactons rapidement avec une approche claire et adaptee.',
         infoCards: [
-          { label: 'Téléphone', value: '06 63 99 07 20', href: 'tel:0663990720' },
+          { label: 'Telephone', value: '06 63 99 07 20', href: 'tel:0663990720' },
           { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
-          { label: 'Zone d’intervention', value: 'Région PACA' },
+          { label: 'Zone d intervention', value: 'Region PACA' },
           { label: 'Horaires', value: 'Sur rendez-vous' },
         ],
-        socialsLabel: 'Réseaux sociaux',
+        socialsLabel: 'Reseaux sociaux',
         socials: [
-          { name: 'Instagram', status: 'Canal à connecter' },
-          { name: 'Facebook', status: 'Canal à connecter' },
+          { name: 'Instagram', status: 'Bientot disponible' },
+          { name: 'Facebook', status: 'Bientot disponible' },
         ],
-        formLabel: 'Formulaire de contact',
-        formTitle: 'Demander un devis ou réserver un accompagnement.',
+        formLabel: 'Formulaire',
+        formTitle: 'Une conversion simple, sans friction.',
         placeholders: {
-          name: 'Nom complet',
-          email: 'Adresse email',
-          phone: 'Téléphone',
+          name: 'Nom',
+          email: 'Email',
+          phone: 'Telephone',
           type: 'Type de demande',
-          vehicle: 'Véhicule ou projet',
-          details: 'Décrivez votre besoin, le véhicule visé ou la prestation attendue...',
-          submit: 'Envoyer la demande',
+          vehicle: 'Projet',
+          details: 'Decrivez votre projet...',
+          submit: 'Envoyer ma demande',
         },
         types: [
           { value: 'contact', label: 'Prise de contact' },
           { value: 'quote', label: 'Demande de devis' },
-          { value: 'support', label: 'Réservation d’accompagnement' },
+          { value: 'support', label: 'Besoin d accompagnement' },
         ],
       };
 

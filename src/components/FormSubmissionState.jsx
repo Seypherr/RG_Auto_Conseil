@@ -5,54 +5,54 @@ import { useSite } from '../context/SiteContext';
 const copyByKind = {
   fr: {
     contact: {
-      label: 'Message enregistré',
-      title: 'Votre message est bien arrivé.',
+      label: 'Message enregistre',
+      title: 'Votre demande a bien ete recue.',
       description:
-        'Nous avons bien reçu votre demande. Un retour vous sera adressé sous 24 heures pour qualifier votre besoin avec clarté et discrétion.',
-      footer: 'Authentification de message sécurisée',
+        'Nous avons bien recu votre message. Un retour vous sera adresse rapidement avec une approche claire, simple et adaptee.',
+      footer: 'Authentification de message securisee',
     },
     quote: {
-      label: 'Demande de devis enregistrée',
-      title: 'Votre projet passe en étude.',
+      label: 'Demande envoyee',
+      title: 'Votre projet est en cours de lecture.',
       description:
-        'Nous avons bien reçu les informations de votre projet. Un retour vous sera adressé sous 24 heures avec le bon niveau de conseil ou de devis.',
-      footer: 'Authentification de devis sécurisée',
+        'Nous avons bien recu les informations de votre projet. Un retour vous sera adresse rapidement pour faire le point avec clarte et serenite.',
+      footer: 'Authentification de demande securisee',
     },
     support: {
-      label: 'Accompagnement enregistré',
-      title: 'Votre quête commence ici.',
+      label: 'Accompagnement enregistre',
+      title: 'Votre projet peut maintenant avancer.',
       description:
-        'Nous avons bien reçu votre demande d’accompagnement. Un consultant analysera votre projet et vous recontactera sous 24 heures pour initier la suite en toute discrétion.',
-      footer: 'Authentification de mandat sécurisée',
+        'Nous avons bien recu votre besoin. Nous reviendrons vers vous rapidement pour cadrer la suite avec une lecture simple et rassurante.',
+      footer: 'Authentification de suivi securisee',
     },
-    home: 'Retour à l’accueil',
+    home: 'Retour a l accueil',
     reset: 'Envoyer une autre demande',
     rights: 'RG Auto Conseil © 2026',
   },
   en: {
     contact: {
-      label: 'Message recorded',
-      title: 'Your message is safely in.',
+      label: 'Message received',
+      title: 'Your request has been recorded.',
       description:
-        'We have received your request. A reply will be sent within 24 hours to qualify your need with clarity and discretion.',
+        'We have received your message. A reply will be sent quickly with a clear, simple and tailored approach.',
       footer: 'Secure message authentication',
     },
     quote: {
-      label: 'Quote request recorded',
+      label: 'Request sent',
       title: 'Your project is now under review.',
       description:
-        'We have received your project details. A reply will be sent within 24 hours with the right level of advice or quotation.',
-      footer: 'Secure quote authentication',
+        'We have received the details of your project. A reply will be sent quickly to clarify the next step with calm and clarity.',
+      footer: 'Secure request authentication',
     },
     support: {
-      label: 'Support request recorded',
-      title: 'Your search starts here.',
+      label: 'Support request received',
+      title: 'Your project can now move forward.',
       description:
-        'We have received your support request. A dedicated consultant will review your project and contact you within 24 hours to begin discreetly.',
-      footer: 'Secure mandate authentication',
+        'We have received your need. We will get back to you quickly to structure the next step in a clear and reassuring way.',
+      footer: 'Secure follow-up authentication',
     },
     home: 'Back to home',
-    reset: 'Submit another request',
+    reset: 'Send another request',
     rights: 'RG Auto Conseil © 2026',
   },
 };
@@ -61,8 +61,8 @@ export function buildSubmissionReference(kind) {
   const now = new Date();
   const prefixMap = {
     contact: 'CONTACT',
-    quote: 'DEVIS',
-    support: 'MANDAT',
+    quote: 'PROJET',
+    support: 'SUIVI',
   };
   const prefix = prefixMap[kind] || 'RG84';
   const year = now.getFullYear();

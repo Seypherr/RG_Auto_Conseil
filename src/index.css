@@ -399,61 +399,45 @@ p {
   margin-top: 20px;
 }
 
-.signal-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-bottom: 0.55rem;
-}
-
-.signal-mark--compact {
-  margin-bottom: 0;
-  gap: 0.35rem;
-}
-
-.signal-dot,
-.signal-line {
+.barcode-svg {
   display: block;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(194, 133, 81, 0.8));
+  width: 100px;
+  height: 30px;
+  margin-bottom: 0.55rem;
+  opacity: 0.82;
 }
 
-.signal-dot {
-  width: 8px;
-  height: 8px;
-  box-shadow: 0 0 12px rgba(194, 133, 81, 0.45);
+.barcode-svg--compact {
+  width: 56px;
+  height: 18px;
+  margin-bottom: 0;
+  opacity: 0.76;
 }
 
-.signal-line {
-  height: 2px;
+.barcode-qr {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  object-fit: cover;
+  padding: 8px;
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(194, 133, 81, 0.12);
 }
 
-.signal-line--lg {
-  width: 2.75rem;
-}
-
-.signal-line--md {
-  width: 1.85rem;
-  opacity: 0.9;
-}
-
-.signal-line--sm {
-  width: 1.1rem;
-  opacity: 0.7;
-}
-
-.signal-line--xs {
-  width: 0.55rem;
-  opacity: 0.5;
-}
-
-.signal-mark--compact .signal-dot {
-  width: 6px;
-  height: 6px;
-}
-
-.signal-mark--compact .signal-line {
-  height: 1px;
+.barcode-qr--compact {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0;
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.18),
+    0 0 10px rgba(194, 133, 81, 0.08);
 }
 
 .sys-code {
@@ -461,6 +445,13 @@ p {
   font-size: 10px;
   letter-spacing: 0.1em;
   color: var(--text-muted);
+}
+
+.route-page--about .label,
+.route-page--gallery .label,
+.route-page--contact .label,
+.route-page--services .label {
+  color: rgba(232, 169, 121, 0.9);
 }
 
 .hero-center {
@@ -1483,6 +1474,7 @@ textarea.apple-input {
   font-weight: 500;
   letter-spacing: 0.04em;
   cursor: pointer;
+  text-decoration: none;
   transition:
     transform 0.55s var(--ease-smooth),
     background 0.55s var(--ease-smooth),
@@ -1632,6 +1624,10 @@ textarea.apple-input {
 
 .footer-sys .barcode-system {
   margin-top: 0;
+}
+
+.footer-sys .barcode-qr--compact {
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .footer-sys:hover {
@@ -2013,8 +2009,8 @@ textarea.apple-input {
 .services-orbit-shell {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(22rem, 1.14fr);
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1.02fr) minmax(24rem, 0.98fr);
+  gap: 1.5rem;
   align-items: start;
 }
 
@@ -2026,14 +2022,14 @@ textarea.apple-input {
 
 .services-orbit-title {
   color: #fff7ef;
-  max-width: 8ch;
-  font-size: clamp(4.2rem, 7vw, 6.6rem);
+  max-width: 12ch;
+  font-size: clamp(4.4rem, 8vw, 7.2rem);
   line-height: 0.92;
   letter-spacing: -0.06em;
 }
 
 .services-orbit-copy .editorial-copy {
-  max-width: 34rem;
+  max-width: 42rem;
   margin-top: 2rem;
   color: rgba(255, 245, 235, 0.76);
   font-size: 1rem;
@@ -2282,6 +2278,7 @@ textarea.apple-input {
   border: 1px solid rgba(255, 214, 176, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
   transition: transform 260ms ease, border-color 260ms ease, background-color 260ms ease;
 }
 
@@ -2305,6 +2302,17 @@ textarea.apple-input {
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.35;
+}
+
+.services-orbit-preview-item:hover strong,
+.services-orbit-preview-item:focus-visible strong {
+  color: rgba(255, 248, 242, 1);
+}
+
+.services-orbit-preview-item:focus-visible {
+  outline: none;
+  border-color: rgba(255, 204, 150, 0.32);
+  box-shadow: 0 0 0 3px rgba(194, 133, 81, 0.12);
 }
 
 .services-summary-section {
@@ -3051,6 +3059,12 @@ textarea.apple-input {
   text-transform: none;
 }
 
+.about-cta-shell .submit-button,
+.about-cta-shell .submit-button:hover,
+.about-cta-shell .submit-button:focus-visible {
+  text-decoration: none;
+}
+
 .about-portrait-mark {
   margin-bottom: auto;
   font-size: clamp(4rem, 10vw, 7rem);
@@ -3794,8 +3808,7 @@ textarea.apple-input {
 
 .submission-barcode {
   margin-top: 2rem;
-  opacity: 0.4;
-  filter: grayscale(1);
+  opacity: 0.72;
 }
 
 .submission-barcode .barcode-system {

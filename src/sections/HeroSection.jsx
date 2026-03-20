@@ -8,36 +8,36 @@ export default function HeroSection() {
 
   const content = isEnglish
     ? {
-        title: ['Pre-purchase', 'expertise', '& accessories'],
+        title: ['Buy and improve', 'your car', 'with peace of mind'],
         description:
-          'RG Auto Conseil supports private and professional clients across the PACA region to secure a vehicle purchase, review a listing or carry out accessory fitting with a serious and premium approach.',
-        imageAlt: 'Vehicle inspected as part of a pre-purchase expertise mission',
-        heroLines: ['BUY', 'WITH CONFIDENCE.'],
+          'Independent support to secure your purchase and modernise your vehicle without changing its identity.',
+        imageAlt: 'Vehicle presented in a discreet premium automotive setting',
+        heroLines: ['DRIVE', 'WITH PEACE.'],
         goalLabel: 'Main objective',
-        goalValue: 'Build trust',
+        goalValue: 'Build confidence',
         areaLabel: 'Service area',
         areaValue: 'PACA',
         audienceLabel: 'Target clients',
-        audienceValue: 'Private & professional',
-        budgetLabel: 'Average budget',
-        budgetValue: '€15,000 to €40,000',
-        callLabel: 'Call now',
+        audienceValue: 'Private buyers',
+        budgetLabel: 'Approach',
+        budgetValue: 'Independent advice',
+        callLabel: 'Get support',
       }
     : {
-        title: ['Expertise', 'avant achat', '& accessoires'],
+        title: ['Achetez et ameliorez', 'votre voiture', 'en toute serenite'],
         description:
-          'RG Auto Conseil accompagne particuliers et professionnels en région PACA pour sécuriser l’achat d’un véhicule, analyser une annonce ou réaliser un montage d’accessoires avec une approche sérieuse et premium.',
-        imageAlt: 'Véhicule contrôlé dans le cadre d’une expertise avant achat',
-        heroLines: ['ACHETER', 'EN CONFIANCE.'],
+          'Un accompagnement independant pour securiser votre achat et moderniser votre vehicule sans le denaturer.',
+        imageAlt: 'Vehicule presente dans un univers automobile sobre et premium',
+        heroLines: ['ROULER', 'SEREINEMENT.'],
         goalLabel: 'Objectif principal',
         goalValue: 'Donner confiance',
-        areaLabel: "Zone d’intervention",
+        areaLabel: 'Zone d intervention',
         areaValue: 'PACA',
-        audienceLabel: 'Clients ciblés',
-        audienceValue: 'Particuliers & pros',
-        budgetLabel: 'Budget moyen',
-        budgetValue: '15 000 € à 40 000 €',
-        callLabel: 'Appeler maintenant',
+        audienceLabel: 'Clients cibles',
+        audienceValue: 'Particuliers non experts',
+        budgetLabel: 'Approche',
+        budgetValue: 'Conseil independant',
+        callLabel: 'Etre accompagne',
       };
 
   return (
@@ -59,7 +59,7 @@ export default function HeroSection() {
         </div>
 
         <div className="gs-fade">
-          <BarcodeMark code={isEnglish ? 'TRUST SIGNAL' : 'SIGNATURE RG'} />
+          <BarcodeMark code={isEnglish ? 'INDEPENDENT SUPPORT' : 'ACCOMPAGNEMENT INDEPENDANT'} variant="barcode" />
         </div>
       </aside>
 
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
       <aside className="hero-right">
         <div className="rating-block gs-fade">
-          <div className="stars">{isEnglish ? 'TRUST' : 'CONFIANCE'}</div>
+          <div className="stars">{isEnglish ? 'PEACE' : 'SERENITE'}</div>
           <span className="label">{content.goalLabel}</span>
           <span className="data-value">{content.goalValue}</span>
         </div>
