@@ -1,122 +1,193 @@
-import PageHero from '../components/PageHero';
-import VisualTile from '../components/VisualTile';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
+import { rgMedia } from '../data/rgMedia';
 
 export default function GalleryPage() {
   const { isEnglish } = useSite();
 
-  const hero = isEnglish
+  const content = isEnglish
     ? {
-        label: 'Work / gallery',
-        titleLines: ['Projects', '& gallery'],
-        copy:
-          'A visual page ready to host real project imagery: vehicles, interventions, before / after, portrait and working environment.',
-        actions: [{ label: 'Contact RG Auto Conseil', to: '/contact' }],
+        label: 'Missions and before / after',
+        title: ['Real missions,', 'visible changes,', 'added value.'],
+        intro:
+          'The gallery is now organised by real mission types so each vehicle is tied to a clear intervention and a readable before / after result.',
+        heroCardLabel: 'Gallery logic',
+        heroCardTitle: 'A more useful way to read the work.',
+        heroCardCopy:
+          'Each mission combines the vehicle, the work carried out and the visible result. The goal is not just to show images, but to explain the value created.',
+        missionsLabel: 'Mission grid',
+        missionsTitle: 'Vehicles sorted by actual mission.',
+        missions: [
+          {
+            id: '01',
+            label: 'Modernisation',
+            vehicle: 'Porsche 911',
+            mission: 'Infotainment refresh and usability improvement.',
+            outcome: 'A cleaner, more current interface that improves comfort without breaking the original spirit.',
+            beforeLabel: 'Before modernisation',
+            afterLabel: 'After interface update',
+            beforeImage: rgMedia.porscheConsoleLegacy,
+            afterImage: rgMedia.porscheConsole,
+          },
+          {
+            id: '02',
+            label: 'Integration',
+            vehicle: 'Ford Transit',
+            mission: 'Screen and reversing camera integration for daily use.',
+            outcome: 'A more reassuring and more practical utility vehicle for real field usage.',
+            beforeLabel: 'Before camera setup',
+            afterLabel: 'After camera integration',
+            beforeImage: rgMedia.fordDisplayBase,
+            afterImage: rgMedia.fordCameraDisplay,
+          },
+          {
+            id: '03',
+            label: 'Validation',
+            vehicle: 'Porsche 911',
+            mission: 'Inspection, detail reading and final premium presentation.',
+            outcome: 'A mission that moves from close-up verification to a fully validated and desirable presentation.',
+            beforeLabel: 'Before final validation',
+            afterLabel: 'After final presentation',
+            beforeImage: rgMedia.porscheConsoleMap,
+            afterImage: rgMedia.porscheExterior,
+          },
+          {
+            id: '04',
+            label: 'Mission vehicle',
+            vehicle: 'Ford Transit atelier',
+            mission: 'Field vehicle setup and operational presentation.',
+            outcome: 'A clearer professional image for interventions and appointments on site.',
+            beforeLabel: 'Before mission prep',
+            afterLabel: 'After operational setup',
+            beforeImage: rgMedia.vanRear,
+            afterImage: rgMedia.vanExterior,
+          },
+        ],
       }
     : {
-        label: 'Réalisations / galerie',
-        titleLines: ['Réalisations', '& galerie'],
-        copy:
-          'Une page visuelle prête à accueillir les photos réelles du projet : véhicules, interventions, avant / après, portrait et environnement de travail.',
-        actions: [{ label: 'Contacter RG Auto Conseil', to: '/contact' }],
+        label: 'Missions et avant / apres',
+        title: ['Des missions reelles,', 'des changements visibles,', 'de la valeur ajoutee.'],
+        intro:
+          'La galerie est maintenant triee par types de missions reelles pour relier chaque vehicule a une intervention claire et a un avant / apres lisible.',
+        heroCardLabel: 'Logique galerie',
+        heroCardTitle: 'Une lecture du travail plus utile.',
+        heroCardCopy:
+          'Chaque mission associe le vehicule, le travail realise et le resultat visible. Le but n est pas seulement de montrer des images, mais d expliquer la valeur creee.',
+        missionsLabel: 'Grille missions',
+        missionsTitle: 'Les vehicules tries par mission effectuee.',
+        missions: [
+          {
+            id: '01',
+            label: 'Modernisation',
+            vehicle: 'Porsche 911',
+            mission: 'Rafraichissement infotainment et amelioration d usage.',
+            outcome: 'Une interface plus propre et plus actuelle qui ameliore le confort sans casser l esprit d origine.',
+            beforeLabel: 'Avant modernisation',
+            afterLabel: 'Apres mise a jour interface',
+            beforeImage: rgMedia.porscheConsoleLegacy,
+            afterImage: rgMedia.porscheConsole,
+          },
+          {
+            id: '02',
+            label: 'Integration',
+            vehicle: 'Ford Transit',
+            mission: 'Integration ecran et camera de recul pour l usage quotidien.',
+            outcome: 'Un utilitaire plus rassurant et plus pratique pour un usage terrain reel.',
+            beforeLabel: 'Avant ajout camera',
+            afterLabel: 'Apres integration camera',
+            beforeImage: rgMedia.fordDisplayBase,
+            afterImage: rgMedia.fordCameraDisplay,
+          },
+          {
+            id: '03',
+            label: 'Validation',
+            vehicle: 'Porsche 911',
+            mission: 'Inspection, lecture detail et presentation finale premium.',
+            outcome: 'Une mission qui part du controle rapproche pour aboutir a une presentation validee et plus desirable.',
+            beforeLabel: 'Avant validation finale',
+            afterLabel: 'Apres presentation finale',
+            beforeImage: rgMedia.porscheConsoleMap,
+            afterImage: rgMedia.porscheExterior,
+          },
+          {
+            id: '04',
+            label: 'Vehicule mission',
+            vehicle: 'Ford Transit atelier',
+            mission: 'Preparation vehicule terrain et presentation operationnelle.',
+            outcome: 'Une image professionnelle plus claire pour les interventions et rendez-vous sur site.',
+            beforeLabel: 'Avant preparation mission',
+            afterLabel: 'Apres mise en configuration',
+            beforeImage: rgMedia.vanRear,
+            afterImage: rgMedia.vanExterior,
+          },
+        ],
       };
 
-  const note = isEnglish
-    ? 'The visuals below serve as immediate art direction and can be replaced later by real RG Auto Conseil imagery without changing the structure.'
-    : 'Les visuels ci-dessous servent de direction artistique immédiate et pourront être remplacés ensuite par les photos réelles de RG Auto Conseil sans changer la structure.';
-
-  const items = isEnglish
-    ? [
-        {
-          title: 'Vehicles',
-          eyebrow: 'Vehicle photos',
-          description: 'Main hero visuals to express the automotive passion and the quality of the selections.',
-          image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=1600',
-        },
-        {
-          title: 'Interventions',
-          eyebrow: 'Field work',
-          description: 'Images centered on inspection, checking and intervention details around the vehicle.',
-          image: 'https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=80&w=1600',
-        },
-        {
-          title: 'Before / after',
-          eyebrow: 'Comparison',
-          description: 'A block ready to showcase a visible gain, equipment fitting or optimisation work.',
-          beforeImage: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200',
-          afterImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200',
-          variant: 'beforeAfter',
-          beforeLabel: 'Before',
-          afterLabel: 'After',
-        },
-        {
-          title: 'Portrait',
-          eyebrow: 'Photo of Gaëtan',
-          description: 'Reserved space for a portrait to make the expertise and contact pages more personal.',
-          variant: 'placeholder',
-        },
-        {
-          title: 'Workshop / environment',
-          eyebrow: 'Working environment',
-          description: 'To show the intervention context and reinforce a sense of method, control and care.',
-          image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&q=80&w=1600',
-        },
-      ]
-    : [
-        {
-          title: 'Véhicules',
-          eyebrow: 'Photos de véhicules',
-          description: 'Visuels principaux pour exprimer la passion automobile et la qualité des sélections.',
-          image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=1600',
-        },
-        {
-          title: 'Interventions',
-          eyebrow: 'Photos d’interventions',
-          description: 'Images centrées sur l’inspection, le contrôle et les détails d’intervention autour du véhicule.',
-          image: 'https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=80&w=1600',
-        },
-        {
-          title: 'Avant / après',
-          eyebrow: 'Comparatif',
-          description: 'Un bloc prêt à montrer un gain visuel, un montage d’équipement ou une optimisation.',
-          beforeImage: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200',
-          afterImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200',
-          variant: 'beforeAfter',
-          beforeLabel: 'Avant',
-          afterLabel: 'Après',
-        },
-        {
-          title: 'Portrait',
-          eyebrow: 'Photo de Gaëtan',
-          description: 'Emplacement réservé à un portrait pour personnaliser les pages expertise et contact.',
-          variant: 'placeholder',
-        },
-        {
-          title: 'Atelier / environnement',
-          eyebrow: 'Environnement de travail',
-          description: 'Pour montrer le contexte d’intervention et installer une sensation de méthode et de maîtrise.',
-          image: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&q=80&w=1600',
-        },
-      ];
-
   return (
-    <div className="route-page">
-      <PageHero {...hero} />
+    <div className="route-page route-page--gallery">
+      <section className="content-section gallery-mission-hero">
+        <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--one" />
+        <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--two" />
 
-      <section className="content-section">
-        <div className="content-shell">
-          <div className="services-intro gs-scroll-fade-up">
-            <SectionLabel>{isEnglish ? 'Visual direction' : 'Direction visuelle'}</SectionLabel>
-            <h2 className="section-heading" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
-              {isEnglish ? 'A gallery ready for real project visuals.' : 'Une galerie prête à accueillir les vrais visuels.'}
-            </h2>
-            <p className="section-copy">{note}</p>
+        <div className="content-shell gallery-mission-hero-shell">
+          <div className="gallery-mission-copy gs-scroll-heading">
+            <div className="hide-overflow">
+              <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
+            </div>
+            {content.title.map((line, index) => (
+              <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
+                <span className="editorial-title gs-scroll-title-up">{line}</span>
+              </div>
+            ))}
+            <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.intro}</p>
           </div>
 
-          <div className="visual-grid">
-            {items.map((item) => (
-              <VisualTile key={item.title} {...item} />
+          <article className="gallery-mission-highlight gs-scroll-card">
+            <img alt={content.heroCardTitle} className="gallery-mission-highlight-image" src={rgMedia.porscheInteriorWide} />
+            <div className="gallery-mission-highlight-mask" />
+            <div className="gallery-mission-highlight-copy">
+              <span className="label">{content.heroCardLabel}</span>
+              <h2>{content.heroCardTitle}</h2>
+              <p>{content.heroCardCopy}</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="content-section gallery-missions-section">
+        <div className="content-shell">
+          <div className="gallery-missions-header gs-scroll-fade-up">
+            <SectionLabel>{content.missionsLabel}</SectionLabel>
+            <h2 className="section-heading gallery-missions-title">{content.missionsTitle}</h2>
+          </div>
+
+          <div className="gallery-missions-grid">
+            {content.missions.map((mission, index) => (
+              <article className={`gallery-mission-card gs-scroll-card gallery-mission-card--${(index % 3) + 1}`} key={mission.id}>
+                <div className="gallery-mission-card-head">
+                  <div>
+                    <span className="gallery-mission-index">{mission.id}</span>
+                    <span className="gallery-mission-tag">{mission.label}</span>
+                  </div>
+                  <strong>{mission.vehicle}</strong>
+                </div>
+
+                <div className="gallery-mission-body">
+                  <h3>{mission.mission}</h3>
+                  <p>{mission.outcome}</p>
+                </div>
+
+                <div className="gallery-mission-before-after">
+                  <div className="gallery-mission-pane">
+                    <img alt={mission.beforeLabel} src={mission.beforeImage} />
+                    <span>{mission.beforeLabel}</span>
+                  </div>
+                  <div className="gallery-mission-pane">
+                    <img alt={mission.afterLabel} src={mission.afterImage} />
+                    <span>{mission.afterLabel}</span>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>

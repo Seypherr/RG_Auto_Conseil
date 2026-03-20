@@ -59,7 +59,7 @@ export default function HeroSection() {
         </div>
 
         <div className="gs-fade">
-          <BarcodeMark />
+          <BarcodeMark code={isEnglish ? 'TRUST SIGNAL' : 'SIGNATURE RG'} />
         </div>
       </aside>
 

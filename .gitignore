@@ -2,3 +2,5 @@ node_modules/
 dist/
 dev.log
 dev.err
+vite-dev.out.log
+vite-dev.err.log

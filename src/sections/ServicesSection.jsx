@@ -73,7 +73,7 @@ export default function ServicesSection() {
 
       <div className="content-shell services-shell">
         <div className="services-intro gs-scroll-fade-up">
-          <SectionLabel>{isEnglish ? 'Services' : 'Services'}</SectionLabel>
+          <SectionLabel className="home-accent-label">{isEnglish ? 'Services' : 'Services'}</SectionLabel>
           <h2 className="section-heading" style={{ marginTop: '1rem' }}>
             {isEnglish ? 'Core support, clearly structured.' : 'Les prestations clés, clairement structurées.'}
           </h2>

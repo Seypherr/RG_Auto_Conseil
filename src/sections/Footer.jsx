@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="footer-legal">{content.rights}</div>
           <div className="footer-sys">
             <BarcodeMark code="SYS-END" compact />
-            <span className="footer-sys-label">SYS-END</span>
+            <span className="footer-sys-label">SIGNATURE</span>
           </div>
         </div>
       </div>

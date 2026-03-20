@@ -65,7 +65,7 @@ export default function ProcessSection() {
 
       <div className="content-shell process-shell">
         <div className="process-copy-wrap gs-scroll-fade-up">
-          <SectionLabel>{content.label}</SectionLabel>
+          <SectionLabel className="home-accent-label">{content.label}</SectionLabel>
           <h2 className="section-heading" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
             {content.title}
           </h2>

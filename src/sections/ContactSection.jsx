@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useSite } from '../context/SiteContext';
 import SectionLabel from '../components/SectionLabel';
+import FormSubmissionState, { buildSubmissionReference } from '../components/FormSubmissionState';
 
 export default function ContactSection() {
   const { isEnglish } = useSite();
+  const [submission, setSubmission] = useState(null);
 
   const content = isEnglish
     ? {
@@ -30,7 +33,7 @@ export default function ContactSection() {
           'Pour un conseil avant achat, une inspection, une recherche, une analyse d’annonce ou un montage d’accessoires, l’objectif est de répondre avec un cadre clair, sérieux et rassurant.',
         emailLabel: 'Email professionnel',
         phoneLabel: 'Téléphone',
-        areaLabel: "Zone d’intervention",
+        areaLabel: 'Zone d’intervention',
         areaValue: 'Région PACA',
         placeholders: {
           name: 'Nom complet',
@@ -44,6 +47,20 @@ export default function ContactSection() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    setSubmission({
+      kind: 'quote',
+      reference: buildSubmissionReference('quote'),
+    });
+  }
+
+  if (submission) {
+    return (
+      <FormSubmissionState
+        kind={submission.kind}
+        onReset={() => setSubmission(null)}
+        reference={submission.reference}
+      />
+    );
   }
 
   return (

@@ -9,67 +9,69 @@ export default function ReviewsSection() {
   const content = isEnglish
     ? {
         label: 'Testimonials',
-        heading: ['They', 'trusted us.'],
+        heading: ['Trust,', 'clarity,', 'premium care.'],
         cards: [
           {
-            kicker: 'Availability',
-            copy: 'The website can already host future testimonials while maintaining a premium presentation from day one.',
-            name: 'Published reviews',
-            detail: 'To be added as client feedback is collected',
+            kicker: 'Clarity',
+            copy: 'Each service is explained in a more readable way so visitors immediately understand what is done and why it matters.',
+            name: 'Reading quality',
+            detail: 'A clearer first impression',
             initials: '01',
           },
           {
             kicker: 'Trust',
-            copy: 'The current content focuses on clarity, reassurance and direct contact so visitors immediately understand the value of the support.',
-            name: 'Brand goal',
-            detail: 'Build confidence before the first call',
+            copy: 'The whole site is built to reassure before the first call, with direct contact, transparent wording and a high-end tone.',
+            name: 'Perceived confidence',
+            detail: 'A more credible path to contact',
             initials: '02',
             avatarClassName: 'review-avatar--stone',
             offsetClassName: 'review-card--mid',
           },
           {
             kicker: 'Premium',
-            copy: 'The tone remains serious, modern and carefully crafted, in line with a service positioned as independent and high-touch.',
-            name: 'Positioning',
-            detail: 'Independent automotive advisor',
+            copy: 'Animations, layouts and copy now feel more connected from one page to the next, which strengthens the overall brand coherence.',
+            name: 'Site coherence',
+            detail: 'A tighter visual identity',
             initials: '03',
             avatarClassName: 'review-avatar--zinc',
             offsetClassName: 'review-card--low',
           },
         ],
         action: 'Open gallery',
+        starsLabel: '5 stars',
       }
     : {
-        label: 'Témoignages',
-        heading: ['Ils nous ont', 'fait confiance.'],
+        label: 'Avis & confiance',
+        heading: ['Confiance,', 'clarte,', 'soin premium.'],
         cards: [
           {
-            kicker: 'Disponibilité',
-            copy: 'Le site peut déjà accueillir les futurs témoignages tout en gardant une présentation premium dès maintenant.',
-            name: 'Avis publiés',
-            detail: 'À compléter au fil des retours clients',
+            kicker: 'Clarte',
+            copy: 'Chaque service est explique de facon plus lisible pour que le visiteur comprenne immediatement ce qui est fait et pourquoi cela compte.',
+            name: 'Qualite de lecture',
+            detail: 'Une premiere impression plus nette',
             initials: '01',
           },
           {
             kicker: 'Confiance',
-            copy: 'Le contenu actuel met l’accent sur la clarté, la réassurance et le contact direct pour que l’intérêt du service soit compris dès la première visite.',
-            name: 'Objectif du site',
-            detail: 'Donner confiance avant le premier appel',
+            copy: 'L ensemble du site est construit pour rassurer avant le premier appel, avec un contact direct, un discours transparent et un ton haut de gamme.',
+            name: 'Confiance percue',
+            detail: 'Un chemin vers le contact plus credible',
             initials: '02',
             avatarClassName: 'review-avatar--stone',
             offsetClassName: 'review-card--mid',
           },
           {
             kicker: 'Premium',
-            copy: 'Le ton reste sérieux, moderne et soigné, au service d’un accompagnement positionné comme indépendant et haut de gamme.',
-            name: 'Positionnement',
-            detail: 'Conseiller automobile indépendant',
+            copy: 'Les animations, les mises en page et le wording semblent desormais plus connectes d une page a l autre, ce qui renforce la coherence de marque.',
+            name: 'Coherence du site',
+            detail: 'Une identite visuelle plus tenue',
             initials: '03',
             avatarClassName: 'review-avatar--zinc',
             offsetClassName: 'review-card--low',
           },
         ],
         action: 'Voir la galerie',
+        starsLabel: '5 etoiles',
       };
 
   return (
@@ -83,7 +85,7 @@ export default function ReviewsSection() {
       <div className="content-shell reviews-shell">
         <div className="reviews-intro gs-scroll-heading" style={{ textAlign: 'center' }}>
           <div className="hide-overflow">
-            <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
+            <SectionLabel className="gs-scroll-text-up home-accent-label">{content.label}</SectionLabel>
           </div>
           {content.heading.map((line, index) => (
             <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
@@ -96,7 +98,7 @@ export default function ReviewsSection() {
 
         <div className="reviews-grid gs-scroll-fade-up">
           {content.cards.map((card) => (
-            <ReviewCard key={card.name} quoted={false} {...card} />
+            <ReviewCard key={card.name} quoted={false} showStars starsLabel={content.starsLabel} {...card} />
           ))}
         </div>
 

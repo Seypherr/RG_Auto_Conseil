@@ -49,7 +49,7 @@ export default function AboutSection() {
       />
 
       <div className="content-shell about-shell gs-scroll-fade-up">
-        <SectionLabel className="about-label">{content.label}</SectionLabel>
+        <SectionLabel className="about-label home-accent-label">{content.label}</SectionLabel>
         <h2 className="section-heading" style={{ marginTop: '1.5rem', marginBottom: '2rem' }}>
           {content.title}
         </h2>

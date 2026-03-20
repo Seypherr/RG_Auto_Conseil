@@ -9,20 +9,20 @@ export default function ReviewCard({
   offsetClassName = '',
   kicker = '',
   quoted = true,
+  showStars = false,
   starsLabel = '5 stars',
 }) {
   return (
     <article className={`review-card ${offsetClassName}`.trim()}>
       <div>
-        {kicker ? (
-          <div className="review-kicker">{kicker}</div>
-        ) : (
+        {showStars ? (
           <div aria-label={starsLabel} className="review-stars">
             {Array.from({ length: 5 }).map((_, index) => (
               <StarIcon key={index} />
             ))}
           </div>
-        )}
+        ) : null}
+        {kicker ? <div className="review-kicker">{kicker}</div> : null}
         <p className={`review-copy${quoted ? '' : ' review-copy--plain'}`}>{quoted ? `"${copy}"` : copy}</p>
       </div>
 
