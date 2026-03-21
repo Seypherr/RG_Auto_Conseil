@@ -22,44 +22,52 @@ export default function HeroSection() {
         budgetLabel: 'Approach',
         budgetValue: 'Independent advice',
         callLabel: 'Get support',
+        barcodeLabel: 'INDEPENDENT SUPPORT',
+        serenityLabel: 'PEACE',
       }
     : {
-        title: ['Achetez et ameliorez', 'votre voiture', 'en toute serenite'],
+        title: ['Achetez et améliorez', 'votre voiture', 'en toute sérénité'],
         description:
-          'Un accompagnement independant pour securiser votre achat et moderniser votre vehicule sans le denaturer.',
-        imageAlt: 'Vehicule presente dans un univers automobile sobre et premium',
+          'Un suivi indépendant pour sécuriser votre achat et moderniser votre véhicule sans le dénaturer.',
+        imageAlt: 'Véhicule présenté dans un univers automobile sobre et premium',
         heroLines: ['ROULER', 'SEREINEMENT.'],
         goalLabel: 'Objectif principal',
         goalValue: 'Donner confiance',
-        areaLabel: 'Zone d intervention',
+        areaLabel: 'Zone d’intervention',
         areaValue: 'PACA',
         audienceLabel: 'Clients cibles',
-        audienceValue: 'Particuliers non experts',
+        audienceValue: 'Particuliers non-experts',
         budgetLabel: 'Approche',
-        budgetValue: 'Conseil independant',
-        callLabel: 'Etre accompagne',
+        budgetValue: 'Conseil indépendant',
+        callLabel: 'Être suivi',
+        barcodeLabel: 'SUIVI INDÉPENDANT',
+        serenityLabel: 'SÉRÉNITÉ',
       };
 
   return (
     <header className="hero-section">
       <aside className="hero-left">
-        <div className="mission-block">
-          <div className="hide-overflow">
-            <h2 className="mission-title gs-text-up">
-              {content.title[0]}
-              <br />
-              {content.title[1]}
-              <br />
-              {content.title[2]}
-            </h2>
-          </div>
-          <div className="hide-overflow">
-            <p className="mission-desc gs-text-up">{content.description}</p>
+        <div className="hero-left-stack">
+          <div className="mission-block">
+            <div className="hide-overflow">
+              <h2 className="mission-title gs-text-up">
+                {content.title[0]}
+                <br />
+                {content.title[1]}
+                <br />
+                {content.title[2]}
+              </h2>
+            </div>
+            <div className="hide-overflow">
+              <p className="mission-desc gs-text-up">{content.description}</p>
+            </div>
           </div>
         </div>
 
-        <div className="gs-fade">
-          <BarcodeMark code={isEnglish ? 'INDEPENDENT SUPPORT' : 'ACCOMPAGNEMENT INDEPENDANT'} variant="barcode" />
+        <div className="hero-left-foot gs-fade">
+          <div className="hero-barcode-anchor">
+            <BarcodeMark code={content.barcodeLabel} variant="barcode" />
+          </div>
         </div>
       </aside>
 
@@ -86,31 +94,41 @@ export default function HeroSection() {
             </div>
           ))}
         </h1>
+
+        <a
+          aria-label={isEnglish ? 'Scroll to the next section' : 'Descendre vers la section suivante'}
+          className="hero-scroll-indicator gs-fade"
+          href="#mission"
+        >
+          <span className="hero-scroll-indicator-ring">
+            <ArrowRightIcon />
+          </span>
+        </a>
       </main>
 
       <aside className="hero-right">
         <div className="rating-block gs-fade">
-          <div className="stars">{isEnglish ? 'PEACE' : 'SERENITE'}</div>
+          <div className="stars">{content.serenityLabel}</div>
           <span className="label">{content.goalLabel}</span>
           <span className="data-value">{content.goalValue}</span>
         </div>
 
         <div className="spec-list gs-fade">
           <div className="spec-item">
-            <span className="label">{content.areaLabel}</span>
+            <span className="label home-accent-label">{content.areaLabel}</span>
             <span className="data-value">{content.areaValue}</span>
           </div>
           <div className="spec-item">
-            <span className="label">{content.audienceLabel}</span>
+            <span className="label home-accent-label">{content.audienceLabel}</span>
             <span className="data-value">{content.audienceValue}</span>
           </div>
           <div className="spec-item">
-            <span className="label">{content.budgetLabel}</span>
+            <span className="label home-accent-label">{content.budgetLabel}</span>
             <span className="data-value">{content.budgetValue}</span>
           </div>
         </div>
 
-        <Link className="action-link gs-fade" to="/contact">
+        <Link className="action-link action-link--hero gs-fade" to="/contact">
           {content.callLabel}
           <ArrowRightIcon />
         </Link>

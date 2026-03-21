@@ -83,7 +83,7 @@ export default function LegalPage() {
     <div className="route-page">
       <PageHero {...hero} />
 
-      <section className="content-section">
+      <section className="content-section" id="legal-content">
         <div className="content-shell legal-stack">
           {sections.map((section) => (
             <article className="surface-card gs-scroll-card legal-panel" key={section.title}>

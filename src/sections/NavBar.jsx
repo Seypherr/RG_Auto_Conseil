@@ -1,23 +1,24 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import AnchorLink from '../components/AnchorLink';
 import { useSite } from '../context/SiteContext';
 
 const navItems = {
   fr: [
     { label: 'Accueil', to: '/' },
     { label: 'Services', to: '/services' },
-    { label: 'Expertise', to: '/about' },
+    { label: 'À propos', to: '/about' },
     { label: 'Galerie', to: '/gallery' },
   ],
   en: [
     { label: 'Home', to: '/' },
     { label: 'Services', to: '/services' },
-    { label: 'Expertise', to: '/about' },
+    { label: 'About', to: '/about' },
     { label: 'Gallery', to: '/gallery' },
   ],
 };
 
 export default function NavBar() {
-  const { language, setLanguage, isEnglish } = useSite();
+  const { language, setLanguage } = useSite();
   const items = navItems[language];
 
   return (
@@ -28,18 +29,14 @@ export default function NavBar() {
 
       <div className="nav-links gs-reveal">
         {items.map((item) => (
-          <NavLink
-            className={({ isActive }) => (isActive ? 'is-active' : undefined)}
-            key={item.to}
-            to={item.to}
-          >
+          <AnchorLink activeClassName="is-active" key={item.to} to={item.to}>
             {item.label}
-          </NavLink>
+          </AnchorLink>
         ))}
       </div>
 
       <div className="nav-actions gs-reveal">
-        <div aria-label={isEnglish ? 'Language switcher' : 'Sélecteur de langue'} className="language-switch" role="group">
+        <div aria-label="Sélecteur de langue" className="language-switch" role="group">
           <button
             className={`language-button${language === 'fr' ? ' is-active' : ''}`}
             onClick={() => setLanguage('fr')}
@@ -56,9 +53,9 @@ export default function NavBar() {
           </button>
         </div>
 
-        <Link className="btn-pill" to="/contact">
-          {isEnglish ? 'Contact' : 'Contact'}
-        </Link>
+        <AnchorLink className="btn-pill nav-contact-button" to="/contact">
+          Contact
+        </AnchorLink>
       </div>
     </nav>
   );

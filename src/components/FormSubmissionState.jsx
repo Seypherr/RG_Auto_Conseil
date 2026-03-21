@@ -5,27 +5,27 @@ import { useSite } from '../context/SiteContext';
 const copyByKind = {
   fr: {
     contact: {
-      label: 'Message enregistre',
-      title: 'Votre demande a bien ete recue.',
+      label: 'Message enregistré',
+      title: 'Votre demande a bien été reçue.',
       description:
-        'Nous avons bien recu votre message. Un retour vous sera adresse rapidement avec une approche claire, simple et adaptee.',
-      footer: 'Authentification de message securisee',
+        'Nous avons bien reçu votre message. Un retour vous sera adressé rapidement avec une approche claire, simple et adaptée.',
+      footer: 'Authentification de message sécurisée',
     },
     quote: {
-      label: 'Demande envoyee',
+      label: 'Demande envoyée',
       title: 'Votre projet est en cours de lecture.',
       description:
-        'Nous avons bien recu les informations de votre projet. Un retour vous sera adresse rapidement pour faire le point avec clarte et serenite.',
-      footer: 'Authentification de demande securisee',
+        'Nous avons bien reçu les informations de votre projet. Un retour vous sera adressé rapidement pour faire le point avec clarté et sérénité.',
+      footer: 'Authentification de demande sécurisée',
     },
     support: {
-      label: 'Accompagnement enregistre',
+      label: 'Suivi enregistré',
       title: 'Votre projet peut maintenant avancer.',
       description:
-        'Nous avons bien recu votre besoin. Nous reviendrons vers vous rapidement pour cadrer la suite avec une lecture simple et rassurante.',
-      footer: 'Authentification de suivi securisee',
+        'Nous avons bien reçu votre besoin. Nous reviendrons vers vous rapidement pour cadrer la suite avec une lecture simple et rassurante.',
+      footer: 'Authentification de suivi sécurisée',
     },
-    home: 'Retour a l accueil',
+    home: 'Retour à l’accueil',
     reset: 'Envoyer une autre demande',
     rights: 'RG Auto Conseil © 2026',
   },

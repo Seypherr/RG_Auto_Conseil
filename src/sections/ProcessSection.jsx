@@ -28,39 +28,29 @@ export default function ProcessSection() {
             title: 'Aesthetic and technical',
             copy: 'A double reading to preserve the identity of the vehicle while improving what truly makes sense.',
           },
-          {
-            step: '04',
-            title: 'Human support',
-            copy: 'A clear, calm and accessible exchange for clients who want to move forward without feeling overwhelmed.',
-          },
         ],
       }
     : {
         label: 'Pourquoi nous faire confiance',
-        title: 'Une approche rassurante, independante et humaine',
+        title: 'Une approche rassurante, indépendante et humaine',
         copy:
-          'Notre accompagnement est pense pour rendre chaque decision automobile plus lisible, plus sereine et plus sure au final.',
+          'Notre suivi est pensé pour rendre chaque décision automobile plus lisible, plus sereine et plus sûre au final.',
         action: 'Parler de votre projet',
         steps: [
           {
             step: '01',
-            title: 'Independant',
-            copy: 'Aucun interet cache, aucune pression et aucune orientation forcee. Le conseil est la pour proteger votre decision.',
+            title: 'Indépendant',
+            copy: 'Aucun intérêt caché, aucune pression et aucune orientation forcée. Le conseil est là pour protéger votre décision.',
           },
           {
             step: '02',
             title: 'Sur mesure',
-            copy: 'Chaque projet est lu selon votre usage, vos priorites et le niveau d accompagnement dont vous avez vraiment besoin.',
+            copy: 'Chaque projet est lu selon votre usage, vos priorités et le niveau de suivi dont vous avez vraiment besoin.',
           },
           {
             step: '03',
-            title: 'Esthetique et technique',
-            copy: 'Une double lecture pour respecter l ADN du vehicule tout en ameliorant ce qui a vraiment du sens.',
-          },
-          {
-            step: '04',
-            title: 'Accompagnement humain',
-            copy: 'Un echange clair, calme et accessible pour les clients qui veulent avancer sans se sentir perdus.',
+            title: 'Esthétique et technique',
+            copy: 'Une double lecture pour respecter l’ADN du véhicule tout en améliorant ce qui a vraiment du sens.',
           },
         ],
       };
@@ -94,7 +84,7 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        <div className="home-section-action home-section-action--left">
+        <div className="home-section-action">
           <Link className="btn-pill" to="/contact">
             {content.action}
           </Link>

@@ -10,8 +10,10 @@ import fordDisplayBase from '../../Photo_rg_auto_conseil/photo_7_2026-03-20_15-1
 import fordCameraDisplay from '../../Photo_rg_auto_conseil/photo_8_2026-03-20_15-17-48.jpg';
 import vanRear from '../../Photo_rg_auto_conseil/photo_10_2026-03-20_15-17-48.jpg';
 import vanExterior from '../../Photo_rg_auto_conseil/photo_11_2026-03-20_15-17-48.jpg';
+import aboutPortrait from '../../Photo_rg_auto_conseil/photo_2026-03-21_17-10-30.jpg';
 
 export const rgMedia = {
+  aboutPortrait,
   brandSignature,
   fordCameraDisplay,
   fordDisplayBase,

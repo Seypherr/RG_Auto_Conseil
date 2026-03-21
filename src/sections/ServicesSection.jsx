@@ -41,23 +41,23 @@ export default function ServicesSection() {
         action: 'Voir tous les services',
         items: [
           {
-            title: 'Accompagnement a l achat',
-            copy: 'Un accompagnement independant pour acheter le bon vehicule avec plus de clarte et moins de stress.',
+            title: 'Suivi à l’achat',
+            copy: 'Un suivi indépendant pour acheter le bon véhicule avec plus de clarté et moins de stress.',
             icon: <SearchIcon />,
           },
           {
-            title: 'Inspection de vehicule',
-            copy: 'Une verification complete avant achat pour eviter les mauvaises surprises et mieux comprendre l etat reel du vehicule.',
+            title: 'Inspection de véhicule',
+            copy: 'Une vérification complète avant achat pour éviter les mauvaises surprises et mieux comprendre l’état réel du véhicule.',
             icon: <DocumentIcon />,
           },
           {
-            title: 'Recherche personnalisee',
-            copy: 'Une recherche plus ciblee pour identifier les vehicules vraiment adaptes a vos criteres, votre budget et votre usage.',
+            title: 'Recherche personnalisée',
+            copy: 'Une recherche plus ciblée pour identifier les véhicules vraiment adaptés à vos critères, votre budget et votre usage.',
             icon: <BriefcaseIcon />,
           },
           {
             title: 'Modernisation sur mesure',
-            copy: 'Des ameliorations esthetiques ou fonctionnelles pensees pour respecter l identite du vehicule.',
+            copy: 'Des améliorations esthétiques ou fonctionnelles pensées pour respecter l’identité du véhicule.',
             icon: <TruckIcon />,
           },
         ],

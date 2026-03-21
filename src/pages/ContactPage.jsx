@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FacebookIcon, InstagramIcon } from '../components/IconSet';
 import SectionLabel from '../components/SectionLabel';
 import FormSubmissionState, { buildSubmissionReference } from '../components/FormSubmissionState';
 import { useSite } from '../context/SiteContext';
@@ -10,9 +11,7 @@ export default function ContactPage() {
   const content = isEnglish
     ? {
         label: 'Contact',
-        title: 'Talk about your automotive project',
-        copy:
-          'Describe your need and we will get back to you quickly with a clear and tailored approach.',
+        title: "Let's talk about your car",
         infoCards: [
           { label: 'Phone', value: '06 63 99 07 20', href: 'tel:0663990720' },
           { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
@@ -21,11 +20,14 @@ export default function ContactPage() {
         ],
         socialsLabel: 'Social media',
         socials: [
-          { name: 'Instagram', status: 'Coming soon' },
-          { name: 'Facebook', status: 'Coming soon' },
+          { name: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
+          { name: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
         ],
         formLabel: 'Contact form',
-        formTitle: 'A simple way to start the conversation.',
+        formTitle: 'A simple conversion, designed to stay clear.',
+        mapLabel: 'Coverage area',
+        mapValue: 'PACA · By appointment',
+        mapCta: 'Open in Maps',
         placeholders: {
           name: 'Name',
           email: 'Email',
@@ -43,35 +45,36 @@ export default function ContactPage() {
       }
     : {
         label: 'Contact',
-        title: 'Parlons de votre projet automobile',
-        copy:
-          'Decrivez votre besoin, nous vous recontactons rapidement avec une approche claire et adaptee.',
+        title: 'Parlons de votre voiture',
         infoCards: [
-          { label: 'Telephone', value: '06 63 99 07 20', href: 'tel:0663990720' },
+          { label: 'Téléphone', value: '06 63 99 07 20', href: 'tel:0663990720' },
           { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
-          { label: 'Zone d intervention', value: 'Region PACA' },
+          { label: 'Zone d’intervention', value: 'Région PACA' },
           { label: 'Horaires', value: 'Sur rendez-vous' },
         ],
-        socialsLabel: 'Reseaux sociaux',
+        socialsLabel: 'Réseaux sociaux',
         socials: [
-          { name: 'Instagram', status: 'Bientot disponible' },
-          { name: 'Facebook', status: 'Bientot disponible' },
+          { name: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
+          { name: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
         ],
         formLabel: 'Formulaire',
-        formTitle: 'Une conversion simple, sans friction.',
+        formTitle: 'Une conversion simple, pensée pour rester claire.',
+        mapLabel: 'Zone couverte',
+        mapValue: 'PACA · Sur rendez-vous',
+        mapCta: 'Ouvrir dans Maps',
         placeholders: {
           name: 'Nom',
           email: 'Email',
-          phone: 'Telephone',
+          phone: 'Téléphone',
           type: 'Type de demande',
           vehicle: 'Projet',
-          details: 'Decrivez votre projet...',
+          details: 'Décrivez votre projet...',
           submit: 'Envoyer ma demande',
         },
         types: [
           { value: 'contact', label: 'Prise de contact' },
           { value: 'quote', label: 'Demande de devis' },
-          { value: 'support', label: 'Besoin d accompagnement' },
+          { value: 'support', label: 'Besoin de suivi' },
         ],
       };
 
@@ -87,27 +90,20 @@ export default function ContactPage() {
   }
 
   if (submission) {
-    return (
-      <FormSubmissionState
-        kind={submission.kind}
-        onReset={() => setSubmission(null)}
-        reference={submission.reference}
-      />
-    );
+    return <FormSubmissionState kind={submission.kind} onReset={() => setSubmission(null)} reference={submission.reference} />;
   }
 
   return (
     <div className="route-page route-page--contact">
-      <section className="content-section contact-direct-section">
+      <section className="content-section contact-direct-section" id="contact-direct">
         <div className="content-shell contact-direct-shell">
           <div className="contact-direct-head gs-scroll-heading">
             <div className="hide-overflow">
               <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
             </div>
             <div className="hide-overflow" style={{ display: 'block', marginTop: '1rem' }}>
-              <span className="editorial-title gs-scroll-title-up">{content.title}</span>
+              <span className="editorial-title contact-direct-title gs-scroll-title-up">{content.title}</span>
             </div>
-            <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.copy}</p>
           </div>
 
           <div className="contact-direct-grid">
@@ -128,6 +124,20 @@ export default function ContactPage() {
               </div>
 
               <article className="contact-direct-map-card gs-scroll-card">
+                <div className="contact-direct-map-top">
+                  <div className="contact-direct-map-copy">
+                    <span className="label">{content.mapLabel}</span>
+                    <strong>{content.mapValue}</strong>
+                  </div>
+                  <a
+                    className="contact-direct-map-link"
+                    href="https://maps.google.com/?q=Provence-Alpes-Cote%20d%27Azur,France"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {content.mapCta}
+                  </a>
+                </div>
                 <iframe
                   className="contact-direct-map"
                   loading="lazy"
@@ -135,23 +145,11 @@ export default function ContactPage() {
                   title="Google Maps"
                 />
               </article>
-
-              <article className="contact-direct-socials gs-scroll-card mobile-secondary">
-                <span className="label">{content.socialsLabel}</span>
-                <div className="social-grid">
-                  {content.socials.map((social) => (
-                    <div className="social-pill social-pill--contact" key={social.name}>
-                      <span>{social.name}</span>
-                      <small>{social.status}</small>
-                    </div>
-                  ))}
-                </div>
-              </article>
             </div>
 
-            <div className="contact-direct-form-wrap gs-scroll-fade-up">
+            <div className="contact-direct-form-wrap gs-scroll-fade-up" id="contact-form">
               <SectionLabel>{content.formLabel}</SectionLabel>
-              <h2 className="section-heading" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+              <h2 className="section-heading contact-form-title" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
                 {content.formTitle}
               </h2>
 
@@ -194,14 +192,39 @@ export default function ContactPage() {
                 <div className="form-row">
                   <label>
                     <span className="sr-only">{content.placeholders.details}</span>
-                    <textarea className="apple-input" placeholder={content.placeholders.details} rows="6" />
+                    <textarea className="apple-input" placeholder={content.placeholders.details} rows="4" />
                   </label>
                 </div>
 
-                <div className="form-submit">
-                  <button className="submit-button" type="submit">
-                    {content.placeholders.submit}
-                  </button>
+                <div className="contact-form-footer">
+                  <div className="contact-form-socials">
+                    <span className="label">{content.socialsLabel}</span>
+                    <div className="social-icon-row">
+                      {content.socials.map((social) => {
+                        const Icon = social.icon;
+
+                        return (
+                          <a
+                            aria-label={social.name}
+                            className="social-icon-link"
+                            href={social.href}
+                            key={social.name}
+                            rel="noreferrer"
+                            target="_blank"
+                            title={social.name}
+                          >
+                            <Icon />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="form-submit">
+                    <button className="submit-button" type="submit">
+                      {content.placeholders.submit}
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>

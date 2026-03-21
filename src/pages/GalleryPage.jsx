@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
 import { rgMedia } from '../data/rgMedia';
@@ -15,6 +16,7 @@ export default function GalleryPage() {
         heroCardCopy: 'Each transformation is designed to enhance the vehicle without altering its identity.',
         missionsLabel: 'Projects',
         missionsTitle: 'A visual reading of the work carried out.',
+        contactCta: 'Contact us',
         missions: [
           {
             id: '01',
@@ -64,55 +66,56 @@ export default function GalleryPage() {
       }
     : {
         label: 'Galerie',
-        title: ['Des projets realises', 'avec exigence', 'et precision.'],
-        intro: 'Decouvrez des projets realises avec exigence et precision.',
-        heroCardLabel: 'Avant / apres',
-        heroCardTitle: 'Une preuve visuelle, une execution maitrissee.',
-        heroCardCopy: 'Chaque transformation est pensee pour sublimer le vehicule sans en alterer l identite.',
+        title: ['Des projets réalisés', 'avec exigence', 'et précision.'],
+        intro: 'Découvrez des projets réalisés avec exigence et précision.',
+        heroCardLabel: 'Avant / après',
+        heroCardTitle: 'Une preuve visuelle, une exécution maîtrisée.',
+        heroCardCopy: 'Chaque transformation est pensée pour sublimer le véhicule sans en altérer l’identité.',
         missionsLabel: 'Projets',
-        missionsTitle: 'Une lecture visuelle du travail realise.',
+        missionsTitle: 'Une lecture visuelle du travail réalisé.',
+        contactCta: 'Nous contacter',
         missions: [
           {
             id: '01',
-            label: 'Vehicule',
+            label: 'Véhicule',
             vehicle: 'Porsche 911',
-            mission: 'Modernisation propre et mise a jour interface.',
-            outcome: 'Objectif client : gagner en confort et en lisibilite sans casser l esprit d origine.',
+            mission: 'Modernisation propre et mise à jour interface.',
+            outcome: 'Objectif client : gagner en confort et en lisibilité sans casser l’esprit d’origine.',
             beforeLabel: 'Avant intervention',
-            afterLabel: 'Apres intervention',
+            afterLabel: 'Après intervention',
             beforeImage: rgMedia.porscheConsoleLegacy,
             afterImage: rgMedia.porscheConsole,
           },
           {
             id: '02',
-            label: 'Vehicule',
+            label: 'Véhicule',
             vehicle: 'Ford Transit',
-            mission: 'Integration ecran et camera de recul.',
-            outcome: 'Objectif client : rendre l usage quotidien plus simple, plus clair et plus rassurant.',
-            beforeLabel: 'Avant integration',
-            afterLabel: 'Apres integration',
+            mission: 'Intégration écran et caméra de recul.',
+            outcome: 'Objectif client : rendre l’usage quotidien plus simple, plus clair et plus rassurant.',
+            beforeLabel: 'Avant intégration',
+            afterLabel: 'Après intégration',
             beforeImage: rgMedia.fordDisplayBase,
             afterImage: rgMedia.fordCameraDisplay,
           },
           {
             id: '03',
-            label: 'Vehicule',
+            label: 'Véhicule',
             vehicle: 'Porsche 911',
-            mission: 'Presentation finale et validation maitrisee.',
-            outcome: 'Objectif client : confirmer l etat du vehicule et faire ressortir toute sa valeur.',
+            mission: 'Présentation finale et validation maîtrisée.',
+            outcome: 'Objectif client : confirmer l’état du véhicule et faire ressortir toute sa valeur.',
             beforeLabel: 'Avant validation',
-            afterLabel: 'Apres validation',
+            afterLabel: 'Après validation',
             beforeImage: rgMedia.porscheConsoleMap,
             afterImage: rgMedia.porscheExterior,
           },
           {
             id: '04',
-            label: 'Vehicule',
-            vehicle: 'Vehicule d intervention',
-            mission: 'Mise en configuration et presentation terrain.',
-            outcome: 'Objectif client : refleter une image professionnelle plus propre et plus rassurante.',
-            beforeLabel: 'Avant preparation',
-            afterLabel: 'Apres preparation',
+            label: 'Véhicule',
+            vehicle: 'Véhicule d’intervention',
+            mission: 'Mise en configuration et présentation terrain.',
+            outcome: 'Objectif client : refléter une image professionnelle plus propre et plus rassurante.',
+            beforeLabel: 'Avant préparation',
+            afterLabel: 'Après préparation',
             beforeImage: rgMedia.vanRear,
             afterImage: rgMedia.vanExterior,
           },
@@ -121,7 +124,7 @@ export default function GalleryPage() {
 
   return (
     <div className="route-page route-page--gallery">
-      <section className="content-section gallery-mission-hero">
+      <section className="content-section gallery-mission-hero" id="gallery-overview">
         <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--one" />
         <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--two" />
 
@@ -132,7 +135,7 @@ export default function GalleryPage() {
             </div>
             {content.title.map((line, index) => (
               <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
-                <span className="editorial-title gs-scroll-title-up">{line}</span>
+                <span className="editorial-title gallery-hero-title gs-scroll-title-up">{line}</span>
               </div>
             ))}
             <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.intro}</p>
@@ -143,18 +146,18 @@ export default function GalleryPage() {
             <div className="gallery-mission-highlight-mask" />
             <div className="gallery-mission-highlight-copy">
               <span className="label">{content.heroCardLabel}</span>
-              <h2>{content.heroCardTitle}</h2>
+              <h2 className="gallery-mission-highlight-title">{content.heroCardTitle}</h2>
               <p>{content.heroCardCopy}</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="content-section gallery-missions-section">
+      <section className="content-section gallery-missions-section" id="gallery-projects">
         <div className="content-shell">
           <div className="gallery-missions-header gs-scroll-fade-up">
             <SectionLabel>{content.missionsLabel}</SectionLabel>
-            <h2 className="section-heading gallery-missions-title">{content.missionsTitle}</h2>
+            <h2 className="section-heading gallery-missions-title gallery-missions-title--balanced">{content.missionsTitle}</h2>
           </div>
 
           <div className="gallery-missions-grid">
@@ -169,7 +172,7 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="gallery-mission-body">
-                  <h3>{mission.mission}</h3>
+                  <h3 className="gallery-mission-body-title">{mission.mission}</h3>
                   <p>{mission.outcome}</p>
                 </div>
 
@@ -185,6 +188,12 @@ export default function GalleryPage() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="gallery-missions-action gs-scroll-fade-up">
+            <Link className="btn-pill" to="/contact">
+              {content.contactCta}
+            </Link>
           </div>
         </div>
       </section>

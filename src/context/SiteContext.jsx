@@ -8,6 +8,7 @@ export function SiteProvider({ children }) {
   useEffect(() => {
     window.localStorage.setItem('rg-language', language);
     document.documentElement.lang = language;
+    document.documentElement.style.colorScheme = 'dark';
   }, [language]);
 
   const value = useMemo(

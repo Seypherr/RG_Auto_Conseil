@@ -41,37 +41,37 @@ export default function ReviewsSection() {
         starsLabel: '5 stars',
       }
     : {
-        label: 'Avant / apres',
-        heading: ['Des transformations', 'maitrisees,', 'des resultats visibles.'],
+        label: 'Avant / après',
+        heading: ['Des transformations', 'maîtrisées,', 'des résultats visibles.'],
         cards: [
           {
-            kicker: 'Vehicule',
-            copy: 'Porsche 911 modernisee avec une integration propre pensee pour ameliorer le confort d usage sans casser l esprit d origine.',
-            name: 'Intervention realisee',
-            detail: 'Modernisation et mise a jour interface',
+            kicker: 'Véhicule',
+            copy: 'Porsche 911 modernisée avec une intégration propre pensée pour améliorer le confort d’usage sans casser l’esprit d’origine.',
+            name: 'Intervention réalisée',
+            detail: 'Modernisation et mise à jour interface',
             initials: '01',
           },
           {
             kicker: 'Objectif client',
-            copy: 'Creer un environnement plus rassurant et plus simple a utiliser tout en conservant une finition sobre et premium.',
-            name: 'Resultat recherche',
+            copy: 'Créer un environnement plus rassurant et plus simple à utiliser tout en conservant une finition sobre et premium.',
+            name: 'Résultat recherché',
             detail: 'Plus de confort et une lecture plus claire',
             initials: '02',
             avatarClassName: 'review-avatar--stone',
             offsetClassName: 'review-card--mid',
           },
           {
-            kicker: 'Methode',
-            copy: 'Chaque transformation est pensee pour sublimer le vehicule sans en alterer l identite ni glisser vers une image trop demonstrative.',
+            kicker: 'Méthode',
+            copy: 'Chaque transformation est pensée pour sublimer le véhicule sans en altérer l’identité ni glisser vers une image trop démonstrative.',
             name: 'Approche',
-            detail: 'Respectueuse, utile et maitrisee',
+            detail: 'Respectueuse, utile et maîtrisée',
             initials: '03',
             avatarClassName: 'review-avatar--zinc',
             offsetClassName: 'review-card--low',
           },
         ],
         action: 'Voir la galerie',
-        starsLabel: '5 etoiles',
+        starsLabel: '5 étoiles',
       };
 
   return (

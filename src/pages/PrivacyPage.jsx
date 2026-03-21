@@ -53,13 +53,13 @@ export default function PrivacyPage() {
           title: 'Données collectées',
           body: [
             'Les formulaires de contact peuvent collecter l’identité, le numéro de téléphone, l’adresse email et les détails du projet fournis volontairement par le visiteur.',
-            'Ces informations restent limitées à ce qui est nécessaire pour répondre à une prise de contact, une demande de devis ou un accompagnement.',
+            'Ces informations restent limitées à ce qui est nécessaire pour répondre à une prise de contact, une demande de devis ou un suivi.',
           ],
         },
         {
           title: 'Utilisation des données',
           body: [
-            'Les données sont destinées à qualifier les demandes, répondre aux prospects et organiser l’accompagnement autour des services de RG Auto Conseil.',
+            'Les données sont destinées à qualifier les demandes, répondre aux prospects et organiser le suivi autour des services de RG Auto Conseil.',
             'Aucun autre usage commercial n’est précisé à ce stade.',
           ],
         },
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
     <div className="route-page">
       <PageHero {...hero} />
 
-      <section className="content-section">
+      <section className="content-section" id="privacy-content">
         <div className="content-shell legal-stack">
           {sections.map((section) => (
             <article className="surface-card gs-scroll-card legal-panel" key={section.title}>

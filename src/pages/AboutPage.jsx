@@ -30,19 +30,17 @@ export default function AboutPage() {
           { label: 'Tone', value: 'Simple and reassuring' },
           { label: 'Goal', value: 'Build confidence' },
         ],
-        biographyBadge: 'Gaetan Roblin',
-        biographyNote: 'Biography block ready for portrait',
+        biographyBadge: 'Gaëtan Roblin',
         valuesLabel: 'Values',
         valuesTitle: 'The principles behind every project.',
         values: [
           { title: 'Transparency', copy: 'Clear explanations, no unnecessary jargon and no hidden intention.' },
           { title: 'High standards', copy: 'A rigorous reading of each situation to avoid shortcuts and weak decisions.' },
-          { title: 'Human support', copy: 'A calm and accessible exchange for clients who need guidance, not pressure.' },
           { title: 'Attention to detail', copy: 'A careful approach that respects the identity of the vehicle and the real need of the client.' },
         ],
         studiesLabel: 'Approach',
         studiesTitle: 'Expertise made visible through real work.',
-        studiesKicker: 'Independent advice, visual proof and discreet premium standards',
+        studiesKicker: '',
         caseStudies: [
           {
             status: 'Purchase support',
@@ -65,85 +63,83 @@ export default function AboutPage() {
             metaSecondaryValue: 'Discreet premium finish',
           },
         ],
-        ctaTitle: 'Need a calm and expert point of view for your vehicle project?',
-        ctaButton: 'Contact RG Auto Conseil',
-        ctaNote: 'Reply as quickly as possible',
+        ctaButton: 'Get in touch',
       }
     : {
-        biographyLabel: 'A propos',
-        biographyTitle: 'Une approche independante, centree sur vos besoins',
+        biographyLabel: 'À propos',
+        biographyTitle: 'Une approche indépendante, centrée sur vos besoins',
         biographyIntro:
-          'Passionne d automobile, j ai cree RG Auto Conseil pour accompagner ceux qui souhaitent faire les bons choix sans subir la complexite du marche.',
+          'Passionné d’automobile, j’ai créé RG Auto Conseil pour suivre ceux qui souhaitent faire les bons choix sans subir la complexité du marché.',
         biographyCopy:
-          'Mon objectif : vous apporter un regard expert, honnete et sur mesure, que ce soit pour acheter, verifier ou ameliorer un vehicule intelligemment.',
+          'Mon objectif : vous apporter un regard expert, honnête et sur mesure, que ce soit pour acheter, vérifier ou améliorer un véhicule intelligemment.',
         biographyFacts: [
-          { label: 'Positionnement', value: 'Conseiller independant' },
+          { label: 'Positionnement', value: 'Conseiller indépendant' },
           { label: 'Ton', value: 'Simple et rassurant' },
           { label: 'Objectif', value: 'Donner confiance' },
         ],
-        biographyBadge: 'Gaetan Roblin',
-        biographyNote: 'Bloc biographie pret pour le portrait',
+        biographyBadge: 'Gaëtan Roblin',
         valuesLabel: 'Valeurs',
         valuesTitle: 'Les principes qui guident chaque projet.',
         values: [
-          { title: 'Transparence', copy: 'Des explications claires, pas de jargon inutile et aucune intention cachee.' },
-          { title: 'Exigence', copy: 'Une lecture rigoureuse de chaque situation pour eviter les raccourcis et les mauvaises decisions.' },
-          { title: 'Accompagnement humain', copy: 'Un echange calme et accessible pour les clients qui ont besoin d etre guides, pas d etre brusques.' },
-          { title: 'Sens du detail', copy: 'Une approche soignee qui respecte l identite du vehicule et le vrai besoin du client.' },
+          { title: 'Transparence', copy: 'Des explications claires, pas de jargon inutile et aucune intention cachée.' },
+          { title: 'Exigence', copy: 'Une lecture rigoureuse de chaque situation pour éviter les raccourcis et les mauvaises décisions.' },
+          { title: 'Sens du détail', copy: 'Une approche soignée qui respecte l’identité du véhicule et le vrai besoin du client.' },
         ],
         studiesLabel: 'Approche',
         studiesTitle: 'Une expertise rendue visible par le concret.',
-        studiesKicker: 'Conseil independant, preuve visuelle et haut de gamme discret',
+        studiesKicker: '',
         caseStudies: [
           {
-            status: 'Accompagnement achat',
-            title: 'Un processus de decision plus clair',
-            copy: 'Le role de RG Auto Conseil est de comprendre le besoin, lire les details utiles et rendre la suite plus simple a comprendre.',
+            status: 'Suivi achat',
+            title: 'Un processus de décision plus clair',
+            copy: 'Le rôle de RG Auto Conseil est de comprendre le besoin, lire les détails utiles et rendre la suite plus simple à comprendre.',
             image: rgMedia.porscheExterior,
-            metaPrimaryLabel: 'Methode',
-            metaPrimaryValue: 'Lecture independante',
-            metaSecondaryLabel: 'Resultat',
+            metaPrimaryLabel: 'Méthode',
+            metaPrimaryValue: 'Lecture indépendante',
+            metaSecondaryLabel: 'Résultat',
             metaSecondaryValue: 'Plus de confiance',
           },
           {
-            status: 'Amelioration vehicule',
+            status: 'Amélioration véhicule',
             title: 'Une modernisation respectueuse',
-            copy: 'Chaque evolution est pensee pour ameliorer l usage ou la presentation sans glisser vers une image agressive ou tuning.',
+            copy: 'Chaque évolution est pensée pour améliorer l’usage ou la présentation sans glisser vers une image agressive ou tuning.',
             image: rgMedia.fordCameraDisplay,
             metaPrimaryLabel: 'Focus',
-            metaPrimaryValue: 'Amelioration utile',
-            metaSecondaryLabel: 'Resultat',
-            metaSecondaryValue: 'Finition premium discrete',
+            metaPrimaryValue: 'Amélioration utile',
+            metaSecondaryLabel: 'Résultat',
+            metaSecondaryValue: 'Finition premium discrète',
           },
         ],
-        ctaTitle: 'Besoin d un regard calme et expert pour votre projet automobile ?',
-        ctaButton: 'Contacter RG Auto Conseil',
-        ctaNote: 'Retour des que possible',
+        ctaButton: 'Prendre contact',
       };
 
   return (
     <div className="route-page route-page--about">
-      <section className="content-section about-biography-section">
+      <section className="content-section about-biography-section" id="about-biography">
         <div className="content-shell about-biography-grid">
           <article className="about-biography-visual gs-scroll-card">
-            <img alt="Gaetan Roblin" className="about-biography-image" src={rgMedia.brandSignature} />
+            <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
             <div className="about-biography-image-mask" />
             <div className="about-biography-image-copy">
               <span className="label">{content.biographyBadge}</span>
-              <strong>{isEnglish ? 'Independent automotive advisor' : 'Conseiller automobile independant'}</strong>
-              <small>{content.biographyNote}</small>
             </div>
           </article>
 
-          <div className="about-biography-copy gs-scroll-fade-up">
-            <SectionLabel>{content.biographyLabel}</SectionLabel>
-            <h1 className="section-heading about-biography-title">{content.biographyTitle}</h1>
-            <p className="section-copy about-biography-intro">{content.biographyIntro}</p>
-            <p className="section-copy mobile-secondary">{content.biographyCopy}</p>
+          <div className="about-biography-copy gs-scroll-heading">
+            <div className="about-biography-copy-main">
+              <div className="hide-overflow">
+                <SectionLabel className="gs-scroll-text-up">{content.biographyLabel}</SectionLabel>
+              </div>
+              <div className="hide-overflow">
+                <span className="section-heading about-biography-title gs-scroll-title-up">{content.biographyTitle}</span>
+              </div>
+              <p className="section-copy about-biography-intro gs-scroll-fade-up">{content.biographyIntro}</p>
+              <p className="section-copy mobile-secondary gs-scroll-fade-up">{content.biographyCopy}</p>
+            </div>
 
             <div className="about-biography-facts">
               {content.biographyFacts.map((fact) => (
-                <article className="about-biography-fact" key={fact.label}>
+                <article className="about-biography-fact gs-scroll-card" key={fact.label}>
                   <span className="label">{fact.label}</span>
                   <strong>{fact.value}</strong>
                 </article>
@@ -153,11 +149,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="content-section about-trust-section">
+      <section className="content-section about-trust-section" id="about-values">
         <div className="content-shell">
-          <div className="about-faq-heading gs-scroll-fade-up" style={{ marginBottom: '2rem' }}>
-            <SectionLabel>{content.valuesLabel}</SectionLabel>
-            <h2 className="section-heading about-faq-title">{content.valuesTitle}</h2>
+          <div className="about-faq-heading gs-scroll-heading" style={{ marginBottom: '2rem' }}>
+            <div className="hide-overflow">
+              <SectionLabel className="gs-scroll-text-up">{content.valuesLabel}</SectionLabel>
+            </div>
+            <div className="hide-overflow">
+              <span className="section-heading about-faq-title gs-scroll-title-up">{content.valuesTitle}</span>
+            </div>
           </div>
 
           <div className="about-trust-grid">
@@ -178,14 +178,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="content-section about-case-section">
+      <section className="content-section about-case-section" id="about-approach">
         <div className="content-shell">
           <div className="about-case-header">
-            <div className="gs-scroll-fade-up">
-              <SectionLabel>{content.studiesLabel}</SectionLabel>
-              <h2 className="section-heading about-case-title">{content.studiesTitle}</h2>
+            <div className="gs-scroll-heading">
+              <div className="hide-overflow">
+                <SectionLabel className="gs-scroll-text-up">{content.studiesLabel}</SectionLabel>
+              </div>
+              <div className="hide-overflow">
+                <span className="section-heading about-case-title gs-scroll-title-up">{content.studiesTitle}</span>
+              </div>
             </div>
-            <p className="about-case-kicker mobile-secondary">{content.studiesKicker}</p>
+            <p className="about-case-kicker mobile-secondary gs-scroll-fade-up">{content.studiesKicker}</p>
           </div>
 
           <div className="about-case-grid">
@@ -216,13 +220,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="content-section about-cta-section">
-        <div className="content-shell about-cta-shell gs-scroll-fade-up">
-          <h2>{content.ctaTitle}</h2>
-          <Link className="submit-button submit-button--light" to="/contact">
+      <section className="content-section about-cta-section" id="about-contact">
+        <div className="content-shell about-cta-shell">
+          <Link className="btn-pill" to="/contact">
             {content.ctaButton}
           </Link>
-          <p>{content.ctaNote}</p>
         </div>
       </section>
     </div>

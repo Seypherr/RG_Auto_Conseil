@@ -19,28 +19,23 @@ export default function ServicesPage() {
   const content = isEnglish
     ? {
         heroLabel: 'Services',
-        heroTitle: ['Clear support,', 'clean reading,', 'useful guidance.'],
+        heroTitle: ['Clear support,', 'useful guidance,', 'and a calmer', 'decision process.'],
         heroIntro:
-          'Every project is unique. Our role is to guide you with method, transparency and expertise.',
-        heroFacts: [
-          { label: 'Positioning', value: 'Independent advisor' },
-          { label: 'Tone', value: 'Clear and reassuring' },
-          { label: 'Goal', value: 'Protect the decision' },
-        ],
-        heroNote: 'Built to stay readable on mobile and premium on first contact.',
-        heroCardLabel: 'Service focus',
-        heroCardTitle: 'Support designed to simplify complex decisions.',
+          'Every project is unique. We clarify the need, narrow the options and guide the right next step with method and transparency.',
+        heroPrimaryCta: 'Explore services',
+        heroCardLabel: 'Quick overview',
+        heroCardTitle: 'A clear entry point to find the right service.',
         heroCardCopy:
-          'The page explains each service clearly so visitors understand what is done, why it matters and when it becomes relevant.',
+          'This first screen gives a strong visual cue, a readable promise and a simple path toward the most relevant service.',
         heroFlowLabel: 'How we work',
-        heroFlowTitle: 'A simple path from need to action.',
+        heroFlowTitle: 'Four steps to move from uncertainty to a clear decision.',
         heroFlowSteps: ['Understand', 'Analyse', 'Advise', 'Support'],
         heroPreviewLabel: 'Core services',
-        heroPreviewTitle: 'The main needs visible right away.',
+        heroPreviewTitle: 'Go directly to the right service.',
         servicesLabel: 'Detailed services',
-        servicesTitle: 'Guidance that adapts to each automotive project.',
+        servicesTitle: ['Guidance that adapts', 'to each automotive project.'],
         servicesIntro:
-          'Each service is presented in a simple and reassuring way so non-expert clients can quickly understand the benefit.',
+          'Each service is presented in a simple and reassuring way so non-expert clients can quickly understand its value.',
         filterLabel: 'Filter by profile',
         filters: [
           { value: 'all', label: 'All' },
@@ -51,37 +46,51 @@ export default function ServicesPage() {
           {
             index: '01',
             icon: 'search',
-            title: 'Purchase support',
-            copy: 'We help you make the right choice by analysing your needs, the market and the available opportunities.',
+            title: 'Pre-purchase vehicle advice',
+            copy: 'We help you read your needs clearly, compare the right options and move toward a more confident buying decision.',
             audiences: ['private', 'pro'],
           },
           {
             index: '02',
             icon: 'document',
-            title: 'Vehicle inspection',
-            copy: 'A complete pre-purchase verification designed to avoid unpleasant surprises and clarify the true condition of the vehicle.',
+            title: 'Pre-purchase vehicle inspection',
+            copy: 'A complete inspection before purchase to avoid unpleasant surprises and better understand the real condition of the vehicle.',
             audiences: ['private', 'pro'],
           },
           {
             index: '03',
             icon: 'briefcase',
-            title: 'Tailored sourcing',
-            copy: 'We find the right vehicle for you according to your criteria, your budget and the way you intend to use it.',
+            title: 'Automotive listing analysis',
+            copy: 'We review the ad in detail to identify inconsistencies, clarify the vehicle profile and detect obvious warning signs early.',
             audiences: ['private', 'pro'],
           },
           {
             index: '04',
             icon: 'truck',
-            title: 'Modernisation advice',
-            copy: 'Aesthetic and functional improvements designed to modernise the vehicle without taking away its identity.',
-            audiences: ['private'],
+            title: 'Negotiation with the seller',
+            copy: 'We structure the exchange, defend your position and help secure a more coherent purchase price.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '05',
-            icon: 'briefcase',
-            title: 'Follow-up and support',
-            copy: 'We stay present at every stage, from the first reflection to the final decision and the next concrete actions.',
+            icon: 'search',
+            title: 'Vehicle sourcing',
+            copy: 'We search for the right vehicle according to your criteria, your budget and the way you intend to use it.',
             audiences: ['private', 'pro'],
+          },
+          {
+            index: '06',
+            icon: 'truck',
+            title: 'Equipment installation',
+            copy: 'We help define the right equipment to add so the vehicle gains practical value without losing its coherence.',
+            audiences: ['private'],
+          },
+          {
+            index: '07',
+            icon: 'briefcase',
+            title: 'Vehicle optimisation / improvement',
+            copy: 'We guide aesthetic or functional improvements designed to modernise the vehicle cleanly and enhance its overall value.',
+            audiences: ['private'],
           },
         ],
         showMore: 'See more',
@@ -89,28 +98,23 @@ export default function ServicesPage() {
       }
     : {
         heroLabel: 'Services',
-        heroTitle: ['Un accompagnement', 'clair,', 'utile et rassurant.'],
+        heroTitle: ['Un suivi', 'clair et utile,', 'pensé pour', 'rassurer.'],
         heroIntro:
-          'Chaque projet est unique. Notre role est de vous guider avec methode, transparence et expertise.',
-        heroFacts: [
-          { label: 'Positionnement', value: 'Conseiller independant' },
-          { label: 'Ton', value: 'Clair et rassurant' },
-          { label: 'Objectif', value: 'Proteger la decision' },
-        ],
-        heroNote: 'Pensee pour rester lisible sur mobile et premium au premier regard.',
-        heroCardLabel: 'Mise en avant',
-        heroCardTitle: 'Un accompagnement pense pour simplifier les decisions complexes.',
+          'Chaque projet est unique. Nous clarifions le besoin, cadrons les options et guidons la bonne suite avec méthode et transparence.',
+        heroPrimaryCta: 'Découvrir les services',
+        heroCardLabel: 'Vue d’ensemble',
+        heroCardTitle: 'Un point d’entrée clair pour trouver le bon service.',
         heroCardCopy:
-          'La page explique clairement chaque service pour que le visiteur comprenne ce qui est fait, pourquoi cela compte et a quel moment cela devient utile.',
-        heroFlowLabel: 'Maniere de travailler',
-        heroFlowTitle: 'Un parcours simple du besoin a l action.',
-        heroFlowSteps: ['Comprendre', 'Analyser', 'Conseiller', 'Accompagner'],
-        heroPreviewLabel: 'Services cles',
-        heroPreviewTitle: 'Les besoins essentiels visibles tout de suite.',
-        servicesLabel: 'Services detailles',
-        servicesTitle: 'Un accompagnement qui s adapte a chaque projet automobile.',
+          'Ce premier écran pose une promesse lisible, une preuve visuelle forte et un accès simple vers le bon service.',
+        heroFlowLabel: 'Manière de travailler',
+        heroFlowTitle: 'Quatre étapes pour passer du doute à une décision claire.',
+        heroFlowSteps: ['Comprendre', 'Analyser', 'Conseiller', 'Suivre'],
+        heroPreviewLabel: 'Services clés',
+        heroPreviewTitle: 'Aller directement vers le bon service.',
+        servicesLabel: 'Services détaillés',
+        servicesTitle: ['Un suivi qui s’adapte', 'à chaque projet automobile.'],
         servicesIntro:
-          'Chaque service est presente de facon simple et rassurante pour permettre a des clients non experts de comprendre rapidement l interet de l accompagnement.',
+          'Chaque service est présenté de façon simple et rassurante pour permettre à des clients non-experts de comprendre rapidement son intérêt.',
         filterLabel: 'Filtrer par profil',
         filters: [
           { value: 'all', label: 'Tous' },
@@ -121,37 +125,51 @@ export default function ServicesPage() {
           {
             index: '01',
             icon: 'search',
-            title: 'Accompagnement a l achat',
-            copy: 'Nous vous aidons a faire le bon choix, en analysant vos besoins, le marche et les opportunites disponibles.',
+            title: 'Conseil avant achat de véhicule',
+            copy: 'Nous vous aidons à clarifier votre besoin, comparer les bonnes options et avancer vers une décision d’achat plus sereine.',
             audiences: ['private', 'pro'],
           },
           {
             index: '02',
             icon: 'document',
-            title: 'Inspection de vehicule',
-            copy: 'Verification complete avant achat pour eviter les mauvaises surprises et mieux lire l etat reel du vehicule.',
+            title: 'Inspection d’un véhicule avant achat',
+            copy: 'Vérification complète avant achat pour éviter les mauvaises surprises et mieux lire l’état réel du véhicule.',
             audiences: ['private', 'pro'],
           },
           {
             index: '03',
             icon: 'briefcase',
-            title: 'Recherche personnalisee',
-            copy: 'Nous trouvons pour vous le vehicule ideal selon vos criteres, votre budget et votre usage.',
+            title: 'Analyse d’annonce automobile',
+            copy: 'Nous analysons l’annonce en détail pour repérer les incohérences, clarifier le profil du véhicule et identifier les premiers signaux d’alerte.',
             audiences: ['private', 'pro'],
           },
           {
             index: '04',
             icon: 'truck',
-            title: 'Conseil en modernisation',
-            copy: 'Des ameliorations esthetiques et fonctionnelles pensees pour moderniser proprement sans denaturer le vehicule.',
-            audiences: ['private'],
+            title: 'Négociation avec le vendeur',
+            copy: 'Nous structurons l’échange, défendons votre position et aidons à obtenir un prix plus cohérent avec le véhicule.',
+            audiences: ['private', 'pro'],
           },
           {
             index: '05',
-            icon: 'briefcase',
-            title: 'Suivi et accompagnement',
-            copy: 'Nous restons presents a chaque etape, de la reflexion jusqu a la finalisation du projet.',
+            icon: 'search',
+            title: 'Recherche de véhicule',
+            copy: 'Nous recherchons pour vous le véhicule adapté selon vos critères, votre budget et votre usage.',
             audiences: ['private', 'pro'],
+          },
+          {
+            index: '06',
+            icon: 'truck',
+            title: 'Montage d’équipements',
+            copy: 'Nous vous aidons à définir les bons équipements à ajouter pour gagner en usage sans rompre la cohérence du véhicule.',
+            audiences: ['private'],
+          },
+          {
+            index: '07',
+            icon: 'briefcase',
+            title: 'Optimisation / amélioration du véhicule',
+            copy: 'Nous guidons les évolutions esthétiques ou fonctionnelles pensées pour moderniser proprement le véhicule et renforcer sa valeur globale.',
+            audiences: ['private'],
           },
         ],
         showMore: 'Voir plus',
@@ -173,7 +191,7 @@ export default function ServicesPage() {
 
   return (
     <div className="route-page route-page--services">
-      <section className="content-section services-lumen-hero">
+      <section className="content-section services-lumen-hero" id="services-overview">
         <div aria-hidden="true" className="services-page-glow services-page-glow--one" />
         <div aria-hidden="true" className="services-page-glow services-page-glow--two" />
         <div aria-hidden="true" className="services-page-glow services-page-glow--three" />
@@ -191,19 +209,11 @@ export default function ServicesPage() {
             <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.heroIntro}</p>
 
             <div className="services-orbit-actions gs-scroll-fade-up">
-              <a className="btn-pill services-orbit-button" href="#services-grid">
-                {isEnglish ? 'Browse services' : 'Parcourir les services'}
-              </a>
-              <p className="services-orbit-note">{content.heroNote}</p>
-            </div>
-
-            <div className="services-orbit-facts gs-scroll-fade-up">
-              {content.heroFacts.map((fact) => (
-                <article className="services-orbit-fact" key={fact.label}>
-                  <span className="label">{fact.label}</span>
-                  <strong>{fact.value}</strong>
-                </article>
-              ))}
+              <div className="services-orbit-cta-group">
+                <a className="btn-pill services-orbit-button" href="#services-grid">
+                  {content.heroPrimaryCta}
+                </a>
+              </div>
             </div>
           </div>
 
@@ -223,7 +233,7 @@ export default function ServicesPage() {
             <div className="services-orbit-stack">
               <article className="services-orbit-mini gs-scroll-card">
                 <span className="label">{content.heroFlowLabel}</span>
-                <h3>{content.heroFlowTitle}</h3>
+                <h3 className="services-orbit-mini-title services-orbit-mini-title--flow">{content.heroFlowTitle}</h3>
                 <div className="services-orbit-steps">
                   {content.heroFlowSteps.map((step) => (
                     <span className="services-orbit-step" key={step}>
@@ -235,7 +245,7 @@ export default function ServicesPage() {
 
               <article className="services-orbit-mini services-orbit-mini--preview gs-scroll-card">
                 <span className="label">{content.heroPreviewLabel}</span>
-                <h3>{content.heroPreviewTitle}</h3>
+                <h3 className="services-orbit-mini-title services-orbit-mini-title--preview">{content.heroPreviewTitle}</h3>
                 <div className="services-orbit-preview-list">
                   {previewServices.map((service) => (
                     <a className="services-orbit-preview-item" href={`#service-${service.index}`} key={service.index}>
@@ -250,11 +260,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="content-section services-summary-section">
+      <section className="content-section services-summary-section" id="services-details">
         <div className="content-shell services-summary-shell">
           <div className="services-summary-head gs-scroll-fade-up">
             <SectionLabel>{content.servicesLabel}</SectionLabel>
-            <h2 className="section-heading services-summary-title">{content.servicesTitle}</h2>
+            <h2 className="section-heading services-summary-title">
+              {content.servicesTitle.map((line) => (
+                <span className="services-summary-title-line" key={line}>
+                  {line}
+                </span>
+              ))}
+            </h2>
             <p className="section-copy services-summary-copy">{content.servicesIntro}</p>
 
             <div className="services-filter-wrap">
@@ -295,7 +311,7 @@ export default function ServicesPage() {
                   <h3>{service.title}</h3>
                   <p>{service.copy}</p>
                   <div className="services-summary-soon">
-                    <span>{isEnglish ? 'Dedicated page soon' : 'Page dediee bientot'}</span>
+                    <span>{isEnglish ? 'Dedicated page soon' : 'Page dédiée bientôt'}</span>
                   </div>
                 </article>
               );
@@ -306,7 +322,7 @@ export default function ServicesPage() {
             <div className="services-summary-more gs-scroll-fade-up">
               <button className="services-summary-more-button" onClick={() => setShowAllServices((value) => !value)} type="button">
                 <span>{showAllServices ? content.showLess : content.showMore}</span>
-                <span className="services-summary-more-meta">{showAllServices ? null : `+${hiddenServicesCount}`}</span>
+                {!showAllServices ? <span className="services-summary-more-meta">{`+${hiddenServicesCount}`}</span> : null}
                 <span className={`services-summary-more-icon${showAllServices ? ' is-open' : ''}`}>
                   <ArrowRightIcon />
                 </span>

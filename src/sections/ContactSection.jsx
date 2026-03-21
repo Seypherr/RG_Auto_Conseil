@@ -30,17 +30,17 @@ export default function ContactSection() {
         label: 'Contact',
         title: 'Un projet automobile ? Discutons-en simplement.',
         copy:
-          'Decrivez votre besoin, nous vous recontacterons rapidement avec une approche claire et adaptee.',
+          'Décrivez votre besoin, nous vous recontacterons rapidement avec une approche claire et adaptée.',
         emailLabel: 'Email',
-        phoneLabel: 'Telephone',
-        areaLabel: 'Zone d intervention',
-        areaValue: 'Region PACA',
+        phoneLabel: 'Téléphone',
+        areaLabel: 'Zone d’intervention',
+        areaValue: 'Région PACA',
         placeholders: {
           name: 'Nom',
           email: 'Email',
-          phone: 'Telephone',
+          phone: 'Téléphone',
           project: 'Projet',
-          details: 'Decrivez votre besoin...',
+          details: 'Décrivez votre besoin...',
           submit: 'Envoyer ma demande',
         },
       };
@@ -79,7 +79,7 @@ export default function ContactSection() {
       <div className="content-shell contact-shell">
         <div className="contact-layout">
           <div className="contact-copy-column gs-scroll-fade-up">
-            <SectionLabel>{content.label}</SectionLabel>
+            <SectionLabel className="home-accent-label">{content.label}</SectionLabel>
             <h2 className="section-heading" style={{ marginTop: '1rem', marginBottom: '2rem' }}>
               {content.title}
             </h2>
@@ -107,8 +107,8 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="contact-form-column gs-scroll-fade-up">
-            <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="contact-form-column contact-form-column--featured gs-scroll-contact-form">
+            <form className="contact-form contact-form--featured" onSubmit={handleSubmit}>
               <div className="form-grid">
                 <label>
                   <span className="sr-only">{content.placeholders.name}</span>

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
 
@@ -13,26 +12,14 @@ export default function AboutSection() {
           'Buying or modifying a vehicle can quickly become complex.',
           'We support you at every stage to avoid mistakes, secure your investment and help you make the right decisions with confidence.',
         ],
-        stats: [
-          { value: 'Independent', label: 'Clear position' },
-          { value: 'Tailored', label: 'Support style' },
-          { value: 'Human', label: 'Relationship' },
-        ],
-        action: 'Discover the approach',
       }
     : {
         label: 'Valeur',
-        title: 'Un regard expert, au service de votre tranquillite',
+        title: 'Un regard expert, au service de votre tranquillité',
         paragraphs: [
-          'Acheter ou modifier un vehicule peut vite devenir complexe.',
-          'Nous vous accompagnons a chaque etape pour eviter les erreurs, securiser votre investissement et faire les bons choix.',
+          'Acheter ou modifier un véhicule peut vite devenir complexe.',
+          'Nous vous accompagnons à chaque étape pour éviter les erreurs, sécuriser votre investissement et faire les bons choix.',
         ],
-        stats: [
-          { value: 'Independant', label: 'Positionnement' },
-          { value: 'Sur mesure', label: 'Accompagnement' },
-          { value: 'Humain', label: 'Relation client' },
-        ],
-        action: 'Decouvrir l approche',
       };
 
   return (
@@ -58,21 +45,6 @@ export default function AboutSection() {
           {content.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-        </div>
-
-        <div className="about-stats">
-          {content.stats.map((stat) => (
-            <div className="stat-card" key={stat.label}>
-              <span className="stat-value">{stat.value}</span>
-              <span className="stat-label">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="home-section-action">
-          <Link className="btn-pill" to="/about">
-            {content.action}
-          </Link>
         </div>
       </div>
     </section>

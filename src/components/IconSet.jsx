@@ -55,3 +55,21 @@ export function StarIcon() {
     </svg>
   );
 }
+
+export function InstagramIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.7" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5.5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function FacebookIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.7" viewBox="0 0 24 24">
+      <path d="M14.5 8.5H17V4.5H14.1C10.9 4.5 9.5 6.5 9.5 9.7V12H7V15.8H9.5V20.5H13.5V15.8H16.4L16.9 12H13.5V10.1C13.5 9.1 13.8 8.5 14.5 8.5Z" />
+    </svg>
+  );
+}
