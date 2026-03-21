@@ -1,49 +1,15 @@
 import { useState } from 'react';
-import { useSite } from '../context/SiteContext';
 import SectionLabel from '../components/SectionLabel';
 import FormSubmissionState, { buildSubmissionReference } from '../components/FormSubmissionState';
+import { useSite } from '../context/SiteContext';
+import { CONTACT_DETAILS } from '../data/siteConfig';
+import { contactSectionContent } from '../data/siteContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
 
 export default function ContactSection() {
-  const { isEnglish } = useSite();
+  const { language } = useSite();
   const [submission, setSubmission] = useState(null);
-
-  const content = isEnglish
-    ? {
-        label: 'Contact',
-        title: 'An automotive project? Let us talk about it simply.',
-        copy:
-          'Describe your need and we will get back to you quickly with a clear, reassuring and tailored approach.',
-        emailLabel: 'Email',
-        phoneLabel: 'Phone',
-        areaLabel: 'Service area',
-        areaValue: 'PACA region',
-        placeholders: {
-          name: 'Name',
-          email: 'Email',
-          phone: 'Phone',
-          project: 'Project',
-          details: 'Tell us about your need...',
-          submit: 'Send my request',
-        },
-      }
-    : {
-        label: 'Contact',
-        title: 'Un projet automobile ? Discutons-en simplement.',
-        copy:
-          'Décrivez votre besoin, nous vous recontacterons rapidement avec une approche claire et adaptée.',
-        emailLabel: 'Email',
-        phoneLabel: 'Téléphone',
-        areaLabel: 'Zone d’intervention',
-        areaValue: 'Région PACA',
-        placeholders: {
-          name: 'Nom',
-          email: 'Email',
-          phone: 'Téléphone',
-          project: 'Projet',
-          details: 'Décrivez votre besoin...',
-          submit: 'Envoyer ma demande',
-        },
-      };
+  const content = getLocaleContent(contactSectionContent, language);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -54,13 +20,7 @@ export default function ContactSection() {
   }
 
   if (submission) {
-    return (
-      <FormSubmissionState
-        kind={submission.kind}
-        onReset={() => setSubmission(null)}
-        reference={submission.reference}
-      />
-    );
+    return <FormSubmissionState kind={submission.kind} onReset={() => setSubmission(null)} reference={submission.reference} />;
   }
 
   return (
@@ -90,19 +50,19 @@ export default function ContactSection() {
             <div className="contact-details">
               <div>
                 <div className="contact-detail-label">{content.emailLabel}</div>
-                <a className="contact-detail-link" href="mailto:contact@rgautoconseil.fr">
-                  contact@rgautoconseil.fr
+                <a className="contact-detail-link" href={CONTACT_DETAILS.emailHref}>
+                  {CONTACT_DETAILS.email}
                 </a>
               </div>
               <div>
                 <div className="contact-detail-label">{content.phoneLabel}</div>
-                <a className="contact-detail-link" href="tel:0663990720">
-                  06 63 99 07 20
+                <a className="contact-detail-link" href={CONTACT_DETAILS.phoneHref}>
+                  {CONTACT_DETAILS.phoneDisplay}
                 </a>
               </div>
               <div>
                 <div className="contact-detail-label">{content.areaLabel}</div>
-                <span className="contact-detail-text">{content.areaValue}</span>
+                <span className="contact-detail-text">{CONTACT_DETAILS.serviceArea[language === 'en' ? 'en' : 'fr']}</span>
               </div>
             </div>
           </div>

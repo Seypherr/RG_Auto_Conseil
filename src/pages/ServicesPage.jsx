@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import SectionLabel from '../components/SectionLabel';
 import { ArrowRightIcon, BriefcaseIcon, DocumentIcon, SearchIcon, TruckIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
+import { servicesPageContent } from '../data/siteContent';
 import { rgMedia } from '../data/rgMedia';
+import { getLocaleContent } from '../utils/getLocaleContent';
 
 const iconMap = {
   search: SearchIcon,
@@ -12,169 +14,10 @@ const iconMap = {
 };
 
 export default function ServicesPage() {
-  const { isEnglish } = useSite();
+  const { language } = useSite();
   const [audienceFilter, setAudienceFilter] = useState('all');
   const [showAllServices, setShowAllServices] = useState(false);
-
-  const content = isEnglish
-    ? {
-        heroLabel: 'Services',
-        heroTitle: ['Clear support,', 'useful guidance,', 'and a calmer', 'decision process.'],
-        heroIntro:
-          'Every project is unique. We clarify the need, narrow the options and guide the right next step with method and transparency.',
-        heroPrimaryCta: 'Explore services',
-        heroCardLabel: 'Quick overview',
-        heroCardTitle: 'A clear entry point to find the right service.',
-        heroCardCopy:
-          'This first screen gives a strong visual cue, a readable promise and a simple path toward the most relevant service.',
-        heroFlowLabel: 'How we work',
-        heroFlowTitle: 'Four steps to move from uncertainty to a clear decision.',
-        heroFlowSteps: ['Understand', 'Analyse', 'Advise', 'Support'],
-        heroPreviewLabel: 'Core services',
-        heroPreviewTitle: 'Go directly to the right service.',
-        servicesLabel: 'Detailed services',
-        servicesTitle: ['Guidance that adapts', 'to each automotive project.'],
-        servicesIntro:
-          'Each service is presented in a simple and reassuring way so non-expert clients can quickly understand its value.',
-        filterLabel: 'Filter by profile',
-        filters: [
-          { value: 'all', label: 'All' },
-          { value: 'private', label: 'Private' },
-          { value: 'pro', label: 'Professional' },
-        ],
-        services: [
-          {
-            index: '01',
-            icon: 'search',
-            title: 'Pre-purchase vehicle advice',
-            copy: 'We help you read your needs clearly, compare the right options and move toward a more confident buying decision.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '02',
-            icon: 'document',
-            title: 'Pre-purchase vehicle inspection',
-            copy: 'A complete inspection before purchase to avoid unpleasant surprises and better understand the real condition of the vehicle.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '03',
-            icon: 'briefcase',
-            title: 'Automotive listing analysis',
-            copy: 'We review the ad in detail to identify inconsistencies, clarify the vehicle profile and detect obvious warning signs early.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '04',
-            icon: 'truck',
-            title: 'Negotiation with the seller',
-            copy: 'We structure the exchange, defend your position and help secure a more coherent purchase price.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '05',
-            icon: 'search',
-            title: 'Vehicle sourcing',
-            copy: 'We search for the right vehicle according to your criteria, your budget and the way you intend to use it.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '06',
-            icon: 'truck',
-            title: 'Equipment installation',
-            copy: 'We help define the right equipment to add so the vehicle gains practical value without losing its coherence.',
-            audiences: ['private'],
-          },
-          {
-            index: '07',
-            icon: 'briefcase',
-            title: 'Vehicle optimisation / improvement',
-            copy: 'We guide aesthetic or functional improvements designed to modernise the vehicle cleanly and enhance its overall value.',
-            audiences: ['private'],
-          },
-        ],
-        showMore: 'See more',
-        showLess: 'See less',
-      }
-    : {
-        heroLabel: 'Services',
-        heroTitle: ['Un suivi', 'clair et utile,', 'pensé pour', 'rassurer.'],
-        heroIntro:
-          'Chaque projet est unique. Nous clarifions le besoin, cadrons les options et guidons la bonne suite avec méthode et transparence.',
-        heroPrimaryCta: 'Découvrir les services',
-        heroCardLabel: 'Vue d’ensemble',
-        heroCardTitle: 'Un point d’entrée clair pour trouver le bon service.',
-        heroCardCopy:
-          'Ce premier écran pose une promesse lisible, une preuve visuelle forte et un accès simple vers le bon service.',
-        heroFlowLabel: 'Manière de travailler',
-        heroFlowTitle: 'Quatre étapes pour passer du doute à une décision claire.',
-        heroFlowSteps: ['Comprendre', 'Analyser', 'Conseiller', 'Suivre'],
-        heroPreviewLabel: 'Services clés',
-        heroPreviewTitle: 'Aller directement vers le bon service.',
-        servicesLabel: 'Services détaillés',
-        servicesTitle: ['Un suivi qui s’adapte', 'à chaque projet automobile.'],
-        servicesIntro:
-          'Chaque service est présenté de façon simple et rassurante pour permettre à des clients non-experts de comprendre rapidement son intérêt.',
-        filterLabel: 'Filtrer par profil',
-        filters: [
-          { value: 'all', label: 'Tous' },
-          { value: 'private', label: 'Particuliers' },
-          { value: 'pro', label: 'Professionnels' },
-        ],
-        services: [
-          {
-            index: '01',
-            icon: 'search',
-            title: 'Conseil avant achat de véhicule',
-            copy: 'Nous vous aidons à clarifier votre besoin, comparer les bonnes options et avancer vers une décision d’achat plus sereine.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '02',
-            icon: 'document',
-            title: 'Inspection d’un véhicule avant achat',
-            copy: 'Vérification complète avant achat pour éviter les mauvaises surprises et mieux lire l’état réel du véhicule.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '03',
-            icon: 'briefcase',
-            title: 'Analyse d’annonce automobile',
-            copy: 'Nous analysons l’annonce en détail pour repérer les incohérences, clarifier le profil du véhicule et identifier les premiers signaux d’alerte.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '04',
-            icon: 'truck',
-            title: 'Négociation avec le vendeur',
-            copy: 'Nous structurons l’échange, défendons votre position et aidons à obtenir un prix plus cohérent avec le véhicule.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '05',
-            icon: 'search',
-            title: 'Recherche de véhicule',
-            copy: 'Nous recherchons pour vous le véhicule adapté selon vos critères, votre budget et votre usage.',
-            audiences: ['private', 'pro'],
-          },
-          {
-            index: '06',
-            icon: 'truck',
-            title: 'Montage d’équipements',
-            copy: 'Nous vous aidons à définir les bons équipements à ajouter pour gagner en usage sans rompre la cohérence du véhicule.',
-            audiences: ['private'],
-          },
-          {
-            index: '07',
-            icon: 'briefcase',
-            title: 'Optimisation / amélioration du véhicule',
-            copy: 'Nous guidons les évolutions esthétiques ou fonctionnelles pensées pour moderniser proprement le véhicule et renforcer sa valeur globale.',
-            audiences: ['private'],
-          },
-        ],
-        showMore: 'Voir plus',
-        showLess: 'Voir moins',
-      };
+  const content = getLocaleContent(servicesPageContent, language);
 
   useEffect(() => {
     setShowAllServices(false);
@@ -311,7 +154,7 @@ export default function ServicesPage() {
                   <h3>{service.title}</h3>
                   <p>{service.copy}</p>
                   <div className="services-summary-soon">
-                    <span>{isEnglish ? 'Dedicated page soon' : 'Page dédiée bientôt'}</span>
+                    <span>{content.dedicatedPageSoon}</span>
                   </div>
                 </article>
               );

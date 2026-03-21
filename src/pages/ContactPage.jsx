@@ -3,80 +3,26 @@ import { FacebookIcon, InstagramIcon } from '../components/IconSet';
 import SectionLabel from '../components/SectionLabel';
 import FormSubmissionState, { buildSubmissionReference } from '../components/FormSubmissionState';
 import { useSite } from '../context/SiteContext';
+import { CONTACT_DETAILS, MAP_LINKS, SOCIAL_LINKS } from '../data/siteConfig';
+import { contactPageContent } from '../data/siteContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
+
+const socialIconMap = {
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+};
 
 export default function ContactPage() {
-  const { isEnglish } = useSite();
+  const { language } = useSite();
   const [submission, setSubmission] = useState(null);
+  const content = getLocaleContent(contactPageContent, language);
 
-  const content = isEnglish
-    ? {
-        label: 'Contact',
-        title: "Let's talk about your car",
-        infoCards: [
-          { label: 'Phone', value: '06 63 99 07 20', href: 'tel:0663990720' },
-          { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
-          { label: 'Service area', value: 'PACA region' },
-          { label: 'Hours', value: 'By appointment' },
-        ],
-        socialsLabel: 'Social media',
-        socials: [
-          { name: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
-          { name: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
-        ],
-        formLabel: 'Contact form',
-        formTitle: 'A simple conversion, designed to stay clear.',
-        mapLabel: 'Coverage area',
-        mapValue: 'PACA · By appointment',
-        mapCta: 'Open in Maps',
-        placeholders: {
-          name: 'Name',
-          email: 'Email',
-          phone: 'Phone',
-          type: 'Request type',
-          vehicle: 'Project',
-          details: 'Describe your project...',
-          submit: 'Send my request',
-        },
-        types: [
-          { value: 'contact', label: 'First contact' },
-          { value: 'quote', label: 'Quote request' },
-          { value: 'support', label: 'Support request' },
-        ],
-      }
-    : {
-        label: 'Contact',
-        title: 'Parlons de votre voiture',
-        infoCards: [
-          { label: 'Téléphone', value: '06 63 99 07 20', href: 'tel:0663990720' },
-          { label: 'Email', value: 'contact@rgautoconseil.fr', href: 'mailto:contact@rgautoconseil.fr' },
-          { label: 'Zone d’intervention', value: 'Région PACA' },
-          { label: 'Horaires', value: 'Sur rendez-vous' },
-        ],
-        socialsLabel: 'Réseaux sociaux',
-        socials: [
-          { name: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
-          { name: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
-        ],
-        formLabel: 'Formulaire',
-        formTitle: 'Une conversion simple, pensée pour rester claire.',
-        mapLabel: 'Zone couverte',
-        mapValue: 'PACA · Sur rendez-vous',
-        mapCta: 'Ouvrir dans Maps',
-        placeholders: {
-          name: 'Nom',
-          email: 'Email',
-          phone: 'Téléphone',
-          type: 'Type de demande',
-          vehicle: 'Projet',
-          details: 'Décrivez votre projet...',
-          submit: 'Envoyer ma demande',
-        },
-        types: [
-          { value: 'contact', label: 'Prise de contact' },
-          { value: 'quote', label: 'Demande de devis' },
-          { value: 'support', label: 'Besoin de suivi' },
-        ],
-      };
+  const infoCards = [
+    { label: content.infoLabels.phone, value: CONTACT_DETAILS.phoneDisplay, href: CONTACT_DETAILS.phoneHref },
+    { label: content.infoLabels.email, value: CONTACT_DETAILS.email, href: CONTACT_DETAILS.emailHref },
+    { label: content.infoLabels.serviceArea, value: CONTACT_DETAILS.serviceArea[language === 'en' ? 'en' : 'fr'] },
+    { label: content.infoLabels.hours, value: CONTACT_DETAILS.hours[language === 'en' ? 'en' : 'fr'] },
+  ];
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -109,7 +55,7 @@ export default function ContactPage() {
           <div className="contact-direct-grid">
             <div className="contact-direct-left">
               <div className="contact-direct-info-grid">
-                {content.infoCards.map((card) => (
+                {infoCards.map((card) => (
                   <article className="contact-direct-info-card gs-scroll-card" key={card.label}>
                     <span className="label">{card.label}</span>
                     {card.href ? (
@@ -129,21 +75,11 @@ export default function ContactPage() {
                     <span className="label">{content.mapLabel}</span>
                     <strong>{content.mapValue}</strong>
                   </div>
-                  <a
-                    className="contact-direct-map-link"
-                    href="https://maps.google.com/?q=Provence-Alpes-Cote%20d%27Azur,France"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
+                  <a className="contact-direct-map-link" href={MAP_LINKS.direct} rel="noreferrer" target="_blank">
                     {content.mapCta}
                   </a>
                 </div>
-                <iframe
-                  className="contact-direct-map"
-                  loading="lazy"
-                  src="https://www.google.com/maps?q=Provence-Alpes-Cote%20d%27Azur,France&z=7&output=embed"
-                  title="Google Maps"
-                />
+                <iframe className="contact-direct-map" loading="lazy" src={MAP_LINKS.embed} title="Google Maps" />
               </article>
             </div>
 
@@ -200,8 +136,8 @@ export default function ContactPage() {
                   <div className="contact-form-socials">
                     <span className="label">{content.socialsLabel}</span>
                     <div className="social-icon-row">
-                      {content.socials.map((social) => {
-                        const Icon = social.icon;
+                      {SOCIAL_LINKS.map((social) => {
+                        const Icon = socialIconMap[social.name];
 
                         return (
                           <a

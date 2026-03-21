@@ -1,126 +1,20 @@
 import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
+import { galleryPageContent } from '../data/siteContent';
 import { rgMedia } from '../data/rgMedia';
+import { getLocaleContent } from '../utils/getLocaleContent';
+
+const missionImages = [
+  { beforeImage: rgMedia.porscheConsoleLegacy, afterImage: rgMedia.porscheConsole },
+  { beforeImage: rgMedia.fordDisplayBase, afterImage: rgMedia.fordCameraDisplay },
+  { beforeImage: rgMedia.porscheConsoleMap, afterImage: rgMedia.porscheExterior },
+  { beforeImage: rgMedia.vanRear, afterImage: rgMedia.vanExterior },
+];
 
 export default function GalleryPage() {
-  const { isEnglish } = useSite();
-
-  const content = isEnglish
-    ? {
-        label: 'Gallery',
-        title: ['Projects carried out', 'with precision', 'and restraint.'],
-        intro: 'Discover projects completed with high standards and precision.',
-        heroCardLabel: 'Before / after',
-        heroCardTitle: 'Visible proof, discreet execution.',
-        heroCardCopy: 'Each transformation is designed to enhance the vehicle without altering its identity.',
-        missionsLabel: 'Projects',
-        missionsTitle: 'A visual reading of the work carried out.',
-        contactCta: 'Contact us',
-        missions: [
-          {
-            id: '01',
-            label: 'Vehicle',
-            vehicle: 'Porsche 911',
-            mission: 'Clean modernisation and interface update.',
-            outcome: 'Client goal: improve comfort and readability without changing the original spirit.',
-            beforeLabel: 'Before intervention',
-            afterLabel: 'After intervention',
-            beforeImage: rgMedia.porscheConsoleLegacy,
-            afterImage: rgMedia.porscheConsole,
-          },
-          {
-            id: '02',
-            label: 'Vehicle',
-            vehicle: 'Ford Transit',
-            mission: 'Screen and reversing camera integration.',
-            outcome: 'Client goal: make daily use easier, clearer and more reassuring.',
-            beforeLabel: 'Before integration',
-            afterLabel: 'After integration',
-            beforeImage: rgMedia.fordDisplayBase,
-            afterImage: rgMedia.fordCameraDisplay,
-          },
-          {
-            id: '03',
-            label: 'Vehicle',
-            vehicle: 'Porsche 911',
-            mission: 'Final presentation and controlled validation.',
-            outcome: 'Client goal: confirm condition and reveal the full value of the vehicle.',
-            beforeLabel: 'Before validation',
-            afterLabel: 'After validation',
-            beforeImage: rgMedia.porscheConsoleMap,
-            afterImage: rgMedia.porscheExterior,
-          },
-          {
-            id: '04',
-            label: 'Vehicle',
-            vehicle: 'Service van',
-            mission: 'Operational setup and field presentation.',
-            outcome: 'Client goal: reflect a cleaner and more reassuring professional image.',
-            beforeLabel: 'Before setup',
-            afterLabel: 'After setup',
-            beforeImage: rgMedia.vanRear,
-            afterImage: rgMedia.vanExterior,
-          },
-        ],
-      }
-    : {
-        label: 'Galerie',
-        title: ['Des projets réalisés', 'avec exigence', 'et précision.'],
-        intro: 'Découvrez des projets réalisés avec exigence et précision.',
-        heroCardLabel: 'Avant / après',
-        heroCardTitle: 'Une preuve visuelle, une exécution maîtrisée.',
-        heroCardCopy: 'Chaque transformation est pensée pour sublimer le véhicule sans en altérer l’identité.',
-        missionsLabel: 'Projets',
-        missionsTitle: 'Une lecture visuelle du travail réalisé.',
-        contactCta: 'Nous contacter',
-        missions: [
-          {
-            id: '01',
-            label: 'Véhicule',
-            vehicle: 'Porsche 911',
-            mission: 'Modernisation propre et mise à jour interface.',
-            outcome: 'Objectif client : gagner en confort et en lisibilité sans casser l’esprit d’origine.',
-            beforeLabel: 'Avant intervention',
-            afterLabel: 'Après intervention',
-            beforeImage: rgMedia.porscheConsoleLegacy,
-            afterImage: rgMedia.porscheConsole,
-          },
-          {
-            id: '02',
-            label: 'Véhicule',
-            vehicle: 'Ford Transit',
-            mission: 'Intégration écran et caméra de recul.',
-            outcome: 'Objectif client : rendre l’usage quotidien plus simple, plus clair et plus rassurant.',
-            beforeLabel: 'Avant intégration',
-            afterLabel: 'Après intégration',
-            beforeImage: rgMedia.fordDisplayBase,
-            afterImage: rgMedia.fordCameraDisplay,
-          },
-          {
-            id: '03',
-            label: 'Véhicule',
-            vehicle: 'Porsche 911',
-            mission: 'Présentation finale et validation maîtrisée.',
-            outcome: 'Objectif client : confirmer l’état du véhicule et faire ressortir toute sa valeur.',
-            beforeLabel: 'Avant validation',
-            afterLabel: 'Après validation',
-            beforeImage: rgMedia.porscheConsoleMap,
-            afterImage: rgMedia.porscheExterior,
-          },
-          {
-            id: '04',
-            label: 'Véhicule',
-            vehicle: 'Véhicule d’intervention',
-            mission: 'Mise en configuration et présentation terrain.',
-            outcome: 'Objectif client : refléter une image professionnelle plus propre et plus rassurante.',
-            beforeLabel: 'Avant préparation',
-            afterLabel: 'Après préparation',
-            beforeImage: rgMedia.vanRear,
-            afterImage: rgMedia.vanExterior,
-          },
-        ],
-      };
+  const { language } = useSite();
+  const content = getLocaleContent(galleryPageContent, language);
 
   return (
     <div className="route-page route-page--gallery">
@@ -178,11 +72,11 @@ export default function GalleryPage() {
 
                 <div className="gallery-mission-before-after">
                   <div className="gallery-mission-pane">
-                    <img alt={mission.beforeLabel} src={mission.beforeImage} />
+                    <img alt={mission.beforeLabel} src={missionImages[index].beforeImage} />
                     <span>{mission.beforeLabel}</span>
                   </div>
                   <div className="gallery-mission-pane">
-                    <img alt={mission.afterLabel} src={mission.afterImage} />
+                    <img alt={mission.afterLabel} src={missionImages[index].afterImage} />
                     <span>{mission.afterLabel}</span>
                   </div>
                 </div>

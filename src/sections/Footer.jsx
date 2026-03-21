@@ -2,59 +2,18 @@ import AnchorLink from '../components/AnchorLink';
 import BarcodeMark from '../components/BarcodeMark';
 import { FacebookIcon, InstagramIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
+import { BRAND, CONTACT_DETAILS, SOCIAL_LINKS } from '../data/siteConfig';
+import { footerContent } from '../data/siteContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
+
+const socialIconMap = {
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+};
 
 export default function Footer() {
-  const { isEnglish } = useSite();
-
-  const content = isEnglish
-    ? {
-        copy:
-          'Independent automotive advice designed to reassure non-expert clients, secure a purchase and guide clean vehicle improvements.',
-        navigation: 'Navigation',
-        links: [
-          { label: 'Home', to: '/#top' },
-          { label: 'Services', to: '/services#services-overview' },
-          { label: 'About', to: '/about#about-biography' },
-          { label: 'Gallery', to: '/gallery#gallery-overview' },
-          { label: 'Contact', to: '/contact#contact-direct' },
-        ],
-        directContact: 'Direct contact',
-        legal: 'Legal',
-        legalLinks: [
-          { label: 'Legal notice', to: '/legal-notice' },
-          { label: 'Privacy policy', to: '/privacy-policy' },
-        ],
-        socialLinks: [
-          { label: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
-          { label: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
-        ],
-        rights: '© 2026 RG Auto Conseil. All rights reserved.',
-        creator: 'Created by Ethan Porcaro',
-      }
-    : {
-        copy:
-          'Conseil automobile indépendant pensé pour rassurer des clients non-experts, sécuriser un achat et guider des améliorations propres du véhicule.',
-        navigation: 'Navigation',
-        links: [
-          { label: 'Accueil', to: '/#top' },
-          { label: 'Services', to: '/services#services-overview' },
-          { label: 'À propos', to: '/about#about-biography' },
-          { label: 'Galerie', to: '/gallery#gallery-overview' },
-          { label: 'Contact', to: '/contact#contact-direct' },
-        ],
-        directContact: 'Contact direct',
-        legal: 'Légal',
-        legalLinks: [
-          { label: 'Mentions légales', to: '/legal-notice' },
-          { label: 'Politique de confidentialité', to: '/privacy-policy' },
-        ],
-        socialLinks: [
-          { label: 'Instagram', href: 'https://www.instagram.com/', icon: InstagramIcon },
-          { label: 'Facebook', href: 'https://www.facebook.com/', icon: FacebookIcon },
-        ],
-        rights: '© 2026 RG Auto Conseil. Tous droits réservés.',
-        creator: 'Création par Ethan Porcaro',
-      };
+  const { language } = useSite();
+  const content = getLocaleContent(footerContent, language);
 
   return (
     <footer className="site-footer">
@@ -67,7 +26,7 @@ export default function Footer() {
       <div className="content-shell footer-shell">
         <div className="footer-grid">
           <div className="footer-column footer-column--brand">
-            <div className="footer-brand">RG Auto Conseil.</div>
+            <div className="footer-brand">{BRAND.name}</div>
             <p className="footer-copy">{content.copy}</p>
           </div>
 
@@ -82,21 +41,21 @@ export default function Footer() {
 
           <div className="footer-column">
             <span className="footer-heading">{content.directContact}</span>
-            <a href="mailto:contact@rgautoconseil.fr">contact@rgautoconseil.fr</a>
-            <a href="tel:0663990720">06 63 99 07 20</a>
+            <a href={CONTACT_DETAILS.emailHref}>{CONTACT_DETAILS.email}</a>
+            <a href={CONTACT_DETAILS.phoneHref}>{CONTACT_DETAILS.phoneDisplay}</a>
             <div className="footer-socials">
-              {content.socialLinks.map((social) => {
-                const Icon = social.icon;
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = socialIconMap[social.name];
 
                 return (
                   <a
-                    aria-label={social.label}
+                    aria-label={social.name}
                     className="footer-social-link"
                     href={social.href}
-                    key={social.label}
+                    key={social.name}
                     rel="noreferrer"
                     target="_blank"
-                    title={social.label}
+                    title={social.name}
                   >
                     <Icon />
                   </a>
@@ -117,8 +76,8 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-meta">
-            <div className="footer-legal">{content.rights}</div>
-            <div className="footer-credit">{content.creator}</div>
+            <div className="footer-legal">{BRAND.rights[language === 'en' ? 'en' : 'fr']}</div>
+            <div className="footer-credit">{BRAND.creator[language === 'en' ? 'en' : 'fr']}</div>
           </div>
           <div className="footer-sys">
             <BarcodeMark code="SYS-END" compact variant="barcode" />
