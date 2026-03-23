@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import SectionLabel from '../components/SectionLabel';
+import MobilePageHero from '../components/MobilePageHero';
 import { ArrowRightIcon, BriefcaseIcon, DocumentIcon, SearchIcon, TruckIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
 import { servicesPageContent } from '../data/siteContent';
 import { rgMedia } from '../data/rgMedia';
 import { getLocaleContent } from '../utils/getLocaleContent';
+import useIsMobileView from '../hooks/useIsMobileView';
 
 const iconMap = {
   search: SearchIcon,
@@ -15,6 +17,7 @@ const iconMap = {
 
 export default function ServicesPage() {
   const { language } = useSite();
+  const isMobile = useIsMobileView();
   const [audienceFilter, setAudienceFilter] = useState('all');
   const [showAllServices, setShowAllServices] = useState(false);
   const content = getLocaleContent(servicesPageContent, language);
@@ -37,41 +40,58 @@ export default function ServicesPage() {
         <div aria-hidden="true" className="services-page-glow services-page-glow--two" />
         <div aria-hidden="true" className="services-page-glow services-page-glow--three" />
 
-        <div className="content-shell services-orbit-shell">
-          <div className="services-orbit-copy gs-scroll-heading">
-            <div className="hide-overflow">
-              <SectionLabel className="gs-scroll-text-up">{content.heroLabel}</SectionLabel>
-            </div>
-            {content.heroTitle.map((line, index) => (
-              <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
-                <span className="editorial-title gs-scroll-title-up services-orbit-title">{line}</span>
+        {isMobile ? (
+          <div className="content-shell">
+            <MobilePageHero
+              cardLabel={content.heroCardLabel}
+              cardTitle={content.heroCardTitle}
+              chips={content.heroFlowSteps}
+              copy={content.heroIntro}
+              imageAlt="RG Auto Conseil services"
+              imageSrc={rgMedia.mercedesServices}
+              label={content.heroLabel}
+              primaryCta={content.heroPrimaryCta}
+              primaryHref="/services#services-details"
+              titleLines={content.heroTitle}
+            />
+          </div>
+        ) : (
+          <div className="content-shell services-orbit-shell">
+            <div className="services-orbit-copy gs-scroll-heading">
+              <div className="hide-overflow">
+                <SectionLabel className="gs-scroll-text-up">{content.heroLabel}</SectionLabel>
               </div>
-            ))}
-            <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.heroIntro}</p>
+              {content.heroTitle.map((line, index) => (
+                <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
+                  <span className="editorial-title gs-scroll-title-up services-orbit-title">{line}</span>
+                </div>
+              ))}
+              <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.heroIntro}</p>
 
-            <div className="services-orbit-actions gs-scroll-fade-up">
-              <div className="services-orbit-cta-group">
-                <a className="btn-pill services-orbit-button" href="#services-grid">
-                  {content.heroPrimaryCta}
-                </a>
+              <div className="services-orbit-actions gs-scroll-fade-up">
+                <div className="services-orbit-cta-group">
+                  <a className="btn-pill services-orbit-button" href="#services-grid">
+                    {content.heroPrimaryCta}
+                  </a>
+                </div>
               </div>
+            </div>
+
+            <div className="services-orbit-stage">
+              <article className="services-orbit-spotlight gs-scroll-card">
+                <div className="services-orbit-spotlight-media">
+                  <img alt="RG Auto Conseil services" className="services-orbit-image" src={rgMedia.mercedesServices} />
+                  <div className="services-orbit-image-glow" />
+                </div>
+                <div className="services-orbit-spotlight-copy">
+                  <span className="label">{content.heroCardLabel}</span>
+                  <h2>{content.heroCardTitle}</h2>
+                  {content.heroCardCopy ? <p>{content.heroCardCopy}</p> : null}
+                </div>
+              </article>
             </div>
           </div>
-
-          <div className="services-orbit-stage">
-            <article className="services-orbit-spotlight gs-scroll-card">
-              <div className="services-orbit-spotlight-media">
-                <img alt="RG Auto Conseil services" className="services-orbit-image" src={rgMedia.mercedesServices} />
-                <div className="services-orbit-image-glow" />
-              </div>
-              <div className="services-orbit-spotlight-copy">
-                <span className="label">{content.heroCardLabel}</span>
-                <h2>{content.heroCardTitle}</h2>
-                {content.heroCardCopy ? <p>{content.heroCardCopy}</p> : null}
-              </div>
-            </article>
-          </div>
-        </div>
+        )}
       </section>
 
       <section className="content-section services-summary-section" id="services-details">

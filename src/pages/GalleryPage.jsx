@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import MobilePageHero from '../components/MobilePageHero';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
 import { galleryPageContent } from '../data/siteContent';
 import { rgMedia } from '../data/rgMedia';
+import useIsMobileView from '../hooks/useIsMobileView';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const missionImages = [
@@ -14,6 +16,7 @@ const missionImages = [
 
 export default function GalleryPage() {
   const { language } = useSite();
+  const isMobile = useIsMobileView();
   const content = getLocaleContent(galleryPageContent, language);
 
   return (
@@ -22,29 +25,45 @@ export default function GalleryPage() {
         <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--one" />
         <div aria-hidden="true" className="gallery-page-glow gallery-page-glow--two" />
 
-        <div className="content-shell gallery-mission-hero-shell">
-          <div className="gallery-mission-copy gs-scroll-heading">
-            <div className="hide-overflow">
-              <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
-            </div>
-            {content.title.map((line, index) => (
-              <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
-                <span className="editorial-title gallery-hero-title gs-scroll-title-up">{line}</span>
-              </div>
-            ))}
-            <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.intro}</p>
+        {isMobile ? (
+          <div className="content-shell">
+            <MobilePageHero
+              cardLabel={content.heroCardLabel}
+              cardTitle={content.heroCardTitle}
+              copy={content.intro}
+              imageAlt={content.heroCardTitle}
+              imageSrc={rgMedia.porscheInteriorWide}
+              label={content.label}
+              primaryCta={content.contactCta}
+              primaryHref="/contact"
+              titleLines={content.title}
+            />
           </div>
-
-          <article className="gallery-mission-highlight gs-scroll-card">
-            <img alt={content.heroCardTitle} className="gallery-mission-highlight-image" src={rgMedia.porscheInteriorWide} />
-            <div className="gallery-mission-highlight-mask" />
-            <div className="gallery-mission-highlight-copy">
-              <span className="label">{content.heroCardLabel}</span>
-              <h2 className="gallery-mission-highlight-title">{content.heroCardTitle}</h2>
-              <p>{content.heroCardCopy}</p>
+        ) : (
+          <div className="content-shell gallery-mission-hero-shell">
+            <div className="gallery-mission-copy gs-scroll-heading">
+              <div className="hide-overflow">
+                <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
+              </div>
+              {content.title.map((line, index) => (
+                <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
+                  <span className="editorial-title gallery-hero-title gs-scroll-title-up">{line}</span>
+                </div>
+              ))}
+              <p className="editorial-copy editorial-copy--wide gs-scroll-fade-up">{content.intro}</p>
             </div>
-          </article>
-        </div>
+
+            <article className="gallery-mission-highlight gs-scroll-card">
+              <img alt={content.heroCardTitle} className="gallery-mission-highlight-image" src={rgMedia.porscheInteriorWide} />
+              <div className="gallery-mission-highlight-mask" />
+              <div className="gallery-mission-highlight-copy">
+                <span className="label">{content.heroCardLabel}</span>
+                <h2 className="gallery-mission-highlight-title">{content.heroCardTitle}</h2>
+                <p>{content.heroCardCopy}</p>
+              </div>
+            </article>
+          </div>
+        )}
       </section>
 
       <section className="content-section gallery-missions-section" id="gallery-projects">

@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import AnchorLink from '../components/AnchorLink';
 import { useSite } from '../context/SiteContext';
+import useIsMobileView from '../hooks/useIsMobileView';
 
 const navItems = {
   fr: [
@@ -18,7 +21,76 @@ const navItems = {
 
 export default function NavBar() {
   const { language, setLanguage } = useSite();
+  const location = useLocation();
+  const isMobile = useIsMobileView();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const items = navItems[language];
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    if (!isMobile || !isMenuOpen) {
+      document.body.style.removeProperty('overflow');
+      return undefined;
+    }
+
+    document.body.style.setProperty('overflow', 'hidden');
+    return () => {
+      document.body.style.removeProperty('overflow');
+    };
+  }, [isMobile, isMenuOpen]);
+
+  if (isMobile) {
+    return (
+      <>
+        <nav className="mobile-nav">
+          <AnchorLink className="mobile-nav-brand" to="/">
+            RG Auto Conseil<span>.</span>
+          </AnchorLink>
+
+          <div className="mobile-nav-actions">
+            <button
+              aria-label={language === 'en' ? 'Switch to French' : 'Passer en anglais'}
+              className="mobile-language-button"
+              onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
+              type="button"
+            >
+              {language.toUpperCase()}
+            </button>
+
+            <button
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? (language === 'en' ? 'Close menu' : 'Fermer le menu') : language === 'en' ? 'Open menu' : 'Ouvrir le menu'}
+              className={`mobile-menu-toggle${isMenuOpen ? ' is-open' : ''}`}
+              onClick={() => setIsMenuOpen((value) => !value)}
+              type="button"
+            >
+              <span />
+              <span />
+            </button>
+          </div>
+        </nav>
+
+        <div className={`mobile-menu-panel${isMenuOpen ? ' is-open' : ''}`}>
+          <div className="mobile-menu-shell">
+            <div className="mobile-menu-links">
+              {items.map((item) => (
+                <AnchorLink className="mobile-menu-link" key={item.to} to={item.to}>
+                  {item.label}
+                </AnchorLink>
+              ))}
+            </div>
+
+            <AnchorLink className="mobile-menu-cta" to="/contact">
+              Contact
+            </AnchorLink>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <nav className="top-nav">
@@ -26,7 +98,7 @@ export default function NavBar() {
         RG Auto Conseil.
       </AnchorLink>
 
-      <div className="nav-links gs-reveal">
+      <div className="nav-links gs-reveal" id="site-navigation">
         {items.map((item) => (
           <AnchorLink activeClassName="is-active" key={item.to} to={item.to}>
             {item.label}
@@ -35,7 +107,7 @@ export default function NavBar() {
       </div>
 
       <div className="nav-actions gs-reveal">
-        <div aria-label="Sélecteur de langue" className="language-switch" role="group">
+        <div aria-label={language === 'en' ? 'Language selector' : 'Sélecteur de langue'} className="language-switch" role="group">
           <button
             className={`language-button${language === 'fr' ? ' is-active' : ''}`}
             onClick={() => setLanguage('fr')}

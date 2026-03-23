@@ -6,3 +6,6 @@ vite-dev.out.log
 vite-dev.err.log
 ngrok.out.log
 ngrok.err.log
+dist.zip
+tmp-*.png
+tmp-edge-profile*/

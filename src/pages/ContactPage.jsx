@@ -5,6 +5,7 @@ import FormSubmissionState, { buildSubmissionReference } from '../components/For
 import { useSite } from '../context/SiteContext';
 import { CONTACT_DETAILS, MAP_LINKS, SOCIAL_LINKS } from '../data/siteConfig';
 import { contactPageContent } from '../data/siteContent';
+import useIsMobileView from '../hooks/useIsMobileView';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const socialIconMap = {
@@ -14,6 +15,7 @@ const socialIconMap = {
 
 export default function ContactPage() {
   const { language } = useSite();
+  const isMobile = useIsMobileView();
   const [submission, setSubmission] = useState(null);
   const content = getLocaleContent(contactPageContent, language);
 
@@ -43,14 +45,24 @@ export default function ContactPage() {
     <div className="route-page route-page--contact">
       <section className="content-section contact-direct-section" id="contact-direct">
         <div className="content-shell contact-direct-shell">
-          <div className="contact-direct-head gs-scroll-heading">
-            <div className="hide-overflow">
-              <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
+          {isMobile ? (
+            <div className="contact-mobile-intro">
+              <span className="mobile-page-eyebrow">{content.label}</span>
+              <h1 className="mobile-page-title">
+                <span>{content.title}</span>
+              </h1>
+              <p className="mobile-page-copy">{content.formTitle}</p>
             </div>
-            <div className="hide-overflow" style={{ display: 'block', marginTop: '1rem' }}>
-              <span className="editorial-title contact-direct-title gs-scroll-title-up">{content.title}</span>
+          ) : (
+            <div className="contact-direct-head gs-scroll-heading">
+              <div className="hide-overflow">
+                <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
+              </div>
+              <div className="hide-overflow" style={{ display: 'block', marginTop: '1rem' }}>
+                <span className="editorial-title contact-direct-title gs-scroll-title-up">{content.title}</span>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="contact-direct-grid">
             <div className="contact-direct-left">

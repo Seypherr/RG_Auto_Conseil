@@ -6,14 +6,21 @@ import ProcessSection from '../sections/ProcessSection';
 import ReviewsSection from '../sections/ReviewsSection';
 import ContactSection from '../sections/ContactSection';
 import useHomeSectionSnap from '../hooks/useHomeSectionSnap';
+import useIsMobileView from '../hooks/useIsMobileView';
+import MobileHomePage from '../components/MobileHomePage';
 
 export default function HomePage() {
   const sectionRefs = useRef([]);
+  const isMobile = useIsMobileView();
   useHomeSectionSnap(sectionRefs);
 
   const registerSection = (index) => (element) => {
     sectionRefs.current[index] = element;
   };
+
+  if (isMobile) {
+    return <MobileHomePage />;
+  }
 
   return (
     <div className="home-snap-page">

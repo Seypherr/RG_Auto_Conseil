@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import MobilePageHero from '../components/MobilePageHero';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
 import { aboutPageContent } from '../data/siteContent';
 import { rgMedia } from '../data/rgMedia';
+import useIsMobileView from '../hooks/useIsMobileView';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 function ValueIcon() {
@@ -19,51 +21,69 @@ const caseStudyImages = [rgMedia.porscheExterior, rgMedia.fordCameraDisplay];
 
 export default function AboutPage() {
   const { language } = useSite();
+  const isMobile = useIsMobileView();
   const content = getLocaleContent(aboutPageContent, language);
 
   return (
     <div className="route-page route-page--about">
       <section className="content-section about-biography-section" id="about-biography">
-        <div className="content-shell about-hero-shell">
-          <div className="about-hero-copy gs-scroll-heading">
-            <div className="about-hero-philosophy">
-              <SectionLabel className="gs-scroll-text-up">{content.biographyLabel}</SectionLabel>
-            </div>
-
-            <div className="about-hero-main">
-              <div className="hide-overflow">
-                <span className="section-heading about-biography-title gs-scroll-title-up">{content.biographyTitle}</span>
-              </div>
-
-              <div className="about-hero-texts">
-                <p className="section-copy about-biography-intro gs-scroll-fade-up">{content.biographyIntro}</p>
-                <p className="section-copy mobile-secondary gs-scroll-fade-up">{content.biographyCopy}</p>
-              </div>
-            </div>
-
-            <div className="about-hero-facts">
-              {content.biographyFacts.map((fact) => (
-                <article className="about-biography-fact gs-scroll-card" key={fact.label}>
-                  <span className="label">{fact.label}</span>
-                  <strong>{fact.value}</strong>
-                </article>
-              ))}
-            </div>
+        {isMobile ? (
+          <div className="content-shell">
+            <MobilePageHero
+              cardLabel={language === 'en' ? 'Portrait' : 'Portrait'}
+              cardTitle={content.biographyBadge}
+              chips={content.biographyFacts.map((fact) => fact.value)}
+              copy={`${content.biographyIntro} ${content.biographyCopy}`}
+              imageAlt={content.biographyBadge}
+              imageSrc={rgMedia.aboutPortrait}
+              label={content.biographyLabel}
+              primaryCta={content.ctaButton}
+              primaryHref="/contact"
+              title={content.biographyTitle}
+            />
           </div>
+        ) : (
+          <div className="content-shell about-hero-shell">
+            <div className="about-hero-copy gs-scroll-heading">
+              <div className="about-hero-philosophy">
+                <SectionLabel className="gs-scroll-text-up">{content.biographyLabel}</SectionLabel>
+              </div>
 
-          <article className="about-biography-visual gs-scroll-card">
-            <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
-            <div className="about-biography-image-mask" />
-            <div className="about-biography-frame" />
-            <div className="about-biography-image-copy">
-              <div className="about-biography-image-line" />
-              <div>
-                <strong>{content.biographyBadge}</strong>
-                <small>{language === 'en' ? 'Founder' : 'Fondateur'}</small>
+              <div className="about-hero-main">
+                <div className="hide-overflow">
+                  <span className="section-heading about-biography-title gs-scroll-title-up">{content.biographyTitle}</span>
+                </div>
+
+                <div className="about-hero-texts">
+                  <p className="section-copy about-biography-intro gs-scroll-fade-up">{content.biographyIntro}</p>
+                  <p className="section-copy mobile-secondary gs-scroll-fade-up">{content.biographyCopy}</p>
+                </div>
+              </div>
+
+              <div className="about-hero-facts">
+                {content.biographyFacts.map((fact) => (
+                  <article className="about-biography-fact gs-scroll-card" key={fact.label}>
+                    <span className="label">{fact.label}</span>
+                    <strong>{fact.value}</strong>
+                  </article>
+                ))}
               </div>
             </div>
-          </article>
-        </div>
+
+            <article className="about-biography-visual gs-scroll-card">
+              <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
+              <div className="about-biography-image-mask" />
+              <div className="about-biography-frame" />
+              <div className="about-biography-image-copy">
+                <div className="about-biography-image-line" />
+                <div>
+                  <strong>{content.biographyBadge}</strong>
+                  <small>{language === 'en' ? 'Founder' : 'Fondateur'}</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        )}
       </section>
 
       <section className="content-section about-trust-section" id="about-values">
