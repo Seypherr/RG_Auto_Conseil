@@ -46,6 +46,15 @@ export default function Footer() {
             <div className="footer-socials">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = socialIconMap[social.name];
+                const isDisabled = !social.href;
+
+                if (isDisabled) {
+                  return (
+                    <span aria-disabled="true" className="footer-social-link is-disabled" key={social.name} title={social.name}>
+                      <Icon />
+                    </span>
+                  );
+                }
 
                 return (
                   <a

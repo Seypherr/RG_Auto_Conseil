@@ -1,26 +1,11 @@
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
+import { aboutSectionContent } from '../data/homeContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
 
 export default function AboutSection() {
-  const { isEnglish } = useSite();
-
-  const content = isEnglish
-    ? {
-        label: 'Value',
-        title: 'An expert eye, designed for your peace of mind',
-        paragraphs: [
-          'Buying or modifying a vehicle can quickly become complex.',
-          'We support you at every stage to avoid mistakes, secure your investment and help you make the right decisions with confidence.',
-        ],
-      }
-    : {
-        label: 'Valeur',
-        title: 'Un regard expert, au service de votre tranquillité',
-        paragraphs: [
-          'Acheter ou modifier un véhicule peut vite devenir complexe.',
-          'Nous vous accompagnons à chaque étape pour éviter les erreurs, sécuriser votre investissement et faire les bons choix.',
-        ],
-      };
+  const { language } = useSite();
+  const content = getLocaleContent(aboutSectionContent, language);
 
   return (
     <section className="content-section about-section" id="mission">

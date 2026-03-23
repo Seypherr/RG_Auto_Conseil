@@ -3,65 +3,13 @@ import SectionLabel from '../components/SectionLabel';
 import ServiceCard from '../components/ServiceCard';
 import { SearchIcon, DocumentIcon, BriefcaseIcon, TruckIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
+import { servicesSectionContent } from '../data/homeContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
 
 export default function ServicesSection() {
-  const { isEnglish } = useSite();
-
-  const content = isEnglish
-    ? {
-        label: 'Services',
-        title: 'Our essential services',
-        action: 'View all services',
-        items: [
-          {
-            title: 'Purchase support',
-            copy: 'Independent guidance to help you buy the right vehicle with more clarity and less stress.',
-            icon: <SearchIcon />,
-          },
-          {
-            title: 'Vehicle inspection',
-            copy: 'A complete pre-purchase check to avoid unpleasant surprises and make the condition easier to understand.',
-            icon: <DocumentIcon />,
-          },
-          {
-            title: 'Tailored sourcing',
-            copy: 'A more focused search to identify vehicles that truly match your needs, budget and usage.',
-            icon: <BriefcaseIcon />,
-          },
-          {
-            title: 'Tailored modernisation',
-            copy: 'Clean aesthetic or functional improvements designed to respect the original identity of the car.',
-            icon: <TruckIcon />,
-          },
-        ],
-      }
-    : {
-        label: 'Services',
-        title: 'Nos services essentiels',
-        action: 'Voir tous les services',
-        items: [
-          {
-            title: 'Suivi à l’achat',
-            copy: 'Un suivi indépendant pour acheter le bon véhicule avec plus de clarté et moins de stress.',
-            icon: <SearchIcon />,
-          },
-          {
-            title: 'Inspection de véhicule',
-            copy: 'Une vérification complète avant achat pour éviter les mauvaises surprises et mieux comprendre l’état réel du véhicule.',
-            icon: <DocumentIcon />,
-          },
-          {
-            title: 'Recherche personnalisée',
-            copy: 'Une recherche plus ciblée pour identifier les véhicules vraiment adaptés à vos critères, votre budget et votre usage.',
-            icon: <BriefcaseIcon />,
-          },
-          {
-            title: 'Modernisation sur mesure',
-            copy: 'Des améliorations esthétiques ou fonctionnelles pensées pour respecter l’identité du véhicule.',
-            icon: <TruckIcon />,
-          },
-        ],
-      };
+  const { language } = useSite();
+  const content = getLocaleContent(servicesSectionContent, language);
+  const icons = [<SearchIcon key="search" />, <DocumentIcon key="document" />, <BriefcaseIcon key="briefcase" />, <TruckIcon key="truck" />];
 
   return (
     <section className="content-section" id="services">
@@ -85,8 +33,8 @@ export default function ServicesSection() {
         </div>
 
         <div className="services-grid">
-          {content.items.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {content.items.map((service, index) => (
+            <ServiceCard copy={service.copy} icon={icons[index]} key={service.title} title={service.title} />
           ))}
         </div>
 

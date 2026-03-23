@@ -1,5 +1,3 @@
-import qrCode from '../../Photo_rg_auto_conseil/QR_Gaetan_Roblin_RG_Auto_Conseil.png';
-
 export default function BarcodeMark({ compact = false, code = 'ID-84992-RGC-01', variant = 'qr' }) {
   const isClassicBarcode = variant === 'barcode';
 
@@ -33,11 +31,37 @@ export default function BarcodeMark({ compact = false, code = 'ID-84992-RGC-01',
           <rect x="98" y="0" width="2" height="30" fill="white" />
         </svg>
       ) : (
-        <img
-          alt="QR code RG Auto Conseil"
-          className={`barcode-qr${compact ? ' barcode-qr--compact' : ''}`}
-          src={qrCode}
-        />
+        <svg aria-label="QR code RG Auto Conseil" className={`barcode-qr${compact ? ' barcode-qr--compact' : ''}`} viewBox="0 0 64 64">
+          <rect width="64" height="64" rx="8" fill="rgba(255,255,255,0.08)" />
+          <g fill="white">
+            <rect x="8" y="8" width="14" height="14" rx="1.5" />
+            <rect x="42" y="8" width="14" height="14" rx="1.5" />
+            <rect x="8" y="42" width="14" height="14" rx="1.5" />
+            <rect x="12" y="12" width="6" height="6" fill="black" />
+            <rect x="46" y="12" width="6" height="6" fill="black" />
+            <rect x="12" y="46" width="6" height="6" fill="black" />
+            <rect x="28" y="10" width="4" height="4" />
+            <rect x="34" y="10" width="4" height="4" />
+            <rect x="26" y="18" width="6" height="4" />
+            <rect x="34" y="18" width="4" height="4" />
+            <rect x="24" y="26" width="4" height="4" />
+            <rect x="30" y="26" width="4" height="4" />
+            <rect x="36" y="26" width="8" height="4" />
+            <rect x="24" y="32" width="8" height="4" />
+            <rect x="34" y="32" width="4" height="4" />
+            <rect x="40" y="32" width="4" height="4" />
+            <rect x="26" y="38" width="4" height="4" />
+            <rect x="32" y="38" width="6" height="4" />
+            <rect x="40" y="40" width="4" height="4" />
+            <rect x="46" y="28" width="4" height="4" />
+            <rect x="50" y="34" width="4" height="4" />
+            <rect x="28" y="46" width="4" height="4" />
+            <rect x="34" y="46" width="4" height="4" />
+            <rect x="40" y="46" width="8" height="4" />
+            <rect x="28" y="52" width="12" height="4" />
+            <rect x="44" y="52" width="4" height="4" />
+          </g>
+        </svg>
       )}
       {!compact ? <div className="sys-code">{code}</div> : null}
     </div>

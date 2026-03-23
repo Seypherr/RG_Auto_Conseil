@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import AnchorLink from '../components/AnchorLink';
 import { useSite } from '../context/SiteContext';
 
@@ -23,9 +22,9 @@ export default function NavBar() {
 
   return (
     <nav className="top-nav">
-      <Link className="nav-brand gs-reveal" to="/">
+      <AnchorLink className="nav-brand gs-reveal" to="/">
         RG Auto Conseil.
-      </Link>
+      </AnchorLink>
 
       <div className="nav-links gs-reveal">
         {items.map((item) => (

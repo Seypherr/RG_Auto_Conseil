@@ -30,8 +30,6 @@ export default function ServicesPage() {
   const visibleServices = showAllServices ? filteredServices : filteredServices.slice(0, 4);
   const hasMoreServices = filteredServices.length > 4;
   const hiddenServicesCount = Math.max(filteredServices.length - 4, 0);
-  const previewServices = content.services.slice(0, 3);
-
   return (
     <div className="route-page route-page--services">
       <section className="content-section services-lumen-hero" id="services-overview">
@@ -69,36 +67,9 @@ export default function ServicesPage() {
               <div className="services-orbit-spotlight-copy">
                 <span className="label">{content.heroCardLabel}</span>
                 <h2>{content.heroCardTitle}</h2>
-                <p>{content.heroCardCopy}</p>
+                {content.heroCardCopy ? <p>{content.heroCardCopy}</p> : null}
               </div>
             </article>
-
-            <div className="services-orbit-stack">
-              <article className="services-orbit-mini gs-scroll-card">
-                <span className="label">{content.heroFlowLabel}</span>
-                <h3 className="services-orbit-mini-title services-orbit-mini-title--flow">{content.heroFlowTitle}</h3>
-                <div className="services-orbit-steps">
-                  {content.heroFlowSteps.map((step) => (
-                    <span className="services-orbit-step" key={step}>
-                      {step}
-                    </span>
-                  ))}
-                </div>
-              </article>
-
-              <article className="services-orbit-mini services-orbit-mini--preview gs-scroll-card">
-                <span className="label">{content.heroPreviewLabel}</span>
-                <h3 className="services-orbit-mini-title services-orbit-mini-title--preview">{content.heroPreviewTitle}</h3>
-                <div className="services-orbit-preview-list">
-                  {previewServices.map((service) => (
-                    <a className="services-orbit-preview-item" href={`#service-${service.index}`} key={service.index}>
-                      <span>{service.index}</span>
-                      <strong>{service.title}</strong>
-                    </a>
-                  ))}
-                </div>
-              </article>
-            </div>
           </div>
         </div>
       </section>
@@ -153,9 +124,11 @@ export default function ServicesPage() {
                   </div>
                   <h3>{service.title}</h3>
                   <p>{service.copy}</p>
-                  <div className="services-summary-soon">
-                    <span>{content.dedicatedPageSoon}</span>
-                  </div>
+                  {content.dedicatedPageSoon ? (
+                    <div className="services-summary-soon">
+                      <span>{content.dedicatedPageSoon}</span>
+                    </div>
+                  ) : null}
                 </article>
               );
             })}

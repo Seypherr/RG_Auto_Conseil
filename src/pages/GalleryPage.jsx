@@ -8,7 +8,7 @@ import { getLocaleContent } from '../utils/getLocaleContent';
 const missionImages = [
   { beforeImage: rgMedia.porscheConsoleLegacy, afterImage: rgMedia.porscheConsole },
   { beforeImage: rgMedia.fordDisplayBase, afterImage: rgMedia.fordCameraDisplay },
-  { beforeImage: rgMedia.porscheConsoleMap, afterImage: rgMedia.porscheExterior },
+  { beforeImage: rgMedia.porscheInteriorWide, afterImage: rgMedia.porscheExterior },
   { beforeImage: rgMedia.vanRear, afterImage: rgMedia.vanExterior },
 ];
 
@@ -56,7 +56,7 @@ export default function GalleryPage() {
 
           <div className="gallery-missions-grid">
             {content.missions.map((mission, index) => (
-              <article className={`gallery-mission-card gs-scroll-card gallery-mission-card--${(index % 3) + 1}`} key={mission.id}>
+              <article className={`gallery-mission-card gs-scroll-card gallery-mission-card--${(index % 3) + 1}`} id={`project-${mission.id}`} key={mission.id}>
                 <div className="gallery-mission-card-head">
                   <div>
                     <span className="gallery-mission-index">{mission.id}</span>

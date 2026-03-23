@@ -16,11 +16,11 @@ export const CONTACT_DETAILS = {
 export const SOCIAL_LINKS = [
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/',
+    href: 'https://www.instagram.com/rgautoconseil/',
   },
   {
     name: 'Facebook',
-    href: 'https://www.facebook.com/',
+    href: null,
   },
 ];
 

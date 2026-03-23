@@ -1,29 +1,21 @@
-import logoDark from '../../Photo_rg_auto_conseil/Logo fond noir.jpg';
-import servicePoster from '../../Photo_rg_auto_conseil/version insta.png';
-import brandSignature from '../../Photo_rg_auto_conseil/Signature Noir.jpg';
-import porscheConsoleLegacy from '../../Photo_rg_auto_conseil/photo_1_2026-03-20_15-17-48.jpg';
-import porscheInteriorWide from '../../Photo_rg_auto_conseil/photo_2_2026-03-20_15-17-48.jpg';
-import porscheConsoleMap from '../../Photo_rg_auto_conseil/photo_3_2026-03-20_15-17-48.jpg';
-import porscheExterior from '../../Photo_rg_auto_conseil/photo_6_2026-03-20_15-17-48.jpg';
-import porscheConsole from '../../Photo_rg_auto_conseil/photo_4_2026-03-20_15-17-48.jpg';
-import fordDisplayBase from '../../Photo_rg_auto_conseil/photo_7_2026-03-20_15-17-48.jpg';
-import fordCameraDisplay from '../../Photo_rg_auto_conseil/photo_8_2026-03-20_15-17-48.jpg';
-import vanRear from '../../Photo_rg_auto_conseil/photo_10_2026-03-20_15-17-48.jpg';
-import vanExterior from '../../Photo_rg_auto_conseil/photo_11_2026-03-20_15-17-48.jpg';
-import aboutPortrait from '../../Photo_rg_auto_conseil/photo_2026-03-21_17-10-30.jpg';
+import aboutPortrait from '../../Photo_rg_auto_conseil/Photo_Gaetan.webp';
+import fordCameraDisplay from '../../Photo_rg_auto_conseil/Photo_Intérieur_AP_Cam.webp';
+import fordDisplayBase from '../../Photo_rg_auto_conseil/Photo_Intérieur_AV_cam.webp';
+import porscheConsole from '../../Photo_rg_auto_conseil/Poste_Radio_AP.webp';
+import porscheConsoleLegacy from '../../Photo_rg_auto_conseil/Poste_Radio_AV.webp';
+import porscheExterior from '../../Photo_rg_auto_conseil/Photo_Porsche.webp';
+import porscheInteriorWide from '../../Photo_rg_auto_conseil/Intérieur_porsche.webp';
+import vanExterior from '../../Photo_rg_auto_conseil/Photo_Exterieur_AV_Camion.webp';
+import vanRear from '../../Photo_rg_auto_conseil/Photo_Exterieur_Camion.webp';
 
 export const rgMedia = {
   aboutPortrait,
-  brandSignature,
   fordCameraDisplay,
   fordDisplayBase,
-  logoDark,
   porscheConsole,
   porscheConsoleLegacy,
-  porscheConsoleMap,
   porscheExterior,
   porscheInteriorWide,
-  servicePoster,
   vanExterior,
   vanRear,
 };

@@ -14,7 +14,7 @@ function ValueIcon() {
   );
 }
 
-const valueIcons = [ValueIcon, ValueIcon, ValueIcon, ValueIcon];
+const valueIcons = [ValueIcon, ValueIcon, ValueIcon];
 const caseStudyImages = [rgMedia.porscheExterior, rgMedia.fordCameraDisplay];
 
 export default function AboutPage() {
@@ -24,28 +24,24 @@ export default function AboutPage() {
   return (
     <div className="route-page route-page--about">
       <section className="content-section about-biography-section" id="about-biography">
-        <div className="content-shell about-biography-grid">
-          <article className="about-biography-visual gs-scroll-card">
-            <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
-            <div className="about-biography-image-mask" />
-            <div className="about-biography-image-copy">
-              <span className="label">{content.biographyBadge}</span>
+        <div className="content-shell about-hero-shell">
+          <div className="about-hero-copy gs-scroll-heading">
+            <div className="about-hero-philosophy">
+              <SectionLabel className="gs-scroll-text-up">{content.biographyLabel}</SectionLabel>
             </div>
-          </article>
 
-          <div className="about-biography-copy gs-scroll-heading">
-            <div className="about-biography-copy-main">
-              <div className="hide-overflow">
-                <SectionLabel className="gs-scroll-text-up">{content.biographyLabel}</SectionLabel>
-              </div>
+            <div className="about-hero-main">
               <div className="hide-overflow">
                 <span className="section-heading about-biography-title gs-scroll-title-up">{content.biographyTitle}</span>
               </div>
-              <p className="section-copy about-biography-intro gs-scroll-fade-up">{content.biographyIntro}</p>
-              <p className="section-copy mobile-secondary gs-scroll-fade-up">{content.biographyCopy}</p>
+
+              <div className="about-hero-texts">
+                <p className="section-copy about-biography-intro gs-scroll-fade-up">{content.biographyIntro}</p>
+                <p className="section-copy mobile-secondary gs-scroll-fade-up">{content.biographyCopy}</p>
+              </div>
             </div>
 
-            <div className="about-biography-facts">
+            <div className="about-hero-facts">
               {content.biographyFacts.map((fact) => (
                 <article className="about-biography-fact gs-scroll-card" key={fact.label}>
                   <span className="label">{fact.label}</span>
@@ -54,6 +50,19 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+
+          <article className="about-biography-visual gs-scroll-card">
+            <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
+            <div className="about-biography-image-mask" />
+            <div className="about-biography-frame" />
+            <div className="about-biography-image-copy">
+              <div className="about-biography-image-line" />
+              <div>
+                <strong>{content.biographyBadge}</strong>
+                <small>{language === 'en' ? 'Founder' : 'Fondateur'}</small>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -117,9 +126,11 @@ export default function AboutPage() {
                     <span className="label">{study.metaPrimaryLabel}</span>
                     <strong>{study.metaPrimaryValue}</strong>
                   </div>
-                  <div>
+                  <div className="about-case-meta-action">
                     <span className="label">{study.metaSecondaryLabel}</span>
-                    <strong>{study.metaSecondaryValue}</strong>
+                    <Link className="btn-pill about-case-link" to={study.href}>
+                      {study.linkLabel}
+                    </Link>
                   </div>
                 </div>
               </article>

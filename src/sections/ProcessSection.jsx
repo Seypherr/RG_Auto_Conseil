@@ -1,59 +1,12 @@
 import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
+import { processSectionContent } from '../data/homeContent';
+import { getLocaleContent } from '../utils/getLocaleContent';
 
 export default function ProcessSection() {
-  const { isEnglish } = useSite();
-
-  const content = isEnglish
-    ? {
-        label: 'Why trust us',
-        title: 'A reassuring, independent and human approach',
-        copy:
-          'Our support is designed to make each automotive decision easier to understand, calmer to live through and more secure in the end.',
-        action: 'Talk about your project',
-        steps: [
-          {
-            step: '01',
-            title: 'Independent',
-            copy: 'No hidden interest, no pressure and no forced direction. The advice is there to protect your decision.',
-          },
-          {
-            step: '02',
-            title: 'Tailored',
-            copy: 'Every project is read according to your use, your priorities and the real level of support you need.',
-          },
-          {
-            step: '03',
-            title: 'Aesthetic and technical',
-            copy: 'A double reading to preserve the identity of the vehicle while improving what truly makes sense.',
-          },
-        ],
-      }
-    : {
-        label: 'Pourquoi nous faire confiance',
-        title: 'Une approche rassurante, indépendante et humaine',
-        copy:
-          'Notre suivi est pensé pour rendre chaque décision automobile plus lisible, plus sereine et plus sûre au final.',
-        action: 'Parler de votre projet',
-        steps: [
-          {
-            step: '01',
-            title: 'Indépendant',
-            copy: 'Aucun intérêt caché, aucune pression et aucune orientation forcée. Le conseil est là pour protéger votre décision.',
-          },
-          {
-            step: '02',
-            title: 'Sur mesure',
-            copy: 'Chaque projet est lu selon votre usage, vos priorités et le niveau de suivi dont vous avez vraiment besoin.',
-          },
-          {
-            step: '03',
-            title: 'Esthétique et technique',
-            copy: 'Une double lecture pour respecter l’ADN du véhicule tout en améliorant ce qui a vraiment du sens.',
-          },
-        ],
-      };
+  const { language } = useSite();
+  const content = getLocaleContent(processSectionContent, language);
 
   return (
     <section className="content-section process-section" id="process">
