@@ -61,7 +61,7 @@ export default function ServicesPage() {
           <div className="services-orbit-stage">
             <article className="services-orbit-spotlight gs-scroll-card">
               <div className="services-orbit-spotlight-media">
-                <img alt="RG Auto Conseil services" className="services-orbit-image" src={rgMedia.porscheExterior} />
+                <img alt="RG Auto Conseil services" className="services-orbit-image" src={rgMedia.mercedesServices} />
                 <div className="services-orbit-image-glow" />
               </div>
               <div className="services-orbit-spotlight-copy">
