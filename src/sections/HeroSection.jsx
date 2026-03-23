@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import heroImage from '../../Photo_rg_auto_conseil/Photo_Hero.webp';
 import BarcodeMark from '../components/BarcodeMark';
 import { ArrowRightIcon } from '../components/IconSet';
 import SectionLabel from '../components/SectionLabel';
@@ -48,7 +49,7 @@ export default function HeroSection() {
           <img
             alt={content.imageAlt}
             className="hero-image"
-            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2000"
+            src={heroImage}
           />
         </div>
 
