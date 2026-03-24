@@ -1,4 +1,4 @@
-export const footerContent = {
+﻿export const footerContent = {
   fr: {
     copy: 'Cabinet indépendant de conseil automobile dédié à l’achat sécurisé, à l’inspection avant achat et à l’amélioration intelligente de véhicules premium.',
     navigation: 'Navigation',
@@ -392,8 +392,7 @@ export const servicesPageContent = {
   fr: {
     heroLabel: 'Services',
     heroTitle: ['Un conseil clair, de la', 'première question', 'à l’action.'],
-    heroIntro:
-      'RG Auto Conseil vous aide à acheter, inspecter, rechercher ou améliorer un véhicule avec une lecture simple, professionnelle et rassurante.',
+    heroIntro: '',
     heroPrimaryCta: 'Découvrir les services',
     heroCardLabel: 'Vision service',
     heroCardTitle: 'Une lecture directe du besoin au bon service.',
@@ -464,3 +463,5 @@ export const servicesPageContent = {
     showMore: 'Show more',
   },
 };
+
+
