@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from './IconSet';
+import MobileValueCarousel from './MobileValueCarousel';
 
 export default function MobilePageHero({
   cardLabel,
@@ -18,7 +19,7 @@ export default function MobilePageHero({
 
   return (
     <section className="mobile-page-hero">
-      <div className="mobile-page-hero-copy">
+      <div className="mobile-page-hero-copy mobile-page-hero-copy--plain">
         <span className="mobile-page-eyebrow">{label}</span>
         <h1 className="mobile-page-title">{resolvedTitle}</h1>
         {copy ? <p className="mobile-page-copy">{copy}</p> : null}
@@ -32,7 +33,15 @@ export default function MobilePageHero({
       </div>
 
       <article className="mobile-page-visual-card">
-        <img alt={imageAlt} className="mobile-page-visual-image" src={imageSrc} />
+        <img
+          alt={imageAlt}
+          className="mobile-page-visual-image"
+          decoding="async"
+          fetchpriority="high"
+          height="1175"
+          src={imageSrc}
+          width="1000"
+        />
         <div aria-hidden="true" className="mobile-page-visual-mask" />
         <div className="mobile-page-visual-copy">
           <span className="mobile-page-card-label">{cardLabel}</span>
@@ -41,13 +50,13 @@ export default function MobilePageHero({
       </article>
 
       {chips.length ? (
-        <div className="mobile-page-chip-row">
-          {chips.map((chip) => (
-            <span className="mobile-page-chip" key={chip}>
-              {chip}
-            </span>
-          ))}
-        </div>
+        <MobileValueCarousel
+          ariaLabel="Hero values navigation"
+          getButtonLabel={(chip) => `View ${chip}`}
+          getItemKey={(chip) => chip}
+          items={chips}
+          renderItem={(chip) => <strong>{chip}</strong>}
+        />
       ) : null}
     </section>
   );

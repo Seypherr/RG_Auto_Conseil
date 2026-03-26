@@ -3,7 +3,7 @@ import SectionLabel from '../components/SectionLabel';
 import FormSubmissionState, { buildSubmissionReference } from '../components/FormSubmissionState';
 import { useSite } from '../context/SiteContext';
 import { CONTACT_DETAILS } from '../data/siteConfig';
-import { contactSectionContent } from '../data/siteContent';
+import { contactSectionContent } from '../data/contactContent';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 export default function ContactSection() {
@@ -72,29 +72,29 @@ export default function ContactSection() {
               <div className="form-grid">
                 <label>
                   <span className="sr-only">{content.placeholders.name}</span>
-                  <input className="apple-input" placeholder={content.placeholders.name} type="text" />
+                  <input autoComplete="name" className="apple-input" name="name" placeholder={content.placeholders.name} type="text" />
                 </label>
                 <label>
                   <span className="sr-only">{content.placeholders.email}</span>
-                  <input className="apple-input" placeholder={content.placeholders.email} type="email" />
+                  <input autoComplete="email" className="apple-input" inputMode="email" name="email" placeholder={content.placeholders.email} type="email" />
                 </label>
               </div>
 
               <div className="form-grid">
                 <label>
                   <span className="sr-only">{content.placeholders.phone}</span>
-                  <input className="apple-input" placeholder={content.placeholders.phone} type="tel" />
+                  <input autoComplete="tel" className="apple-input" inputMode="tel" name="phone" placeholder={content.placeholders.phone} type="tel" />
                 </label>
                 <label>
                   <span className="sr-only">{content.placeholders.project}</span>
-                  <input className="apple-input" placeholder={content.placeholders.project} type="text" />
+                  <input className="apple-input" name="project" placeholder={content.placeholders.project} type="text" />
                 </label>
               </div>
 
               <div className="form-row">
                 <label>
                   <span className="sr-only">{content.placeholders.details}</span>
-                  <textarea className="apple-input" placeholder={content.placeholders.details} rows="4" />
+                  <textarea className="apple-input" name="details" placeholder={content.placeholders.details} rows="4" />
                 </label>
               </div>
 

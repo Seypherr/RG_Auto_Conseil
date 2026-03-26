@@ -1,32 +1,18 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import NavBar from '../sections/NavBar';
 import Footer from '../sections/Footer';
+import NavBar from '../sections/NavBar';
 import { useSite } from '../context/SiteContext';
 import { scrollToAnchor } from '../utils/anchorNavigation';
-import {
-  applyStaticPageState,
-  runHomeIntroAnimation,
-  setupCardAnimations,
-  setupContactFormAnimations,
-  setupFadeUpAnimations,
-  setupHeadingAnimations,
-  setupHeroParallax,
-} from '../utils/appAnimations';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function AppShell() {
-  const appRef = useRef(null);
   const location = useLocation();
   const { language } = useSite();
 
   useEffect(() => {
     if (!location.hash) {
       window.scrollTo(0, 0);
-      return;
+      return undefined;
     }
 
     const targetId = decodeURIComponent(location.hash.slice(1));
@@ -51,36 +37,14 @@ export default function AppShell() {
     };
   }, [location.pathname, location.hash]);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const isHomePage = location.pathname === '/';
-      const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--line-color').trim() || 'rgba(255,255,255,0.12)';
-
-      if (!isHomePage) {
-        applyStaticPageState(lineColor);
-      }
-
-      if (isHomePage) {
-        runHomeIntroAnimation(lineColor);
-      }
-
-      setupHeroParallax(ScrollTrigger);
-      setupFadeUpAnimations(ScrollTrigger);
-      setupHeadingAnimations(ScrollTrigger);
-      setupCardAnimations(ScrollTrigger);
-      setupContactFormAnimations(ScrollTrigger);
-    }, appRef);
-
-    ScrollTrigger.refresh();
-
-    return () => ctx.revert();
-  }, [language, location.pathname]);
-
   return (
     <div className="page-shell">
-      <div className="app-frame" id="top" ref={appRef}>
-        <div className="app-orb app-orb--nav" aria-hidden="true" />
-        <div className="grid-lines" aria-hidden="true">
+      <div className="app-frame" id="top">
+        <a className="skip-link" href="#main-content">
+          {language === 'en' ? 'Skip to content' : 'Aller au contenu'}
+        </a>
+        <div aria-hidden="true" className="app-orb app-orb--nav" />
+        <div aria-hidden="true" className="grid-lines">
           <div className="app-orb app-orb--grid" />
           <div className="app-orb app-orb--grid" />
           <div className="grid-line" />
@@ -89,7 +53,7 @@ export default function AppShell() {
         </div>
 
         <NavBar />
-        <main className="page-content">
+        <main className="page-content" id="main-content">
           <Outlet />
         </main>
         <Footer />

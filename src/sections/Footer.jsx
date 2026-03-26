@@ -2,8 +2,8 @@ import AnchorLink from '../components/AnchorLink';
 import BarcodeMark from '../components/BarcodeMark';
 import { FacebookIcon, InstagramIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
+import { footerContent } from '../data/footerContent';
 import { BRAND, CONTACT_DETAILS, SOCIAL_LINKS } from '../data/siteConfig';
-import { footerContent } from '../data/siteContent';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const socialIconMap = {
@@ -62,7 +62,7 @@ export default function Footer() {
                     className="footer-social-link"
                     href={social.href}
                     key={social.name}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                     title={social.name}
                   >

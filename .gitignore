@@ -1,11 +1,10 @@
 node_modules/
 dist/
-dev.log
-dev.err
-vite-dev.out.log
-vite-dev.err.log
-ngrok.out.log
-ngrok.err.log
 dist.zip
+.vercel
+*.log
+tmp/
 tmp-*.png
+tmp-chrome-profile/
 tmp-edge-profile*/
+CON

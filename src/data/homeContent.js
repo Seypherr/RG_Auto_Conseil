@@ -160,8 +160,7 @@ export const reviewsSectionContent = {
       {
         title: 'Conseil avant achat efficace',
         kicker: 'Achat sécurisé',
-        copy:
-          'Gaëtan a su clarifier les bons critères, poser les bonnes questions au vendeur et sécuriser chaque étape de l’achat.',
+        copy: 'Gaëtan a su clarifier les bons critères, poser les bonnes questions au vendeur et sécuriser chaque étape de l’achat.',
         name: 'Julien R.',
         detail: 'Porsche 911 · Aix-en-Provence',
         initials: 'JR',
@@ -170,8 +169,7 @@ export const reviewsSectionContent = {
       {
         title: 'Inspection rassurante et lisible',
         kicker: 'Inspection avant achat',
-        copy:
-          'Le rapport était clair, précis et compréhensible. J’ai pu prendre ma décision sans doute inutile et sans stress.',
+        copy: 'Le rapport était clair, précis et compréhensible. J’ai pu prendre ma décision sans doute inutile et sans stress.',
         name: 'Marie L.',
         detail: 'SUV premium · Marseille',
         initials: 'ML',
@@ -182,8 +180,7 @@ export const reviewsSectionContent = {
       {
         title: 'Amélioration sobre et premium',
         kicker: 'Optimisation véhicule',
-        copy:
-          'Les améliorations proposées ont valorisé la voiture sans dénaturer son style. Le résultat est discret, moderne et cohérent.',
+        copy: 'Les améliorations proposées ont valorisé la voiture sans dénaturer son style. Le résultat est discret, moderne et cohérent.',
         name: 'Antoine V.',
         detail: 'Berline allemande · Toulon',
         initials: 'AV',
@@ -201,8 +198,7 @@ export const reviewsSectionContent = {
       {
         title: 'Efficient purchase advice',
         kicker: 'Secure buying',
-        copy:
-          'Gaëtan clarified the right criteria, asked the right questions to the seller and secured every step of the purchase.',
+        copy: 'Gaëtan clarified the right criteria, asked the right questions to the seller and secured every step of the purchase.',
         name: 'Julien R.',
         detail: 'Porsche 911 · Aix-en-Provence',
         initials: 'JR',

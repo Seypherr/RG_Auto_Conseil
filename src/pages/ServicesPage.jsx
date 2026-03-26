@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import Seo from '../components/Seo';
 import SectionLabel from '../components/SectionLabel';
 import MobilePageHero from '../components/MobilePageHero';
 import { ArrowRightIcon, BriefcaseIcon, DocumentIcon, SearchIcon, TruckIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
-import { servicesPageContent } from '../data/siteContent';
+import { getServicesSeo } from '../data/servicesSeo';
+import { servicesPageContent } from '../data/servicesPageContent';
 import { rgMedia } from '../data/rgMedia';
 import { getLocaleContent } from '../utils/getLocaleContent';
 import useIsMobileView from '../hooks/useIsMobileView';
@@ -35,6 +37,7 @@ export default function ServicesPage() {
   const hiddenServicesCount = Math.max(filteredServices.length - 4, 0);
   return (
     <div className="route-page route-page--services">
+      <Seo {...getServicesSeo(language, rgMedia.mercedesServices)} lang={language} />
       <section className="content-section services-lumen-hero" id="services-overview">
         <div aria-hidden="true" className="services-page-glow services-page-glow--one" />
         <div aria-hidden="true" className="services-page-glow services-page-glow--two" />
@@ -61,6 +64,7 @@ export default function ServicesPage() {
               <div className="hide-overflow">
                 <SectionLabel className="gs-scroll-text-up">{content.heroLabel}</SectionLabel>
               </div>
+              <h1 className="sr-only">{content.heroTitle.join(' ')}</h1>
               {content.heroTitle.map((line, index) => (
                 <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
                   <span className="editorial-title gs-scroll-title-up services-orbit-title">{line}</span>
@@ -80,7 +84,7 @@ export default function ServicesPage() {
             <div className="services-orbit-stage">
               <article className="services-orbit-spotlight gs-scroll-card">
                 <div className="services-orbit-spotlight-media">
-                  <img alt="RG Auto Conseil services" className="services-orbit-image" src={rgMedia.mercedesServices} />
+                  <img alt="RG Auto Conseil services" className="services-orbit-image" decoding="async" fetchpriority="high" src={rgMedia.mercedesServices} />
                   <div className="services-orbit-image-glow" />
                 </div>
                 <div className="services-orbit-spotlight-copy">

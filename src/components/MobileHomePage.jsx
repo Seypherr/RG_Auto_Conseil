@@ -1,16 +1,10 @@
-import { useState } from 'react';
+import { Suspense, lazy, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../Photo_rg_auto_conseil/Photo_Hero.webp';
-import {
-  ArrowRightIcon,
-  BriefcaseIcon,
-  DocumentIcon,
-  SearchIcon,
-  TruckIcon,
-} from './IconSet';
+import DeferredSection from './DeferredSection';
+import { ArrowRightIcon, BriefcaseIcon, DocumentIcon, SearchIcon, TruckIcon } from './IconSet';
 import { useSite } from '../context/SiteContext';
-import { aboutPageContent, galleryPageContent, servicesPageContent } from '../data/siteContent';
-import { rgMedia } from '../data/rgMedia';
+import { servicesPageContent } from '../data/servicesPageContent';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const iconMap = {
@@ -20,28 +14,24 @@ const iconMap = {
   truck: TruckIcon,
 };
 
-const galleryImages = [rgMedia.porscheExterior, rgMedia.vanExterior];
+const MobileHomeAboutSection = lazy(() => import('./MobileHomeAboutSection'));
+const MobileHomeGallerySection = lazy(() => import('./MobileHomeGallerySection'));
 
 export default function MobileHomePage() {
   const { language } = useSite();
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const servicesScrollerRef = useRef(null);
   const servicesPage = getLocaleContent(servicesPageContent, language);
-  const aboutPage = getLocaleContent(aboutPageContent, language);
-  const gallery = getLocaleContent(galleryPageContent, language);
+
   const heroTitleLines =
     language === 'fr'
       ? ['Un conseil', 'clair, de la', 'première', 'question', 'à l’action.']
       : ['Clear advice,', 'from the', 'first question', 'to action.'];
 
-  const aboutTitle =
+  const heroCopy =
     language === 'fr'
-      ? ['L’expertise au', 'service de', 'la passion.']
-      : ['Expertise in', 'service of', 'automotive passion.'];
-
-  const aboutCopy =
-    language === 'fr'
-      ? 'Un regard indépendant, premium et rassurant pour rendre vos projets automobiles plus lisibles.'
-      : 'Independent, premium and reassuring guidance to make your automotive projects easier to understand.';
+      ? 'RG Auto Conseil vous aide à acheter, inspecter, rechercher ou améliorer un véhicule avec une lecture simple, professionnelle et rassurante.'
+      : 'RG Auto Conseil helps you buy, inspect, source or improve a vehicle with clear, professional and reassuring guidance.';
 
   function handleServicesScroll(event) {
     const container = event.currentTarget;
@@ -68,6 +58,23 @@ export default function MobileHomePage() {
     setActiveServiceIndex(closestIndex);
   }
 
+  function handleServiceDotClick(index) {
+    const container = servicesScrollerRef.current;
+    const targetCard = container?.children?.[index];
+
+    if (!container || !targetCard) {
+      return;
+    }
+
+    targetCard.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
+
+    setActiveServiceIndex(index);
+  }
+
   return (
     <div className="mobile-home-page">
       <section className="mobile-home-hero" id="top">
@@ -77,7 +84,7 @@ export default function MobileHomePage() {
               <span key={line}>{line}</span>
             ))}
           </h1>
-          <p className="mobile-home-description">{servicesPage.heroIntro}</p>
+          <p className="mobile-home-description">{heroCopy}</p>
 
           <a className="mobile-home-cta" href="#services">
             <span>{servicesPage.heroPrimaryCta}</span>
@@ -86,7 +93,15 @@ export default function MobileHomePage() {
         </div>
 
         <article className="mobile-home-visual">
-          <img alt={servicesPage.heroCardTitle} className="mobile-home-visual-image" src={heroImage} />
+          <img
+            alt={servicesPage.heroCardTitle}
+            className="mobile-home-visual-image"
+            decoding="async"
+            fetchpriority="high"
+            height="1200"
+            src={heroImage}
+            width="1600"
+          />
           <div aria-hidden="true" className="mobile-home-visual-mask" />
           <div className="mobile-home-visual-copy">
             <span className="mobile-home-visual-label">{servicesPage.heroCardLabel}</span>
@@ -107,7 +122,7 @@ export default function MobileHomePage() {
             : 'Tailored support for every stage of your automotive life.'}
         </p>
 
-        <div className="mobile-service-scroller" onScroll={handleServicesScroll}>
+        <div className="mobile-service-scroller" onScroll={handleServicesScroll} ref={servicesScrollerRef}>
           {servicesPage.services.map((service) => {
             const Icon = iconMap[service.icon] || SearchIcon;
 
@@ -127,67 +142,31 @@ export default function MobileHomePage() {
           })}
         </div>
 
-        <div className="mobile-dots" aria-hidden="true">
+        <div className="mobile-dots" aria-label={language === 'fr' ? 'Navigation des services' : 'Service navigation'}>
           {servicesPage.services.map((service, index) => (
-            <span className={`mobile-dot${index === activeServiceIndex ? ' is-active' : ''}`} key={service.index} />
+            <button
+              aria-label={`${language === 'fr' ? 'Voir le service' : 'View service'} ${service.index}`}
+              aria-pressed={index === activeServiceIndex}
+              className={`mobile-dot${index === activeServiceIndex ? ' is-active' : ''}`}
+              key={service.index}
+              onClick={() => handleServiceDotClick(index)}
+              type="button"
+            />
           ))}
         </div>
       </section>
 
-      <section className="mobile-home-band mobile-home-band--about mobile-home-band--plain mobile-home-band--left" id="a-propos">
-        <div className="mobile-home-band-head">
-          <span className="mobile-home-band-line" />
-          <span className="mobile-home-band-label">{aboutPage.biographyLabel}</span>
-        </div>
+      <DeferredSection minHeight={620} rootMargin="180px 0px">
+        <Suspense fallback={<div aria-hidden="true" style={{ minHeight: 620 }} />}>
+          <MobileHomeAboutSection language={language} />
+        </Suspense>
+      </DeferredSection>
 
-        <h2 className="mobile-home-section-title mobile-home-section-title--about">
-          {aboutTitle[0]}
-          <br />
-          {aboutTitle[1]}
-          <br />
-          {aboutTitle[2]}
-        </h2>
-
-        <article className="mobile-about-portrait">
-          <img alt={aboutPage.biographyBadge} src={rgMedia.aboutPortrait} />
-        </article>
-
-        <div className="mobile-home-copy-stack">
-          <p>{aboutCopy}</p>
-        </div>
-
-        <div className="mobile-chip-grid">
-          {aboutPage.biographyFacts.map((fact) => (
-            <span className="mobile-home-chip" key={fact.label}>
-              {fact.value}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section className="mobile-home-band mobile-home-band--surface mobile-home-band--plain mobile-home-band--gallery-left" id="galerie">
-        <div className="mobile-home-band-head">
-          <span className="mobile-home-band-line" />
-          <span className="mobile-home-band-label">{language === 'fr' ? 'Réalisations' : 'Projects'}</span>
-        </div>
-        <h2 className="mobile-home-section-title">{language === 'fr' ? 'Galerie' : 'Gallery'}</h2>
-
-        <div className="mobile-gallery-stack">
-          {gallery.missions.slice(0, 2).map((mission, index) => (
-            <article className="mobile-gallery-card" key={mission.id}>
-              <img alt={mission.vehicle} src={galleryImages[index]} />
-              <div className="mobile-gallery-card-copy">
-                <span>{mission.label}</span>
-                <h3>{mission.vehicle}</h3>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <Link className="mobile-gallery-button" to="/gallery">
-          <span>{language === 'fr' ? 'Voir plus de réalisations' : 'See more projects'}</span>
-        </Link>
-      </section>
+      <DeferredSection minHeight={520} rootMargin="180px 0px">
+        <Suspense fallback={<div aria-hidden="true" style={{ minHeight: 520 }} />}>
+          <MobileHomeGallerySection language={language} />
+        </Suspense>
+      </DeferredSection>
     </div>
   );
 }

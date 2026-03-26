@@ -12,6 +12,8 @@ export default function PageHero({ label, titleLines, copy, actions = [] }) {
           <SectionLabel className="gs-scroll-text-up">{label}</SectionLabel>
         </div>
 
+        <h1 className="sr-only">{titleLines.join(' ')}</h1>
+
         {titleLines.map((line, index) => (
           <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
             <span className="page-hero-title gs-scroll-title-up">{line}</span>

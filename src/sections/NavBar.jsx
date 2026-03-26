@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AnchorLink from '../components/AnchorLink';
 import { useSite } from '../context/SiteContext';
@@ -45,7 +45,7 @@ export default function NavBar() {
   if (isMobile) {
     return (
       <>
-        <nav className="mobile-nav">
+        <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="mobile-nav">
           <AnchorLink className="mobile-nav-brand" to="/">
             RG Auto Conseil<span>.</span>
           </AnchorLink>
@@ -57,7 +57,7 @@ export default function NavBar() {
               onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
               type="button"
             >
-              {language.toUpperCase()}
+              {language === 'fr' ? 'EN' : 'FR'}
             </button>
 
             <button
@@ -93,7 +93,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="top-nav">
+    <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="top-nav">
       <AnchorLink className="nav-brand gs-reveal" to="/">
         RG Auto Conseil.
       </AnchorLink>
@@ -131,3 +131,4 @@ export default function NavBar() {
     </nav>
   );
 }
+

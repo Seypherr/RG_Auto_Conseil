@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 
-export default function useHomeSectionSnap(sectionRefs) {
+export default function useHomeSectionSnap(sectionRefs, enabled = true) {
   useEffect(() => {
+    if (!enabled) {
+      return undefined;
+    }
+
     document.documentElement.classList.add('home-snap-enabled');
     document.body.classList.add('home-snap-enabled');
 
@@ -9,9 +13,13 @@ export default function useHomeSectionSnap(sectionRefs) {
       document.documentElement.classList.remove('home-snap-enabled');
       document.body.classList.remove('home-snap-enabled');
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
+    if (!enabled) {
+      return undefined;
+    }
+
     const mediaQuery = window.matchMedia('(max-width: 900px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let isAnimating = false;
@@ -105,5 +113,5 @@ export default function useHomeSectionSnap(sectionRefs) {
       window.removeEventListener('resize', handleResize);
       window.clearTimeout(unlockTimeoutId);
     };
-  }, [sectionRefs]);
+  }, [enabled, sectionRefs]);
 }

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import MobilePageHero from '../components/MobilePageHero';
+import Seo from '../components/Seo';
 import SectionLabel from '../components/SectionLabel';
 import { useSite } from '../context/SiteContext';
-import { aboutPageContent } from '../data/siteContent';
+import { aboutPageContent } from '../data/aboutPageContent';
+import { getAboutSeo } from '../data/aboutSeo';
 import { rgMedia } from '../data/rgMedia';
 import useIsMobileView from '../hooks/useIsMobileView';
 import { getLocaleContent } from '../utils/getLocaleContent';
@@ -26,11 +28,13 @@ export default function AboutPage() {
 
   return (
     <div className="route-page route-page--about">
+      <Seo {...getAboutSeo(language, rgMedia.aboutPortrait)} lang={language} />
+
       <section className="content-section about-biography-section" id="about-biography">
         {isMobile ? (
           <div className="content-shell">
             <MobilePageHero
-              cardLabel={language === 'en' ? 'Portrait' : 'Portrait'}
+              cardLabel="Portrait"
               cardTitle={content.biographyBadge}
               chips={content.biographyFacts.map((fact) => fact.value)}
               copy={`${content.biographyIntro} ${content.biographyCopy}`}
@@ -50,6 +54,7 @@ export default function AboutPage() {
               </div>
 
               <div className="about-hero-main">
+                <h1 className="sr-only">{content.biographyTitle}</h1>
                 <div className="hide-overflow">
                   <span className="section-heading about-biography-title gs-scroll-title-up">{content.biographyTitle}</span>
                 </div>
@@ -71,7 +76,15 @@ export default function AboutPage() {
             </div>
 
             <article className="about-biography-visual gs-scroll-card">
-              <img alt="Gaëtan Roblin" className="about-biography-image" src={rgMedia.aboutPortrait} />
+              <img
+                alt="Gaëtan Roblin"
+                className="about-biography-image"
+                decoding="async"
+                fetchpriority="high"
+                height="1600"
+                src={rgMedia.aboutPortrait}
+                width="1280"
+              />
               <div className="about-biography-image-mask" />
               <div className="about-biography-frame" />
               <div className="about-biography-image-copy">
@@ -130,31 +143,51 @@ export default function AboutPage() {
           </div>
 
           <div className="about-case-grid">
-            {content.caseStudies.map((study, index) => (
-              <article className="about-case-card gs-scroll-card" key={study.title}>
-                <div className="about-case-media">
-                  <img alt={study.title} src={caseStudyImages[index]} />
-                  <span className="about-case-status">{study.status}</span>
-                  <div className="about-case-media-copy">
-                    <h3>{study.title}</h3>
-                    <p>{study.copy}</p>
+            {content.caseStudies.map((study, index) => {
+              const cardContent = (
+                <>
+                  <div className="about-case-media">
+                    <img alt={study.title} decoding="async" height="900" loading="lazy" src={caseStudyImages[index]} width="1200" />
+                    <span className="about-case-status">{study.status}</span>
+                    <div className="about-case-media-copy">
+                      <h3>{study.title}</h3>
+                      <p>{study.copy}</p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="about-case-meta">
-                  <div>
-                    <span className="label">{study.metaPrimaryLabel}</span>
-                    <strong>{study.metaPrimaryValue}</strong>
+                  <div className="about-case-meta">
+                    <div>
+                      <span className="label">{study.metaPrimaryLabel}</span>
+                      <strong>{study.metaPrimaryValue}</strong>
+                    </div>
+                    <div className="about-case-meta-action">
+                      <span className="label">{study.metaSecondaryLabel}</span>
+                      {isMobile ? (
+                        <span className="btn-pill about-case-link about-case-link--static">{study.linkLabel}</span>
+                      ) : (
+                        <Link className="btn-pill about-case-link" to={study.href}>
+                          {study.linkLabel}
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                  <div className="about-case-meta-action">
-                    <span className="label">{study.metaSecondaryLabel}</span>
-                    <Link className="btn-pill about-case-link" to={study.href}>
-                      {study.linkLabel}
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
+                </>
+              );
+
+              if (isMobile) {
+                return (
+                  <Link className="about-case-card about-case-card--mobile gs-scroll-card" key={study.title} to={study.href}>
+                    {cardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <article className="about-case-card gs-scroll-card" key={study.title}>
+                  {cardContent}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

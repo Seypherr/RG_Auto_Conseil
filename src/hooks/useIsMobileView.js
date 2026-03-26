@@ -1,27 +1,57 @@
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
 const MOBILE_BREAKPOINT = 900;
+const MEDIA_QUERY = `(max-width: ${MOBILE_BREAKPOINT}px)`;
 
-export default function useIsMobileView() {
-  const getIsMobile = () => (typeof window !== 'undefined' ? window.innerWidth <= MOBILE_BREAKPOINT : false);
-  const [isMobile, setIsMobile] = useState(getIsMobile);
+let mediaQueryList;
+const subscribers = new Set();
+let unsubscribeMediaQuery;
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
-    const handleChange = (event) => {
-      setIsMobile(event.matches);
+function getMediaQueryList() {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  mediaQueryList ??= window.matchMedia(MEDIA_QUERY);
+  return mediaQueryList;
+}
+
+function getSnapshot() {
+  return getMediaQueryList()?.matches ?? false;
+}
+
+function subscribe(callback) {
+  const mediaQuery = getMediaQueryList();
+  if (!mediaQuery) {
+    return () => {};
+  }
+
+  subscribers.add(callback);
+
+  if (subscribers.size === 1) {
+    const notify = () => {
+      subscribers.forEach((subscriber) => subscriber());
     };
 
-    setIsMobile(mediaQuery.matches);
-
     if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.addEventListener('change', notify);
+      unsubscribeMediaQuery = () => mediaQuery.removeEventListener('change', notify);
+    } else {
+      mediaQuery.addListener(notify);
+      unsubscribeMediaQuery = () => mediaQuery.removeListener(notify);
     }
+  }
 
-    mediaQuery.addListener(handleChange);
-    return () => mediaQuery.removeListener(handleChange);
-  }, []);
+  return () => {
+    subscribers.delete(callback);
 
-  return isMobile;
+    if (subscribers.size === 0) {
+      unsubscribeMediaQuery?.();
+      unsubscribeMediaQuery = undefined;
+    }
+  };
+}
+
+export default function useIsMobileView() {
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }

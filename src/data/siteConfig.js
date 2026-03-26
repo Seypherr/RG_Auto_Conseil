@@ -20,7 +20,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: 'Facebook',
-    href: null,
+    href: 'https://www.facebook.com/profile.php?id=61586443084523&locale=fr_FR',
   },
 ];
 

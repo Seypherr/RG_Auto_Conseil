@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import BarcodeMark from './BarcodeMark';
 import { useSite } from '../context/SiteContext';
 import { BRAND } from '../data/siteConfig';
-import { formSubmissionContent } from '../data/siteContent';
+import { formSubmissionContent } from '../data/contactContent';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const referencePrefixes = {

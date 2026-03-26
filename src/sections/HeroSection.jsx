@@ -49,7 +49,11 @@ export default function HeroSection() {
           <img
             alt={content.imageAlt}
             className="hero-image"
+            decoding="async"
+            fetchpriority="high"
+            height="1200"
             src={heroImage}
+            width="1600"
           />
         </div>
 

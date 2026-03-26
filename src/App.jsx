@@ -1,24 +1,79 @@
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppShell from './layout/AppShell';
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import GalleryPage from './pages/GalleryPage';
-import ContactPage from './pages/ContactPage';
-import LegalPage from './pages/LegalPage';
-import PrivacyPage from './pages/PrivacyPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+
+function PageRoute({ children }) {
+  return <Suspense fallback={null}>{children}</Suspense>;
+}
 
 export default function App() {
   return (
     <Routes>
       <Route element={<AppShell />}>
-        <Route element={<HomePage />} path="/" />
-        <Route element={<ServicesPage />} path="/services" />
-        <Route element={<AboutPage />} path="/about" />
-        <Route element={<GalleryPage />} path="/gallery" />
-        <Route element={<ContactPage />} path="/contact" />
-        <Route element={<LegalPage />} path="/legal-notice" />
-        <Route element={<PrivacyPage />} path="/privacy-policy" />
+        <Route
+          path="/"
+          element={
+            <PageRoute>
+              <HomePage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PageRoute>
+              <ServicesPage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageRoute>
+              <AboutPage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <PageRoute>
+              <GalleryPage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageRoute>
+              <ContactPage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/legal-notice"
+          element={
+            <PageRoute>
+              <LegalPage />
+            </PageRoute>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <PageRoute>
+              <PrivacyPage />
+            </PageRoute>
+          }
+        />
       </Route>
     </Routes>
   );

@@ -14,11 +14,11 @@ export default function VisualTile({
       <article className="visual-tile visual-tile--wide gs-scroll-card">
         <div className="visual-before-after">
           <div className="visual-split">
-            <img alt={beforeLabel} className="visual-media" src={beforeImage} />
+            <img alt={beforeLabel} className="visual-media" decoding="async" loading="lazy" src={beforeImage} />
             <span className="visual-chip">{beforeLabel}</span>
           </div>
           <div className="visual-split">
-            <img alt={afterLabel} className="visual-media" src={afterImage} />
+            <img alt={afterLabel} className="visual-media" decoding="async" loading="lazy" src={afterImage} />
             <span className="visual-chip">{afterLabel}</span>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function VisualTile({
   return (
     <article className="visual-tile gs-scroll-card">
       <div className="visual-media-wrap">
-        <img alt={title} className="visual-media" src={image} />
+        <img alt={title} className="visual-media" decoding="async" loading="lazy" src={image} />
       </div>
       <div className="visual-copy">
         <span className="label">{eyebrow}</span>
