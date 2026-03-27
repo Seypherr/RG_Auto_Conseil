@@ -8,3 +8,5 @@ tmp-*.png
 tmp-chrome-profile/
 tmp-edge-profile*/
 CON
+
+.vercel

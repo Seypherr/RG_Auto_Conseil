@@ -70,13 +70,25 @@ export default function MobileValueCarousel({
     return null;
   }
 
+  const advanceToNext = () => {
+    setActiveIndex((current) => (current + 1) % items.length);
+  };
+
   return (
     <div className="mobile-value-carousel" aria-live="polite">
       <div className="mobile-value-carousel-window">
         <div className="mobile-value-carousel-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
           {items.map((item, index) => (
             <article className="mobile-value-card" key={getItemKey(item, index)}>
-              {renderItem(item, index)}
+              <button
+                aria-label={getButtonLabel(item, index)}
+                aria-pressed={index === activeIndex}
+                className="mobile-value-card-button"
+                onClick={advanceToNext}
+                type="button"
+              >
+                {renderItem(item, index, index === activeIndex)}
+              </button>
             </article>
           ))}
         </div>

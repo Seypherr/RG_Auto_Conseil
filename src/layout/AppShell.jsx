@@ -3,11 +3,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../sections/Footer';
 import NavBar from '../sections/NavBar';
 import { useSite } from '../context/SiteContext';
+import useIsMobileView from '../hooks/useIsMobileView';
 import { scrollToAnchor } from '../utils/anchorNavigation';
 
 export default function AppShell() {
   const location = useLocation();
   const { language } = useSite();
+  const isMobile = useIsMobileView();
+  const shouldRunHomeIntro = location.pathname === '/' && !isMobile;
 
   useEffect(() => {
     if (!location.hash) {
@@ -39,7 +42,7 @@ export default function AppShell() {
 
   return (
     <div className="page-shell">
-      <div className="app-frame" id="top">
+      <div className={`app-frame${shouldRunHomeIntro ? ' app-frame--home-intro' : ''}`} id="top">
         <a className="skip-link" href="#main-content">
           {language === 'en' ? 'Skip to content' : 'Aller au contenu'}
         </a>
