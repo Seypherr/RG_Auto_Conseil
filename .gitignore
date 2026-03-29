@@ -2,11 +2,16 @@ node_modules/
 dist/
 dist.zip
 .vercel
+.parcel-cache/
 *.log
 tmp/
 tmp-*.png
 tmp-chrome-profile/
 tmp-edge-profile*/
 CON
+.playwright-cli/
+test-results/
+*.png
+lighthouse-*.json
 
 .vercel

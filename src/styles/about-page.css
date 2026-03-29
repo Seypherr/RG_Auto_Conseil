@@ -1,0 +1,520 @@
+/* Extracted route styles for about-page.css */
+
+.about-biography-section {
+  padding-top: 2.9rem;
+  padding-bottom: 2.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-hero-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(20rem, 0.94fr);
+  gap: 1.15rem;
+  align-items: center;
+}
+
+.about-hero-copy {
+  display: grid;
+  align-content: center;
+  gap: 1.45rem;
+  min-height: 100%;
+}
+
+.about-hero-philosophy {
+  display: inline-flex;
+  width: fit-content;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--accent-glow);
+}
+
+.about-hero-main {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.about-hero-main .hide-overflow {
+  display: block;
+}
+
+.about-hero-texts {
+  display: grid;
+  gap: 1rem;
+  max-width: 37rem;
+}
+
+.about-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.about-biography-visual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3.95;
+  min-height: clamp(22.5rem, 31vw, 24.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px 40px 40px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    transform 320ms var(--ease-smooth),
+    border-color 320ms var(--ease-smooth),
+    box-shadow 320ms var(--ease-smooth);
+}
+
+.about-biography-visual::before,
+.about-biography-fact::before,
+.about-trust-card::before,
+.about-case-card::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.14) 50%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-18%);
+  transition: opacity 320ms ease, transform 520ms ease;
+}
+
+.about-biography-visual:hover::before,
+.about-biography-fact:hover::before,
+.about-trust-card:hover::before,
+.about-case-card:hover::before {
+  opacity: 1;
+  transform: translateX(12%);
+}
+
+.about-biography-visual:hover,
+.about-biography-fact:hover,
+.about-trust-card:hover,
+.about-case-card:hover {
+  border-color: rgba(255, 122, 26, 0.14);
+  box-shadow: var(--capsule-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.about-biography-image,
+.about-biography-image-mask {
+  position: absolute;
+  inset: 0;
+}
+
+.about-biography-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  opacity: 0.78;
+}
+
+.about-biography-image-mask {
+  background:
+    linear-gradient(180deg, rgba(3, 3, 3, 0.02), rgba(3, 3, 3, 0.68)),
+    radial-gradient(circle at top left, rgba(255, 106, 0, 0.16), transparent 42%);
+}
+
+.about-biography-frame {
+  position: absolute;
+  inset: 0.82rem;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px 32px 32px 10px;
+  pointer-events: none;
+}
+
+.about-biography-image-copy {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.45rem;
+  left: 1.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.about-biography-image-line {
+  width: 2.4rem;
+  height: 1px;
+  background: var(--accent-glow);
+  flex: 0 0 auto;
+}
+
+.about-biography-image-copy strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.about-biography-image-copy small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--accent-label);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-biography-copy {
+  display: grid;
+  grid-column: 2 / 4;
+  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.9fr);
+  align-items: center;
+  gap: 1.75rem;
+  max-width: none;
+}
+
+.about-biography-copy-main {
+  display: grid;
+  align-content: center;
+  gap: 1.35rem;
+}
+
+.about-biography-title,
+.about-case-title,
+.about-faq-title {
+  display: block;
+  margin-top: 1rem;
+}
+
+.about-biography-intro {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.about-biography-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  gap: 1rem;
+  margin-top: 0;
+}
+
+.about-biography-fact {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.5rem;
+  border-radius: 22px;
+  padding: 1rem 1rem;
+}
+
+.about-biography-fact strong,
+.about-case-meta strong {
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.about-trust-section {
+  padding-top: 5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.about-trust-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 1.2rem;
+  min-height: 17rem;
+  border-radius: 30px;
+  padding: 2rem;
+}
+
+.about-trust-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255, 204, 150, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #efb27a;
+  transition:
+    transform 320ms var(--ease-smooth),
+    border-color 320ms var(--ease-smooth),
+    background-color 320ms var(--ease-smooth),
+    color 320ms var(--ease-smooth);
+}
+
+.about-trust-card:hover .about-trust-icon {
+  transform: translateY(-2px) rotate(-6deg);
+  border-color: rgba(255, 204, 150, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f3ba84;
+}
+
+.about-trust-card h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.about-trust-card p,
+.about-case-media-copy p,
+.about-faq-answer,
+.about-cta-shell p {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.about-case-section {
+  padding-top: 7rem;
+}
+
+.about-case-header {
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.about-case-header .gs-scroll-heading {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.about-case-kicker {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.about-case-card {
+  position: relative;
+  overflow: hidden;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.about-case-media {
+  position: relative;
+  overflow: hidden;
+  min-height: 26rem;
+}
+
+.about-case-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.62;
+  transition:
+    transform 0.8s var(--ease-smooth),
+    opacity 0.8s var(--ease-smooth);
+}
+
+.about-case-card:hover .about-case-media img {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.about-case-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 3, 3, 0.05), rgba(3, 3, 3, 0.9));
+}
+
+.about-case-status,
+.about-faq-plus {
+  color: var(--accent-glow);
+}
+
+.about-case-status {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-case-media-copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 1.75rem;
+}
+
+.about-case-media-copy h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-transform: none;
+}
+
+.about-case-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.4rem 1.75rem 1.6rem;
+}
+
+.about-case-meta > div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.about-case-meta-action {
+  justify-items: center;
+  text-align: center;
+}
+
+.about-case-meta-action .about-case-link {
+  margin-top: 0.35rem;
+}
+
+.about-faq-section {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.about-faq-shell {
+  max-width: 64rem;
+}
+
+.about-faq-heading {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.about-faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.about-faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0;
+}
+
+.about-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1.25rem 0;
+  list-style: none;
+}
+
+.about-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-faq-item summary span:first-child {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  transition: color 0.35s var(--ease-smooth);
+}
+
+.about-faq-item:hover summary span:first-child {
+  color: rgba(255, 255, 255, 1);
+}
+
+.about-faq-plus {
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 0.35s var(--ease-smooth);
+}
+
+.about-faq-item[open] .about-faq-plus {
+  transform: rotate(45deg);
+}
+
+.about-faq-answer {
+  max-width: 48rem;
+  padding: 0 0 1.5rem;
+}
+
+.about-cta-section {
+  padding-top: 1.35rem;
+}
+
+.about-cta-shell {
+  display: flex;
+  justify-content: center;
+}
+
+.about-cta-shell .btn-pill,
+.about-cta-shell .btn-pill:hover,
+.about-cta-shell .btn-pill:focus-visible {
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .about-hero-shell,
+  .about-biography-copy,
+  .about-trust-grid,
+  .about-case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-case-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-biography-section {
+    padding-top: 4.5rem;
+  }
+
+  .about-biography-visual,
+  .about-biography-fact,
+  .about-trust-card,
+  .about-case-card {
+    border-radius: 24px;
+    box-shadow: none;
+  }
+
+  .about-biography-visual {
+    min-height: 23rem;
+  }
+
+  .about-case-media {
+    min-height: 21rem;
+  }
+
+  .about-case-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
