@@ -12,7 +12,6 @@ import useIsMobileView from '../hooks/useIsMobileView';
 import { scrollToAnchor } from '../utils/anchorNavigation';
 import { getLocaleContent } from '../utils/getLocaleContent';
 import { FORMSPREE_ENDPOINT, submitToFormspree } from '../utils/formspree';
-import { scrollWindowToTop } from '../utils/scrollMotion';
 
 const socialIconMap = {
   Instagram: InstagramIcon,
@@ -52,7 +51,6 @@ export default function ContactPage() {
 
     try {
       await submitToFormspree(formData);
-      await scrollWindowToTop();
       setSubmission({
         kind,
         reference,
@@ -113,7 +111,7 @@ export default function ContactPage() {
           {content.mapCta}
         </a>
       </div>
-      <iframe className="contact-direct-map" height="480" loading="lazy" src={MAP_LINKS.embed} title="Google Maps" width="640" />
+      {!isMobile ? <iframe className="contact-direct-map" height="480" loading="lazy" src={MAP_LINKS.embed} title="Google Maps" width="640" /> : null}
     </article>
   );
 

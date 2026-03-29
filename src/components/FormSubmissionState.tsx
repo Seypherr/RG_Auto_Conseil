@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import BarcodeMark from './BarcodeMark';
 import { useSite } from '../context/SiteContext';
 import { BRAND } from '../data/siteConfig';
 import { formSubmissionContent } from '../data/contactContent';
@@ -84,11 +83,6 @@ export default function FormSubmissionState({ kind = 'quote', reference, onDismi
                 </button>
               ) : null}
             </div>
-          </div>
-
-          <div className="submission-barcode submission-reveal submission-delay-5">
-            <BarcodeMark compact />
-            <div className="submission-footer-copy">{content.footer}</div>
           </div>
         </div>
 

@@ -29,6 +29,10 @@ export const MAP_LINKS = {
   embed: 'https://www.google.com/maps?q=Provence-Alpes-Cote%20d%27Azur,France&z=7&output=embed',
 };
 
+export const BRAND_ASSETS = {
+  logo: new URL('../../Photo_rg_auto_conseil/Logo_RG_Auto_Conseil.png', import.meta.url).toString(),
+};
+
 export const BRAND = {
   name: 'RG Auto Conseil.',
   rights: {

@@ -1,60 +1,64 @@
-const FR_REQUIRED = '[À COMPLÉTER AVANT MISE EN LIGNE]';
-const FR_OPTIONAL = '[À COMPLÉTER OU INDIQUER "NON APPLICABLE"]';
-const FR_DPO = '[À COMPLÉTER SI UN DPO OU UN CONTACT VIE PRIVÉE EST DÉSIGNÉ]';
-
-const EN_REQUIRED = '[TO BE COMPLETED BEFORE GO-LIVE]';
-const EN_OPTIONAL = '[TO BE COMPLETED OR MARKED "NOT APPLICABLE"]';
-const EN_DPO = '[TO BE COMPLETED IF A DPO OR PRIVACY CONTACT IS APPOINTED]';
-
 export const LEGAL_IDENTITY = {
   siteName: 'RG Auto Conseil',
   siteUrl: 'https://rgautoconseil.fr',
   publisherName: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: 'Ethan Porcaro',
+    en: 'Ethan Porcaro',
   },
   legalForm: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
-  },
-  shareCapital: {
-    fr: FR_OPTIONAL,
-    en: EN_OPTIONAL,
+    fr: 'EI',
+    en: 'Sole proprietorship',
   },
   registeredOffice: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: '57 chemin du canal 83460 Taradeau',
+    en: '57 chemin du canal 83460 Taradeau, France',
   },
   sirenOrSiret: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: '99969806100010',
+    en: '99969806100010',
   },
   vatNumber: {
-    fr: FR_OPTIONAL,
-    en: EN_OPTIONAL,
-  },
-  tradeRegister: {
-    fr: FR_OPTIONAL,
-    en: EN_OPTIONAL,
+    fr: 'FR83999698061',
+    en: 'FR83999698061',
   },
   publicationDirector: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: 'Ethan Porcaro',
+    en: 'Ethan Porcaro',
   },
   hostName: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: 'One.com',
+    en: 'One.com',
+  },
+  hostLegalEntity: {
+    fr: 'One.com Group AB',
+    en: 'One.com Group AB',
   },
   hostAddress: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: 'Carlsgatan 3, 211 20 Malmo, Suede',
+    en: 'Carlsgatan 3, 211 20 Malmo, Sweden',
   },
   hostContact: {
-    fr: FR_REQUIRED,
-    en: EN_REQUIRED,
+    fr: '+46 40 606 08 85',
+    en: '+46 40 606 08 85',
+  },
+  hostEmail: {
+    fr: 'support@one.com',
+    en: 'support@one.com',
+  },
+  hostRegisteredOffice: {
+    fr: 'Suede',
+    en: 'Sweden',
+  },
+  hostRegistrationNumber: {
+    fr: '559205-2400',
+    en: '559205-2400',
+  },
+  hostVatNumber: {
+    fr: 'SE559205240001',
+    en: 'SE559205240001',
   },
   privacyContact: {
-    fr: FR_DPO,
-    en: EN_DPO,
+    fr: 'contact@rgautoconseil.fr',
+    en: 'contact@rgautoconseil.fr',
   },
 };

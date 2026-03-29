@@ -18,27 +18,12 @@ export default function LegalPage() {
       }
     : {
         label: 'Informations',
-        titleLines: ['Mentions', 'légales'],
-        copy: "Les informations juridiques applicables à l'édition et à l'exploitation du site RG Auto Conseil.",
+        titleLines: ['Mentions', 'legales'],
+        copy: "Les informations juridiques applicables a l'edition et a l'exploitation du site RG Auto Conseil.",
       };
 
   const sections = isEnglish
     ? [
-        {
-          label: 'Go-live',
-          title: 'Information to complete before publishing',
-          paragraphs: [
-            'Replace every placeholder below with the exact legal information of the publisher before the final publication of the website.',
-          ],
-          list: [
-            'Publisher identity or company name',
-            'Legal form and registered office',
-            'SIREN / SIRET and registration details',
-            'VAT number if applicable',
-            'Publication director',
-            'Hosting provider details',
-          ],
-        },
         {
           label: 'Publisher',
           title: 'Website publisher',
@@ -47,11 +32,9 @@ export default function LegalPage() {
             `Website URL: ${LEGAL_IDENTITY.siteUrl}`,
             `Publisher legal identity: ${LEGAL_IDENTITY.publisherName[language]}`,
             `Legal form: ${LEGAL_IDENTITY.legalForm[language]}`,
-            `Share capital: ${LEGAL_IDENTITY.shareCapital[language]}`,
             `Registered office: ${LEGAL_IDENTITY.registeredOffice[language]}`,
             `SIREN / SIRET: ${LEGAL_IDENTITY.sirenOrSiret[language]}`,
             `VAT number: ${LEGAL_IDENTITY.vatNumber[language]}`,
-            `RCS / RM and city: ${LEGAL_IDENTITY.tradeRegister[language]}`,
           ],
         },
         {
@@ -67,9 +50,14 @@ export default function LegalPage() {
           label: 'Hosting',
           title: 'Hosting provider',
           list: [
-            `Hosting provider name: ${LEGAL_IDENTITY.hostName[language]}`,
+            `Hosting provider: ${LEGAL_IDENTITY.hostLegalEntity[language]}`,
+            `Hosting brand: ${LEGAL_IDENTITY.hostName[language]}`,
             `Hosting provider address: ${LEGAL_IDENTITY.hostAddress[language]}`,
-            `Hosting provider contact details: ${LEGAL_IDENTITY.hostContact[language]}`,
+            `Hosting provider phone: ${LEGAL_IDENTITY.hostContact[language]}`,
+            `Hosting provider email: ${LEGAL_IDENTITY.hostEmail[language]}`,
+            `Registered office: ${LEGAL_IDENTITY.hostRegisteredOffice[language]}`,
+            `Commercial registration number: ${LEGAL_IDENTITY.hostRegistrationNumber[language]}`,
+            `VAT number: ${LEGAL_IDENTITY.hostVatNumber[language]}`,
           ],
         },
         {
@@ -107,33 +95,16 @@ export default function LegalPage() {
       ]
     : [
         {
-          label: 'Pré-publication',
-          title: 'Champs à renseigner avant mise en ligne',
-          paragraphs: [
-            "Avant la publication définitive du site, remplacez tous les champs ci-dessous par les informations juridiques exactes de l'éditeur et de l'hébergeur.",
-          ],
-          list: [
-            "Identité complète de l'éditeur ou raison sociale",
-            'Forme juridique et adresse du siège',
-            'SIREN / SIRET et immatriculation',
-            'Numéro de TVA intracommunautaire si applicable',
-            'Nom du directeur de la publication',
-            "Coordonnées complètes de l'hébergeur",
-          ],
-        },
-        {
-          label: 'Éditeur',
-          title: 'Éditeur du site',
+          label: 'Editeur',
+          title: 'Editeur du site',
           list: [
             `Nom du site : ${LEGAL_IDENTITY.siteName}`,
             `URL du site : ${LEGAL_IDENTITY.siteUrl}`,
-            `Identité de l'éditeur : ${LEGAL_IDENTITY.publisherName[language]}`,
+            `Identite de l'editeur : ${LEGAL_IDENTITY.publisherName[language]}`,
             `Forme juridique : ${LEGAL_IDENTITY.legalForm[language]}`,
-            `Capital social : ${LEGAL_IDENTITY.shareCapital[language]}`,
-            `Adresse du siège : ${LEGAL_IDENTITY.registeredOffice[language]}`,
+            `Adresse du siege : ${LEGAL_IDENTITY.registeredOffice[language]}`,
             `SIREN / SIRET : ${LEGAL_IDENTITY.sirenOrSiret[language]}`,
             `TVA intracommunautaire : ${LEGAL_IDENTITY.vatNumber[language]}`,
-            `RCS / RM et ville : ${LEGAL_IDENTITY.tradeRegister[language]}`,
           ],
         },
         {
@@ -142,31 +113,36 @@ export default function LegalPage() {
           list: [
             `Directeur de la publication : ${LEGAL_IDENTITY.publicationDirector[language]}`,
             `Adresse email : ${CONTACT_DETAILS.email}`,
-            `Téléphone : ${CONTACT_DETAILS.phoneDisplay}`,
+            `Telephone : ${CONTACT_DETAILS.phoneDisplay}`,
           ],
         },
         {
-          label: 'Hébergement',
-          title: 'Hébergeur',
+          label: 'Hebergement',
+          title: 'Hebergeur',
           list: [
-            `Nom de l'hébergeur : ${LEGAL_IDENTITY.hostName[language]}`,
-            `Adresse de l'hébergeur : ${LEGAL_IDENTITY.hostAddress[language]}`,
-            `Téléphone ou contact de l'hébergeur : ${LEGAL_IDENTITY.hostContact[language]}`,
+            `Hebergeur : ${LEGAL_IDENTITY.hostLegalEntity[language]}`,
+            `Marque commerciale : ${LEGAL_IDENTITY.hostName[language]}`,
+            `Adresse de l'hebergeur : ${LEGAL_IDENTITY.hostAddress[language]}`,
+            `Telephone de l'hebergeur : ${LEGAL_IDENTITY.hostContact[language]}`,
+            `Email de l'hebergeur : ${LEGAL_IDENTITY.hostEmail[language]}`,
+            `Siege social : ${LEGAL_IDENTITY.hostRegisteredOffice[language]}`,
+            `Numero d'organisation : ${LEGAL_IDENTITY.hostRegistrationNumber[language]}`,
+            `Numero de TVA : ${LEGAL_IDENTITY.hostVatNumber[language]}`,
           ],
         },
         {
-          label: 'Propriété',
-          title: 'Propriété intellectuelle',
+          label: 'Propriete',
+          title: 'Propriete intellectuelle',
           paragraphs: [
-            "L'ensemble des textes, visuels, photographies, graphismes, logos, vidéos, code source et plus généralement tout élément présent sur le site est protégé par le droit de la propriété intellectuelle.",
-            'Toute reproduction, représentation, adaptation ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite sauf disposition légale contraire.',
+            "L'ensemble des textes, visuels, photographies, graphismes, logos, videos, code source et plus generalement tout element present sur le site est protege par le droit de la propriete intellectuelle.",
+            "Toute reproduction, representation, adaptation ou exploitation, totale ou partielle, sans autorisation ecrite prealable, est interdite sauf disposition legale contraire.",
           ],
         },
         {
-          label: 'Responsabilité',
-          title: 'Responsabilité',
+          label: 'Responsabilite',
+          title: 'Responsabilite',
           paragraphs: [
-            "RG Auto Conseil s'efforce de mettre à disposition des informations exactes et à jour. Toutefois, l'éditeur ne peut garantir l'exhaustivité ou l'actualisation permanente de tous les contenus.",
+            "RG Auto Conseil s'efforce de mettre a disposition des informations exactes et a jour. Toutefois, l'editeur ne peut garantir l'exhaustivite ou l'actualisation permanente de tous les contenus.",
             "L'utilisateur demeure seul responsable de l'usage qu'il fait des informations disponibles sur le site.",
           ],
         },
@@ -174,16 +150,16 @@ export default function LegalPage() {
           label: 'Liens',
           title: 'Liens hypertextes',
           paragraphs: [
-            'Le site peut contenir des liens vers des sites tiers. RG Auto Conseil ne contrôle pas ces sites et ne saurait être responsable de leur contenu ou de leur disponibilité.',
-            'Tout lien profond vers le site reste soumis aux règles légales applicables en France.',
+            'Le site peut contenir des liens vers des sites tiers. RG Auto Conseil ne controle pas ces sites et ne saurait etre responsable de leur contenu ou de leur disponibilite.',
+            'Tout lien profond vers le site reste soumis aux regles legales applicables en France.',
           ],
         },
         {
-          label: 'Données',
-          title: 'Données personnelles et cookies',
+          label: 'Donnees',
+          title: 'Donnees personnelles et cookies',
           paragraphs: [
-            'Les modalités relatives à la collecte et au traitement des données personnelles sont détaillées dans la politique de confidentialité.',
-            'Les informations relatives aux cookies et autres traceurs y sont également précisées.',
+            'Les modalites relatives a la collecte et au traitement des donnees personnelles sont detaillees dans la politique de confidentialite.',
+            'Les informations relatives aux cookies et autres traceurs y sont egalement precisees.',
           ],
         },
       ];

@@ -43,7 +43,7 @@ export default function HeroSection() {
 
         <div className="hero-left-foot gs-fade">
           <div className="hero-barcode-anchor">
-            <BarcodeMark code={content.barcodeLabel} variant="barcode" />
+            <BarcodeMark code={content.barcodeLabel} />
           </div>
         </div>
       </aside>

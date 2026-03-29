@@ -328,4 +328,8 @@
   .contact-direct-map {
     height: 16rem;
   }
+
+  .contact-direct-map-card--mobile .contact-direct-map-top {
+    border-bottom: none;
+  }
 }

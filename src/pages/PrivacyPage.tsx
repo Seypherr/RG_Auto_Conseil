@@ -17,35 +17,13 @@ export default function PrivacyPage() {
         copy: 'How RG Auto Conseil handles personal data collected through the website and contact requests.',
       }
     : {
-        label: 'Confidentialité',
-        titleLines: ['Politique de', 'confidentialité'],
-        copy: 'La manière dont RG Auto Conseil traite les données personnelles collectées via le site et les demandes de contact.',
+        label: 'Confidentialite',
+        titleLines: ['Politique de', 'confidentialite'],
+        copy: 'La maniere dont RG Auto Conseil traite les donnees personnelles collectees via le site et les demandes de contact.',
       };
 
   const sections = isEnglish
     ? [
-        {
-          label: 'Introduction',
-          title: 'About this policy',
-          paragraphs: [
-            `This privacy policy explains how RG Auto Conseil processes personal data collected through the website ${LEGAL_IDENTITY.siteUrl}.`,
-            'It applies to data submitted through contact forms, data required for the technical operation of the website and data that may be collected when third-party content is displayed.',
-          ],
-        },
-        {
-          label: 'Go-live',
-          title: 'Items to validate before publishing',
-          paragraphs: [
-            'Before the final publication of the website, validate the identity of the controller, the hosting provider details and any privacy contact or DPO if one is appointed.',
-          ],
-          list: [
-            'Controller legal identity',
-            'Legal form and registered office',
-            'SIREN / SIRET and registration details',
-            'Hosting provider details',
-            'Privacy contact or DPO if applicable',
-          ],
-        },
         {
           label: 'Controller',
           title: 'Data controller',
@@ -55,9 +33,9 @@ export default function PrivacyPage() {
             `Legal form: ${LEGAL_IDENTITY.legalForm[language]}`,
             `Registered office: ${LEGAL_IDENTITY.registeredOffice[language]}`,
             `SIREN / SIRET: ${LEGAL_IDENTITY.sirenOrSiret[language]}`,
+            `VAT number: ${LEGAL_IDENTITY.vatNumber[language]}`,
             `Contact email: ${CONTACT_DETAILS.email}`,
             `Contact phone number: ${CONTACT_DETAILS.phoneDisplay}`,
-            `Privacy contact / DPO: ${LEGAL_IDENTITY.privacyContact[language]}`,
           ],
         },
         {
@@ -84,7 +62,7 @@ export default function PrivacyPage() {
             'Data is intended only for persons authorised within RG Auto Conseil and, where strictly necessary, for technical service providers involved in hosting, maintenance or message routing.',
             'At the date of this policy, no online payment service, customer account area, newsletter service, live chat service or advertising pixel has been identified on the website.',
           ],
-          list: ['Internal recipient: RG Auto Conseil', `Hosting provider: ${LEGAL_IDENTITY.hostName[language]}`, 'Integrated mapping service: Google Maps'],
+          list: ['Internal recipient: RG Auto Conseil', `Hosting provider: ${LEGAL_IDENTITY.hostLegalEntity[language]}`, 'Integrated mapping service: Google Maps'],
         },
         {
           label: 'Retention',
@@ -140,116 +118,94 @@ export default function PrivacyPage() {
       ]
     : [
         {
-          label: 'Introduction',
-          title: 'À propos de cette politique',
-          paragraphs: [
-            `La présente politique de confidentialité explique comment RG Auto Conseil traite les données personnelles collectées via le site ${LEGAL_IDENTITY.siteUrl}.`,
-            'Elle s’applique aux données transmises par les formulaires de contact, aux données nécessaires au fonctionnement technique du site et aux éventuelles données collectées lors de l’affichage de contenus tiers.',
-          ],
-        },
-        {
-          label: 'Pré-publication',
-          title: 'Points à valider avant mise en ligne',
-          paragraphs: [
-            'Avant la publication définitive du site, vérifiez les informations du responsable du traitement, de l’hébergeur et du contact vie privée ou DPO s’il en existe un.',
-          ],
-          list: [
-            'Identité juridique du responsable du traitement',
-            'Forme juridique et siège social',
-            'SIREN / SIRET et immatriculation',
-            "Coordonnées complètes de l'hébergeur",
-            'Contact vie privée / DPO si applicable',
-          ],
-        },
-        {
           label: 'Responsable',
           title: 'Responsable du traitement',
           list: [
             'Le responsable du traitement est RG Auto Conseil.',
-            `Identité juridique : ${LEGAL_IDENTITY.publisherName[language]}`,
+            `Identite juridique : ${LEGAL_IDENTITY.publisherName[language]}`,
             `Forme juridique : ${LEGAL_IDENTITY.legalForm[language]}`,
-            `Siège social : ${LEGAL_IDENTITY.registeredOffice[language]}`,
+            `Siege social : ${LEGAL_IDENTITY.registeredOffice[language]}`,
             `SIREN / SIRET : ${LEGAL_IDENTITY.sirenOrSiret[language]}`,
+            `TVA intracommunautaire : ${LEGAL_IDENTITY.vatNumber[language]}`,
             `Adresse email de contact : ${CONTACT_DETAILS.email}`,
-            `Téléphone : ${CONTACT_DETAILS.phoneDisplay}`,
-            `Contact vie privée / DPO : ${LEGAL_IDENTITY.privacyContact[language]}`,
+            `Telephone : ${CONTACT_DETAILS.phoneDisplay}`,
           ],
         },
         {
           label: 'Collecte',
-          title: 'Données collectées',
+          title: 'Donnees collectees',
           paragraphs: [
-            'Lorsque vous utilisez les formulaires du site, les données suivantes peuvent être collectées : nom, adresse email, numéro de téléphone, type de demande, informations sur le véhicule concerné et contenu libre du message.',
-            'Des données techniques peuvent également être traitées afin d’assurer le bon fonctionnement et la sécurité du site, notamment l’adresse IP, les journaux techniques et la préférence de langue stockée localement sur votre terminal.',
-            'Lors de l’affichage du module Google Maps intégré, Google peut également collecter des données de navigation selon sa propre politique de confidentialité.',
+            'Lorsque vous utilisez les formulaires du site, les donnees suivantes peuvent etre collectees : nom, adresse email, numero de telephone, type de demande, informations sur le vehicule concerne et contenu libre du message.',
+            "Des donnees techniques peuvent egalement etre traitees afin d'assurer le bon fonctionnement et la securite du site, notamment l'adresse IP, les journaux techniques et la preference de langue stockee localement sur votre terminal.",
+            "Lors de l'affichage du module Google Maps integre, Google peut egalement collecter des donnees de navigation selon sa propre politique de confidentialite.",
           ],
         },
         {
-          label: 'Finalités',
-          title: 'Finalités et bases légales',
+          label: 'Finalites',
+          title: 'Finalites et bases legales',
           paragraphs: [
-            'Les données personnelles sont traitées afin de répondre aux demandes de contact, qualifier le besoin exprimé par le visiteur et organiser une relation précontractuelle liée aux prestations de RG Auto Conseil.',
-            'Les bases légales utilisées sont les mesures précontractuelles prises à votre demande, l’intérêt légitime de l’exploitant pour la sécurité et le bon fonctionnement du site, et le consentement lorsque l’utilisation d’un traceur y est soumise.',
+            'Les donnees personnelles sont traitees afin de repondre aux demandes de contact, qualifier le besoin exprime par le visiteur et organiser une relation precontractuelle liee aux prestations de RG Auto Conseil.',
+            "Les bases legales utilisees sont les mesures precontractuelles prises a votre demande, l'interet legitime de l'exploitant pour la securite et le bon fonctionnement du site, et le consentement lorsque l'utilisation d'un traceur y est soumise.",
           ],
         },
         {
           label: 'Destinataires',
-          title: 'Destinataires des données',
+          title: 'Destinataires des donnees',
           paragraphs: [
-            'Les données sont destinées uniquement aux personnes habilitées au sein de RG Auto Conseil et, lorsque cela est strictement nécessaire, aux prestataires techniques intervenant dans l’hébergement, la maintenance ou l’acheminement des messages.',
-            'À la date de rédaction de cette politique, aucun service de paiement en ligne, espace client, newsletter, chat en direct ou pixel publicitaire n’a été identifié sur le site.',
+            "Les donnees sont destinees uniquement aux personnes habilitees au sein de RG Auto Conseil et, lorsque cela est strictement necessaire, aux prestataires techniques intervenant dans l'hebergement, la maintenance ou l'acheminement des messages.",
+            "A la date de redaction de cette politique, aucun service de paiement en ligne, espace client, newsletter, chat en direct ou pixel publicitaire n'a ete identifie sur le site.",
           ],
-          list: ['Destinataire interne : RG Auto Conseil', `Prestataire d’hébergement : ${LEGAL_IDENTITY.hostName[language]}`, 'Service de cartographie intégré : Google Maps'],
+          list: ['Destinataire interne : RG Auto Conseil', `Prestataire d'hebergement : ${LEGAL_IDENTITY.hostLegalEntity[language]}`, 'Service de cartographie integre : Google Maps'],
         },
         {
           label: 'Conservation',
-          title: 'Durées de conservation',
+          title: 'Durees de conservation',
           paragraphs: [
-            'Les données transmises via les formulaires de contact sont conservées pendant le temps nécessaire au traitement de la demande, puis peuvent être archivées pendant une durée maximale de trois ans à compter du dernier contact lorsque la demande n’aboutit pas à une relation contractuelle.',
-            'La préférence de langue stockée localement est conservée sur le terminal jusqu’à sa modification par l’utilisateur ou sa suppression via les réglages du navigateur.',
-            `Les journaux techniques, lorsqu’ils existent, sont conservés pendant la durée strictement nécessaire à la sécurité et à la continuité du service, sous réserve des règles appliquées par l’hébergeur ${LEGAL_IDENTITY.hostName[language]}.`,
+            "Les donnees transmises via les formulaires de contact sont conservees pendant le temps necessaire au traitement de la demande, puis peuvent etre archivees pendant une duree maximale de trois ans a compter du dernier contact lorsque la demande n'aboutit pas a une relation contractuelle.",
+            "La preference de langue stockee localement est conservee sur le terminal jusqu'a sa modification par l'utilisateur ou sa suppression via les reglages du navigateur.",
+            `Les journaux techniques, lorsqu'ils existent, sont conserves pendant la duree strictement necessaire a la securite et a la continuite du service, sous reserve des regles appliquees par l'hebergeur ${LEGAL_IDENTITY.hostName[language]}.`,
           ],
         },
         {
           label: 'Cookies',
           title: 'Cookies et traceurs',
           paragraphs: [
-            'Le site utilise actuellement un stockage local à finalité fonctionnelle afin de mémoriser la langue sélectionnée.',
-            'Le module Google Maps intégré est susceptible de déposer des cookies ou de collecter des données de navigation lors de son affichage. Si un bandeau de gestion du consentement est mis en place sur le site, il doit permettre d’accepter ou de refuser les traceurs soumis à consentement préalable.',
-            'Aucun outil de mesure d’audience ni traceur marketing n’a été identifié dans la version actuelle du site.',
+            'Le site utilise actuellement un stockage local a finalite fonctionnelle afin de memoriser la langue selectionnee.',
+            "Le module Google Maps integre est susceptible de deposer des cookies ou de collecter des donnees de navigation lors de son affichage. Si un bandeau de gestion du consentement est mis en place sur le site, il doit permettre d'accepter ou de refuser les traceurs soumis a consentement prealable.",
+            "Aucun outil de mesure d'audience ni traceur marketing n'a ete identifie dans la version actuelle du site.",
           ],
         },
         {
           label: 'Transferts',
-          title: 'Transferts hors Union européenne',
+          title: 'Transferts hors Union europeenne',
           paragraphs: [
-            'L’utilisation de Google Maps peut impliquer des traitements en dehors de l’Union européenne. Le cas échéant, il appartient au prestataire concerné de mettre en œuvre les garanties prévues par la réglementation applicable.',
-            'Aucun autre transfert hors Union européenne n’a été identifié dans la version actuelle du site, sous réserve de la configuration d’hébergement et des outils effectivement utilisés en production.',
+            "L'utilisation de Google Maps peut impliquer des traitements en dehors de l'Union europeenne. Le cas echeant, il appartient au prestataire concerne de mettre en oeuvre les garanties prevues par la reglementation applicable.",
+            "Aucun autre transfert hors Union europeenne n'a ete identifie dans la version actuelle du site, sous reserve de la configuration d'hebergement et des outils effectivement utilises en production.",
           ],
         },
         {
-          label: 'Sécurité',
-          title: 'Sécurité des données',
+          label: 'Securite',
+          title: 'Securite des donnees',
           paragraphs: [
-            'RG Auto Conseil met en œuvre des mesures techniques et organisationnelles adaptées afin de limiter les risques d’accès non autorisé, de perte, d’altération ou de divulgation des données personnelles.',
-            'Ces mesures doivent rester cohérentes avec la configuration réelle d’hébergement, de maintenance et d’acheminement des messages utilisée au moment de la mise en ligne.',
+            "RG Auto Conseil met en oeuvre des mesures techniques et organisationnelles adaptees afin de limiter les risques d'acces non autorise, de perte, d'alteration ou de divulgation des donnees personnelles.",
+            "Ces mesures doivent rester coherentes avec la configuration reelle d'hebergement, de maintenance et d'acheminement des messages utilisee au moment de la mise en ligne.",
           ],
         },
         {
           label: 'Droits',
           title: 'Vos droits',
           paragraphs: [
-            'Vous disposez, dans les conditions prévues par la réglementation applicable, d’un droit d’accès, de rectification, d’effacement, de limitation du traitement et d’opposition lorsque celui-ci est applicable.',
-            'Lorsque le traitement repose sur votre consentement, vous pouvez le retirer à tout moment sans remettre en cause la licéité du traitement effectué avant ce retrait.',
+            "Vous disposez, dans les conditions prevues par la reglementation applicable, d'un droit d'acces, de rectification, d'effacement, de limitation du traitement et d'opposition lorsque celui-ci est applicable.",
+            'Lorsque le traitement repose sur votre consentement, vous pouvez le retirer a tout moment sans remettre en cause la licéité du traitement effectue avant ce retrait.',
           ],
         },
         {
           label: 'Exercice',
           title: 'Exercer vos droits',
           paragraphs: [
-            `Pour exercer vos droits ou poser une question sur le traitement de vos données personnelles, vous pouvez écrire à ${CONTACT_DETAILS.email}.`,
-            'Si, après avoir contacté RG Auto Conseil, vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.',
-            'La présente politique peut être mise à jour à tout moment afin de tenir compte d’évolutions légales, techniques ou opérationnelles affectant le site.',
+            `Pour exercer vos droits ou poser une question sur le traitement de vos donnees personnelles, vous pouvez ecrire a ${CONTACT_DETAILS.email}.`,
+            'Si, apres avoir contacte RG Auto Conseil, vous estimez que vos droits ne sont pas respectes, vous pouvez adresser une reclamation a la CNIL.',
+            "La presente politique peut etre mise a jour a tout moment afin de tenir compte d'evolutions legales, techniques ou operationnelles affectant le site.",
           ],
         },
       ];

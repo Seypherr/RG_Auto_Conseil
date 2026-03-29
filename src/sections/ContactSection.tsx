@@ -7,7 +7,6 @@ import { contactSectionContent } from '../data/contactContent';
 import { scrollToAnchor } from '../utils/anchorNavigation';
 import { getLocaleContent } from '../utils/getLocaleContent';
 import { FORMSPREE_ENDPOINT, submitToFormspree } from '../utils/formspree';
-import { scrollWindowToTop } from '../utils/scrollMotion';
 
 export default function ContactSection() {
   const { language } = useSite();
@@ -34,7 +33,6 @@ export default function ContactSection() {
 
     try {
       await submitToFormspree(formData);
-      await scrollWindowToTop();
       setSubmission({
         kind: 'quote',
         reference,

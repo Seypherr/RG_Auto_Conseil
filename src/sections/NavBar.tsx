@@ -2,6 +2,7 @@
 import { useLocation } from 'react-router-dom';
 import AnchorLink from '../components/AnchorLink';
 import { useSite } from '../context/SiteContext';
+import { BRAND_ASSETS } from '../data/siteConfig';
 import useIsMobileView from '../hooks/useIsMobileView';
 
 const navItems = {
@@ -46,8 +47,8 @@ export default function NavBar() {
     return (
       <>
         <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="mobile-nav">
-          <AnchorLink className="mobile-nav-brand" to="/">
-            RG Auto Conseil<span>.</span>
+          <AnchorLink aria-label="RG Auto Conseil" className="mobile-nav-brand" to="/">
+            <img alt="RG Auto Conseil" className="mobile-nav-brand-logo" decoding="async" height="64" src={BRAND_ASSETS.logo} width="300" />
           </AnchorLink>
 
           <div className="mobile-nav-actions">
@@ -94,8 +95,8 @@ export default function NavBar() {
 
   return (
     <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="top-nav">
-      <AnchorLink className="nav-brand gs-reveal" to="/">
-        RG Auto Conseil.
+      <AnchorLink aria-label="RG Auto Conseil" className="nav-brand gs-reveal" to="/">
+        <img alt="RG Auto Conseil" className="nav-brand-logo" decoding="async" fetchpriority="high" height="64" src={BRAND_ASSETS.logo} width="300" />
       </AnchorLink>
 
       <div className="nav-links gs-reveal" id="site-navigation">

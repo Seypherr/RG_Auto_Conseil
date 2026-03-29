@@ -3,7 +3,7 @@ import BarcodeMark from '../components/BarcodeMark';
 import { FacebookIcon, InstagramIcon } from '../components/IconSet';
 import { useSite } from '../context/SiteContext';
 import { footerContent } from '../data/footerContent';
-import { BRAND, CONTACT_DETAILS, SOCIAL_LINKS } from '../data/siteConfig';
+import { BRAND, BRAND_ASSETS, CONTACT_DETAILS, SOCIAL_LINKS } from '../data/siteConfig';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const socialIconMap = {
@@ -26,7 +26,9 @@ export default function Footer() {
       <div className="content-shell footer-shell">
         <div className="footer-grid">
           <div className="footer-column footer-column--brand">
-            <div className="footer-brand">{BRAND.name}</div>
+            <div className="footer-brand">
+              <img alt="RG Auto Conseil" className="footer-brand-logo" decoding="async" height="72" loading="lazy" src={BRAND_ASSETS.logo} width="336" />
+            </div>
             <p className="footer-copy">{content.copy}</p>
           </div>
 
@@ -89,7 +91,7 @@ export default function Footer() {
             <div className="footer-credit">{BRAND.creator[language === 'en' ? 'en' : 'fr']}</div>
           </div>
           <div className="footer-sys">
-            <BarcodeMark code="SYS-END" compact variant="barcode" />
+            <BarcodeMark code="SYS-END" compact />
             <span className="footer-sys-label">SYS-END</span>
           </div>
         </div>
