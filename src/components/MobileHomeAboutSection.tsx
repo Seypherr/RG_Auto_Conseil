@@ -35,10 +35,14 @@ export default function MobileHomeAboutSection({ language }: MobileHomeAboutSect
 
       <article className="mobile-about-portrait">
         <img
-          alt={language === 'fr' ? 'Portrait de Gaëtan Roblin, fondateur de RG Auto Conseil' : 'Portrait of Gaëtan Roblin, founder of RG Auto Conseil'}
+          alt={
+            language === 'fr'
+              ? 'Portrait de Gaëtan Roblin, fondateur de RG Auto Conseil et conseiller automobile indépendant'
+              : 'Portrait of Gaëtan Roblin, founder of RG Auto Conseil and independent automotive advisor'
+          }
           decoding="async"
           height="960"
-          loading="eager"
+          loading="lazy"
           src={rgMedia.aboutPortrait}
           width="1280"
         />

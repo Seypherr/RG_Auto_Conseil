@@ -5,11 +5,11 @@ export function getHomeSeo(language: string, image: unknown) {
 
   return {
     title: isEnglish
-      ? 'Independent automotive advice in Provence-Alpes-Côte d’Azur'
-      : "Conseil automobile indépendant en Provence-Alpes-Côte d'Azur",
+      ? "Independent automotive advice in Provence-Alpes-Cote d'Azur"
+      : "Conseil automobile independant en Provence-Alpes-Cote d'Azur",
     description: isEnglish
-      ? 'RG Auto Conseil helps clients secure a vehicle purchase, inspect a used car and improve a vehicle with clear, independent guidance in Provence-Alpes-Côte d’Azur.'
-      : "RG Auto Conseil accompagne l'achat de véhicule, l'inspection avant achat et l'amélioration discrète de voiture avec un conseil automobile indépendant en Provence-Alpes-Côte d'Azur.",
+      ? "RG Auto Conseil helps clients secure a vehicle purchase, inspect a used car and improve a vehicle with clear, independent guidance in Provence-Alpes-Cote d'Azur."
+      : "RG Auto Conseil accompagne l'achat de vehicule, l'inspection avant achat et l'amelioration discrete de voiture avec un conseil automobile independant en Provence-Alpes-Cote d'Azur.",
     path: '/',
     image,
     type: 'website',
@@ -30,7 +30,7 @@ export function getHomeSeo(language: string, image: unknown) {
         name: isEnglish ? 'Home' : 'Accueil',
         description: isEnglish
           ? 'Independent automotive advice homepage focused on vehicle purchase, pre-purchase inspection and discreet improvement.'
-          : "Page d'accueil de conseil automobile dédiée à l'achat, à l'inspection avant achat et à l'amélioration discrète de véhicule.",
+          : "Page d'accueil de conseil automobile dediee a l'achat, a l'inspection avant achat et a l'amelioration discrete de vehicule.",
         isPartOf: { '@id': `${SITE_URL}/#website` },
         about: { '@id': `${SITE_URL}/#organization` },
       },

@@ -19,7 +19,7 @@ RewriteRule ^ index.html [L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; connect-src 'self' https:; img-src 'self' data: https:; font-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com https://www.google.fr https://maps.google.fr; upgrade-insecure-requests; block-all-mixed-content"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://formspree.io; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https:; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https:; font-src 'self' data:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com https://www.google.fr https://maps.google.fr https://www.googletagmanager.com; upgrade-insecure-requests; block-all-mixed-content"
 
   <FilesMatch "\.(html?)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"

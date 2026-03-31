@@ -1,7 +1,7 @@
 node_modules/
 dist/
 dist.zip
-.vercel
+.vercel/
 .parcel-cache/
 *.log
 tmp/
@@ -13,5 +13,3 @@ CON
 test-results/
 *.png
 lighthouse-*.json
-
-.vercel

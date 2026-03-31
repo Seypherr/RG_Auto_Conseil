@@ -7,7 +7,7 @@ import useHomeSectionSnap from '../hooks/useHomeSectionSnap';
 import useIsMobileView from '../hooks/useIsMobileView';
 import MobileHomePage from '../components/MobileHomePage';
 
-const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp', import.meta.url).toString();
+const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=1440', import.meta.url).toString();
 const AboutSection = lazy(() => import('../sections/AboutSection'));
 const ServicesSection = lazy(() => import('../sections/ServicesSection'));
 const ProcessSection = lazy(() => import('../sections/ProcessSection'));

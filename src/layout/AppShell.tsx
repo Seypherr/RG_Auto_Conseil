@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import NavBar from '../sections/NavBar';
 import Footer from '../sections/Footer';
@@ -11,6 +11,14 @@ export default function AppShell() {
   const { language } = useSite();
   const isMobile = useIsMobileView();
   const shouldRunHomeIntro = location.pathname === '/' && !isMobile;
+
+  useLayoutEffect(() => {
+    document.body.classList.add('app-ready');
+
+    return () => {
+      document.body.classList.remove('app-ready');
+    };
+  }, []);
 
   useEffect(() => {
     if (!location.hash) {

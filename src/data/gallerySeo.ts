@@ -6,10 +6,10 @@ export function getGallerySeo(language: string, image: unknown) {
   const content = getLocaleBranch(galleryPageContent, language);
 
   return {
-    title: isEnglish ? 'Automotive gallery, before and after vehicle projects' : 'Galerie automobile, réalisations et avant/après',
+    title: isEnglish ? 'Automotive gallery, before and after vehicle projects' : 'Galerie automobile, realisations et avant/apres',
     description: isEnglish
       ? 'Browse automotive projects completed by RG Auto Conseil, including before/after examples, purchase support and discreet vehicle upgrades.'
-      : "Parcourez les réalisations RG Auto Conseil avec des exemples avant/après, des projets d'achat et des améliorations de véhicule.",
+      : "Parcourez les realisations RG Auto Conseil avec des exemples avant/apres, des projets d'achat et des ameliorations de vehicule.",
     path: '/gallery',
     image,
     type: 'article',
@@ -21,7 +21,7 @@ export function getGallerySeo(language: string, image: unknown) {
       {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: isEnglish ? 'Project gallery' : 'Galerie de réalisations',
+        name: isEnglish ? 'Project gallery' : 'Galerie de realisations',
         url: `${SITE_URL}/gallery`,
         hasPart: content.missions.map((mission) => ({
           '@type': 'CreativeWork',

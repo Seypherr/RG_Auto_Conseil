@@ -6,11 +6,16 @@ import { useSite } from '../context/SiteContext';
 import { heroSectionContent } from '../data/homeContent';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
-const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp', import.meta.url).toString();
+const heroImageDesktop = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=1440', import.meta.url).toString();
+const heroImageMobile = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=960', import.meta.url).toString();
 
 export default function HeroSection() {
   const { language } = useSite();
   const content = getLocaleContent(heroSectionContent, language);
+  const heroImageAlt =
+    language === 'fr'
+      ? 'RG Auto Conseil, conseil automobile indépendant avec véhicule premium dans un environnement haut de gamme'
+      : 'RG Auto Conseil, independent automotive advice with a premium vehicle in a high-end environment';
   const seoHeading =
     language === 'en'
       ? 'Independent automotive advice for vehicle purchase, inspection and discreet vehicle improvement'
@@ -54,12 +59,14 @@ export default function HeroSection() {
         <div className="hero-image-wrapper gs-img-scale">
           <div aria-hidden="true" className="hero-image-overlay" />
           <img
-            alt={content.imageAlt}
+            alt={heroImageAlt}
             className="hero-image"
             decoding="async"
             fetchpriority="high"
             height="1200"
-            src={heroImage}
+            sizes="(max-width: 1100px) 92vw, 62vw"
+            src={heroImageDesktop}
+            srcSet={`${heroImageMobile} 960w, ${heroImageDesktop} 1440w`}
             width="1600"
           />
         </div>

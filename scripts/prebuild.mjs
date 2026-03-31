@@ -15,6 +15,14 @@ async function removeDistWithRetry(targetPath) {
       fs.rmSync(targetPath, { recursive: true, force: true, maxRetries: 3, retryDelay: 80 });
       return;
     } catch (error) {
+      const isParcelCacheLock =
+        targetPath === parcelCacheDir && (error?.code === 'EBUSY' || error?.code === 'EPERM');
+
+      if (isParcelCacheLock) {
+        console.warn(`[prebuild] Parcel cache cleanup skipped because it is locked: ${targetPath}`);
+        return;
+      }
+
       if (attempt === 4) {
         throw error;
       }

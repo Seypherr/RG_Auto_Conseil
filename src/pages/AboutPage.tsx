@@ -26,6 +26,20 @@ export default function AboutPage() {
   const { language } = useSite();
   const isMobile = useIsMobileView();
   const content = getLocaleContent(aboutPageContent, language);
+  const biographyImageAlt =
+    language === 'fr'
+      ? 'Portrait de Gaëtan Roblin, fondateur de RG Auto Conseil et conseiller automobile indépendant'
+      : 'Portrait of Gaëtan Roblin, founder of RG Auto Conseil and independent automotive advisor';
+  const caseStudyAlts =
+    language === 'fr'
+      ? [
+          'RG Auto Conseil, accompagnement automobile pour sécuriser un achat de véhicule',
+          'RG Auto Conseil, amélioration sobre d’un véhicule avec ajout de caméra de recul',
+        ]
+      : [
+          'RG Auto Conseil, automotive guidance to secure a vehicle purchase',
+          'RG Auto Conseil, tasteful vehicle upgrade with rear camera installation',
+        ];
 
   return (
     <div className="route-page route-page--about">
@@ -39,7 +53,7 @@ export default function AboutPage() {
               cardTitle={content.biographyBadge}
               chips={content.biographyFacts.map((fact) => fact.value)}
               copy={`${content.biographyIntro} ${content.biographyCopy}`}
-              imageAlt={content.biographyBadge}
+              imageAlt={biographyImageAlt}
               imageSrc={rgMedia.aboutPortrait}
               label={content.biographyLabel}
               primaryCta={content.ctaButton}
@@ -78,7 +92,7 @@ export default function AboutPage() {
 
             <article className="about-biography-visual gs-scroll-card">
               <img
-                alt={language === 'en' ? 'Portrait of Gaëtan Roblin' : 'Portrait de Gaëtan Roblin'}
+                alt={biographyImageAlt}
                 className="about-biography-image"
                 decoding="async"
                 fetchpriority="high"
@@ -149,7 +163,7 @@ export default function AboutPage() {
                 <>
                   <div className="about-case-media">
                     <img
-                      alt={`${study.title} - ${study.metaPrimaryValue}`}
+                      alt={caseStudyAlts[index] ?? `RG Auto Conseil - ${study.title} - ${study.metaPrimaryValue}`}
                       decoding="async"
                       height="900"
                       loading="lazy"

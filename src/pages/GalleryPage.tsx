@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/gallery-page.css';
 import MobilePageHero from '../components/MobilePageHero';
-import Seo from '../components/Seo';
 import SectionLabel from '../components/SectionLabel';
+import Seo from '../components/Seo';
 import { useSite } from '../context/SiteContext';
 import { galleryPageContent } from '../data/galleryPageContent';
 import { getGallerySeo } from '../data/gallerySeo';
 import { rgMedia } from '../data/rgMedia';
 import useIsMobileView from '../hooks/useIsMobileView';
+import '../styles/gallery-page.css';
 import { getLocaleContent } from '../utils/getLocaleContent';
 
 const missionImages = [
@@ -22,27 +22,59 @@ export default function GalleryPage() {
   const { language } = useSite();
   const isMobile = useIsMobileView();
   const [activeMissionIndex, setActiveMissionIndex] = useState(0);
-  const mobileMissionScrollerRef = useRef(null);
+  const mobileMissionScrollerRef = useRef<HTMLDivElement | null>(null);
   const content = getLocaleContent(galleryPageContent, language);
+  const galleryHeroImageAlt =
+    language === 'fr'
+      ? 'RG Auto Conseil, intérieur de véhicule illustrant une réalisation automobile premium'
+      : 'RG Auto Conseil, vehicle interior highlighting a premium automotive project';
+  const beforeImageAlts =
+    language === 'fr'
+      ? [
+          'RG Auto Conseil, système d’origine avant montage CarPlay',
+          'RG Auto Conseil, écran d’origine avant installation de caméra de recul',
+          'RG Auto Conseil, véhicule repéré avant conseil avant achat',
+          'RG Auto Conseil, première observation utilisée pour une analyse automobile',
+        ]
+      : [
+          'RG Auto Conseil, original system before CarPlay retrofit',
+          'RG Auto Conseil, original screen before rear camera installation',
+          'RG Auto Conseil, spotted vehicle before pre-purchase advice',
+          'RG Auto Conseil, initial view used for a vehicle analysis',
+        ];
+  const afterImageAlts =
+    language === 'fr'
+      ? [
+          'RG Auto Conseil, interface CarPlay installée après intervention',
+          'RG Auto Conseil, affichage caméra de recul après installation',
+          'RG Auto Conseil, décision d’achat sécurisée après conseil automobile',
+          'RG Auto Conseil, lecture technique détaillée après analyse automobile',
+        ]
+      : [
+          'RG Auto Conseil, CarPlay interface installed after the upgrade',
+          'RG Auto Conseil, rear camera display after installation',
+          'RG Auto Conseil, secured purchase decision after automotive advice',
+          'RG Auto Conseil, detailed technical reading after vehicle analysis',
+        ];
 
   const mobileMissionSummaries =
     language === 'fr'
       ? [
-          'Un achat plus lisible et plus rassurant.',
-          'Un usage modernisé, simple et cohérent.',
-          "Une annonce mieux comprise avant d’aller plus loin.",
-          'Une sélection plus juste selon le besoin réel.',
+          'Une installation CarPlay plus moderne, plus fluide et plus agreable au quotidien.',
+          'Une camera de recul qui apporte plus de confort et de serenite a chaque manoeuvre.',
+          "Un accompagnement avant achat pour verifier les bons points avant de s'engager.",
+          'Une analyse automobile plus claire pour avancer avec une vraie lecture technique.',
         ]
       : [
-          'A clearer and more reassuring purchase path.',
-          'A modernised, simpler and more coherent daily use.',
-          'A listing better understood before moving forward.',
-          'A more relevant selection based on the real need.',
+          'A more modern CarPlay setup with a smoother and clearer daily experience.',
+          'A rear camera installation that brings more confidence to every manoeuvre.',
+          'Guidance before purchase to review the right points before committing.',
+          'A clearer automotive analysis to move forward with a proper technical reading.',
         ];
 
-  function handleMissionScroll(event) {
-    const container = event.currentTarget;
-    const cards = Array.from(container.children);
+  function handleMissionScroll(event: Event) {
+    const container = event.currentTarget as HTMLDivElement;
+    const cards = Array.from(container.children) as HTMLElement[];
 
     if (!cards.length) {
       return;
@@ -65,9 +97,9 @@ export default function GalleryPage() {
     setActiveMissionIndex(closestIndex);
   }
 
-  function handleMissionDotClick(index) {
+  function handleMissionDotClick(index: number) {
     const container = mobileMissionScrollerRef.current;
-    const targetCard = container?.children?.[index];
+    const targetCard = container?.children?.[index] as HTMLElement | undefined;
 
     if (!container || !targetCard) {
       return;
@@ -96,7 +128,7 @@ export default function GalleryPage() {
               cardLabel={content.heroCardLabel}
               cardTitle={content.heroCardTitle}
               copy={content.intro}
-              imageAlt={content.heroCardTitle}
+              imageAlt={galleryHeroImageAlt}
               imageSrc={rgMedia.porscheInteriorWide}
               label={content.label}
               primaryCta={content.contactCta}
@@ -111,7 +143,7 @@ export default function GalleryPage() {
                 <SectionLabel className="gs-scroll-text-up">{content.label}</SectionLabel>
               </div>
               <h1 className="sr-only">{content.title.join(' ')}</h1>
-              {content.title.map((line, index) => (
+              {content.title.map((line: string, index: number) => (
                 <div className="hide-overflow" key={line} style={{ display: 'block', marginTop: index === 0 ? '1rem' : 0 }}>
                   <span className="editorial-title gallery-hero-title gs-scroll-title-up">{line}</span>
                 </div>
@@ -121,7 +153,7 @@ export default function GalleryPage() {
 
             <article className="gallery-mission-highlight gs-scroll-card">
               <img
-                alt={content.heroCardTitle}
+                alt={galleryHeroImageAlt}
                 className="gallery-mission-highlight-image"
                 decoding="async"
                 fetchpriority="high"
@@ -150,7 +182,7 @@ export default function GalleryPage() {
           {isMobile ? (
             <div className="mobile-gallery-missions">
               <div className="mobile-gallery-mission-scroller" onScroll={handleMissionScroll} ref={mobileMissionScrollerRef}>
-                {content.missions.map((mission, index) => {
+                {content.missions.map((mission: (typeof content.missions)[number], index: number) => {
                   const imageSet = missionImages[index];
 
                   return (
@@ -170,10 +202,10 @@ export default function GalleryPage() {
                       <div className="mobile-gallery-mission-compare">
                         <div className="mobile-gallery-mission-pane">
                           <img
-                            alt={`${mission.vehicle} - ${mission.beforeLabel}`}
+                            alt={beforeImageAlts[index] ?? `RG Auto Conseil - ${mission.vehicle} - ${mission.beforeLabel}`}
                             decoding="async"
                             height="900"
-                            loading="eager"
+                            loading={index === 0 ? 'eager' : 'lazy'}
                             src={imageSet.beforeImage}
                             width="1200"
                           />
@@ -184,15 +216,15 @@ export default function GalleryPage() {
                         </div>
                         <div className="mobile-gallery-mission-pane">
                           <img
-                            alt={`${mission.vehicle} - ${mission.afterLabel}`}
+                            alt={afterImageAlts[index] ?? `RG Auto Conseil - ${mission.vehicle} - ${mission.afterLabel}`}
                             decoding="async"
                             height="900"
-                            loading="eager"
+                            loading={index === 0 ? 'eager' : 'lazy'}
                             src={imageSet.afterImage}
                             width="1200"
                           />
                           <div className="mobile-gallery-mission-pane-copy">
-                            <strong>{language === 'fr' ? 'Après' : 'After'}</strong>
+                            <strong>{language === 'fr' ? 'Apres' : 'After'}</strong>
                             <span>{mission.afterLabel}</span>
                           </div>
                         </div>
@@ -202,8 +234,12 @@ export default function GalleryPage() {
                 })}
               </div>
 
-              <div className="mobile-dots mobile-gallery-dots" aria-label={language === 'fr' ? 'Navigation des réalisations' : 'Projects navigation'}>
-                {content.missions.map((mission, index) => (
+              <div
+                aria-label={language === 'fr' ? 'Navigation des realisations' : 'Projects navigation'}
+                className="mobile-dots mobile-gallery-dots"
+                role="group"
+              >
+                {content.missions.map((mission: (typeof content.missions)[number], index: number) => (
                   <button
                     aria-label={`${language === 'fr' ? 'Voir le projet' : 'View project'} ${mission.id}`}
                     aria-pressed={index === activeMissionIndex}
@@ -217,7 +253,7 @@ export default function GalleryPage() {
             </div>
           ) : (
             <div className="gallery-missions-grid">
-              {content.missions.map((mission, index) => (
+              {content.missions.map((mission: (typeof content.missions)[number], index: number) => (
                 <article className={`gallery-mission-card gs-scroll-card gallery-mission-card--${(index % 3) + 1}`} id={`project-${mission.id}`} key={mission.id}>
                   <div className="gallery-mission-card-head">
                     <div>
@@ -235,7 +271,7 @@ export default function GalleryPage() {
                   <div className="gallery-mission-before-after">
                     <div className="gallery-mission-pane">
                       <img
-                        alt={`${mission.vehicle} - ${mission.beforeLabel}`}
+                        alt={beforeImageAlts[index] ?? `RG Auto Conseil - ${mission.vehicle} - ${mission.beforeLabel}`}
                         decoding="async"
                         height="900"
                         loading="lazy"
@@ -246,7 +282,7 @@ export default function GalleryPage() {
                     </div>
                     <div className="gallery-mission-pane">
                       <img
-                        alt={`${mission.vehicle} - ${mission.afterLabel}`}
+                        alt={afterImageAlts[index] ?? `RG Auto Conseil - ${mission.vehicle} - ${mission.afterLabel}`}
                         decoding="async"
                         height="900"
                         loading="lazy"

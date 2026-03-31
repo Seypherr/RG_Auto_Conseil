@@ -189,7 +189,7 @@ export default function ContactPage() {
 
                 if (isDisabled) {
                   return (
-                    <span aria-disabled="true" className="social-icon-link is-disabled" key={social.name} title={social.name}>
+                    <span className="social-icon-link is-disabled" key={social.name} title={social.name}>
                       <Icon />
                     </span>
                   );

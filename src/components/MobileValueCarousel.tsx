@@ -105,7 +105,7 @@ export default function MobileValueCarousel({
         </div>
       </div>
 
-      <div className="mobile-dots mobile-value-dots" aria-label={ariaLabel}>
+      <div aria-label={ariaLabel} className="mobile-dots mobile-value-dots" role="group">
         {items.map((item, index) => (
           <button
             aria-label={getButtonLabel(item, index)}

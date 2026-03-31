@@ -95,7 +95,7 @@ export default function MobileHomeServicesSection({ language }: MobileHomeServic
         })}
       </div>
 
-      <div className="mobile-dots" aria-label={language === 'fr' ? 'Navigation des services' : 'Service navigation'}>
+      <div aria-label={language === 'fr' ? 'Navigation des services' : 'Service navigation'} className="mobile-dots" role="group">
         {servicesPage.services.map((service, index) => (
           <button
             aria-label={`${language === 'fr' ? 'Voir le service' : 'View service'} ${service.index}`}

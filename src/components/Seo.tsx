@@ -112,7 +112,7 @@ export default function Seo({
 
     upsertMeta('name', 'description', description);
     upsertMeta('name', 'robots', robots);
-    upsertMeta('name', 'author', 'Gaëtan Roblin');
+    upsertMeta('name', 'author', 'Ethan Porcaro');
     upsertMeta('name', 'publisher', SITE_NAME);
     upsertMeta('name', 'theme-color', '#080808');
     upsertMeta('property', 'og:type', type);

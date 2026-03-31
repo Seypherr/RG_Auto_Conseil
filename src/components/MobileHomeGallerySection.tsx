@@ -11,6 +11,16 @@ type MobileHomeGallerySectionProps = {
 
 export default function MobileHomeGallerySection({ language }: MobileHomeGallerySectionProps) {
   const content = getLocaleContent(galleryPageContent, language);
+  const mobileGalleryAlts =
+    language === 'fr'
+      ? [
+          'RG Auto Conseil, montage CarPlay avant après sur système multimédia automobile',
+          'RG Auto Conseil, installation de caméra de recul sur véhicule avant après',
+        ]
+      : [
+          'RG Auto Conseil, CarPlay retrofit before and after on an in-car multimedia system',
+          'RG Auto Conseil, rear camera installation before and after on a vehicle',
+        ];
 
   return (
     <section className="mobile-home-band mobile-home-band--surface mobile-home-band--plain mobile-home-band--gallery-left" id="galerie">
@@ -24,7 +34,7 @@ export default function MobileHomeGallerySection({ language }: MobileHomeGallery
         {content.missions.slice(0, 2).map((mission, index) => (
           <article className="mobile-gallery-card" key={mission.id}>
             <img
-              alt={`${mission.label} - ${mission.vehicle}`}
+              alt={mobileGalleryAlts[index] ?? `RG Auto Conseil - ${mission.label} - ${mission.vehicle}`}
               decoding="async"
               height="900"
               loading="lazy"

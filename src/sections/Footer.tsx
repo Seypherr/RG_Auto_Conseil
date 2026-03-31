@@ -27,7 +27,15 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-column footer-column--brand">
             <div className="footer-brand">
-              <img alt="RG Auto Conseil" className="footer-brand-logo" decoding="async" height="72" loading="lazy" src={BRAND_ASSETS.logo} width="336" />
+              <img
+                alt="Logo RG Auto Conseil, conseil automobile indépendant"
+                className="footer-brand-logo"
+                decoding="async"
+                height="72"
+                loading="lazy"
+                src={BRAND_ASSETS.logo}
+                width="336"
+              />
             </div>
             <p className="footer-copy">{content.copy}</p>
           </div>
@@ -52,7 +60,7 @@ export default function Footer() {
 
                 if (isDisabled) {
                   return (
-                    <span aria-disabled="true" className="footer-social-link is-disabled" key={social.name} title={social.name}>
+                    <span className="footer-social-link is-disabled" key={social.name} title={social.name}>
                       <Icon />
                     </span>
                   );

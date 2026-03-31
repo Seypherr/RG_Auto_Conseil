@@ -20,7 +20,7 @@ export default function ReviewCard({
     <article className={`review-card ${offsetClassName}`.trim()}>
       <div>
         {showStars ? (
-          <div aria-label={starsLabel} className="review-stars">
+          <div aria-label={starsLabel} className="review-stars" role="img">
             {Array.from({ length: starCount }).map((_, index) => (
               <StarIcon key={index} />
             ))}

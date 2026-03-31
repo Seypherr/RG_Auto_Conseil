@@ -30,7 +30,7 @@ export const MAP_LINKS = {
 };
 
 export const BRAND_ASSETS = {
-  logo: new URL('../../Photo_rg_auto_conseil/Logo_RG_Auto_Conseil.png', import.meta.url).toString(),
+  logo: new URL('../../Photo_rg_auto_conseil/RGLOGO.png', import.meta.url).toString(),
 };
 
 export const BRAND = {

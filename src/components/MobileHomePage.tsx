@@ -1,14 +1,17 @@
-import { Suspense, lazy } from 'react';
 import { ArrowRightIcon } from './IconSet';
+import MobileHomeAboutSection from './MobileHomeAboutSection';
+import MobileHomeGallerySection from './MobileHomeGallerySection';
+import MobileHomeServicesSection from './MobileHomeServicesSection';
 import { useSite } from '../context/SiteContext';
 
-const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp', import.meta.url).toString();
-const MobileHomeServicesSection = lazy(() => import('./MobileHomeServicesSection'));
-const MobileHomeAboutSection = lazy(() => import('./MobileHomeAboutSection'));
-const MobileHomeGallerySection = lazy(() => import('./MobileHomeGallerySection'));
+const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=960', import.meta.url).toString();
 
 export default function MobileHomePage() {
   const { language } = useSite();
+  const heroImageAlt =
+    language === 'fr'
+      ? 'RG Auto Conseil, conseil automobile indépendant avec véhicule premium dans un univers sobre'
+      : 'RG Auto Conseil, independent automotive advice with a premium vehicle in a refined setting';
 
   const heroTitleLines =
     language === 'fr'
@@ -39,11 +42,12 @@ export default function MobileHomePage() {
 
         <article className="mobile-home-visual">
           <img
-            alt={language === 'fr' ? 'Conseil automobile indépendant' : 'Independent automotive guidance'}
+            alt={heroImageAlt}
             className="mobile-home-visual-image"
             decoding="async"
             fetchpriority="high"
             height="1200"
+            sizes="92vw"
             src={heroImage}
             width="1600"
           />
@@ -55,17 +59,9 @@ export default function MobileHomePage() {
         </article>
       </section>
 
-      <Suspense fallback={null}>
-        <MobileHomeServicesSection language={language} />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <MobileHomeAboutSection language={language} />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <MobileHomeGallerySection language={language} />
-      </Suspense>
+      <MobileHomeServicesSection language={language} />
+      <MobileHomeAboutSection language={language} />
+      <MobileHomeGallerySection language={language} />
     </div>
   );
 }

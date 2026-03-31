@@ -48,7 +48,15 @@ export default function NavBar() {
       <>
         <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="mobile-nav">
           <AnchorLink aria-label="RG Auto Conseil" className="mobile-nav-brand" to="/">
-            <img alt="RG Auto Conseil" className="mobile-nav-brand-logo" decoding="async" height="64" src={BRAND_ASSETS.logo} width="300" />
+            <img
+              alt="Logo RG Auto Conseil, conseil automobile indépendant"
+              className="mobile-nav-brand-logo"
+              decoding="async"
+              height="64"
+              loading="eager"
+              src={BRAND_ASSETS.logo}
+              width="300"
+            />
           </AnchorLink>
 
           <div className="mobile-nav-actions">
@@ -96,7 +104,15 @@ export default function NavBar() {
   return (
     <nav aria-label={language === 'en' ? 'Primary navigation' : 'Navigation principale'} className="top-nav">
       <AnchorLink aria-label="RG Auto Conseil" className="nav-brand gs-reveal" to="/">
-        <img alt="RG Auto Conseil" className="nav-brand-logo" decoding="async" fetchpriority="high" height="64" src={BRAND_ASSETS.logo} width="300" />
+        <img
+          alt="Logo RG Auto Conseil, conseil automobile indépendant"
+          className="nav-brand-logo"
+          decoding="async"
+          height="64"
+          loading="eager"
+          src={BRAND_ASSETS.logo}
+          width="300"
+        />
       </AnchorLink>
 
       <div className="nav-links gs-reveal" id="site-navigation">

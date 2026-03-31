@@ -36,12 +36,12 @@ export function buildOrganizationSchema(language: string) {
     },
     serviceType: isEnglish
       ? ['Pre-purchase advice', 'Vehicle inspection', 'Vehicle sourcing', 'Discreet vehicle enhancement']
-      : ['Conseil avant achat', 'Inspection avant achat', 'Recherche de véhicule', 'Amélioration discrète de véhicule'],
+      : ['Conseil avant achat', 'Inspection avant achat', 'Recherche de vehicule', 'Amelioration discrete de vehicule'],
     sameAs: SOCIAL_LINKS.filter((item) => item.href).map((item) => item.href),
-    availableLanguage: isEnglish ? ['English', 'French'] : ['Français', 'English'],
+    availableLanguage: isEnglish ? ['English', 'French'] : ['Francais', 'English'],
     description: isEnglish
       ? 'Independent automotive advisory service specialising in vehicle purchase support, pre-purchase inspection and discreet vehicle enhancement.'
-      : "Conseil automobile indépendant spécialisé dans l'achat de véhicule, l'inspection avant achat et l'amélioration discrète de véhicules.",
+      : "Conseil automobile independant specialise dans l'achat de vehicule, l'inspection avant achat et l'amelioration discrete de vehicules.",
   };
 }
 

@@ -15,10 +15,10 @@ html {
   --page-bg: #000000;
   --bg: #030303;
   --text-primary: #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.45);
-  --text-soft: rgba(255, 255, 255, 0.6);
-  --label-color: rgba(255, 255, 255, 0.62);
-  --nav-link-color: rgba(255, 255, 255, 0.74);
+  --text-muted: rgba(255, 255, 255, 0.58);
+  --text-soft: rgba(255, 255, 255, 0.72);
+  --label-color: rgba(255, 255, 255, 0.76);
+  --nav-link-color: rgba(255, 255, 255, 0.84);
   --line-color: rgba(255, 255, 255, 0.12);
   --accent-glow: #ff7a1a;
   --accent-burnt: #ff7a1a;
@@ -50,7 +50,7 @@ html {
     0 22px 52px rgba(0, 0, 0, 0.28);
   --control-bg: rgba(255, 255, 255, 0.02);
   --control-border: rgba(255, 255, 255, 0.08);
-  --control-text: rgba(255, 255, 255, 0.72);
+  --control-text: rgba(255, 255, 255, 0.84);
   --control-active-bg: rgba(255, 255, 255, 0.1);
   --control-active-text: var(--text-primary);
   --button-border: var(--line-color);
@@ -68,7 +68,7 @@ html {
     sans-serif;
   --frame-gutter: 4vw;
   --nav-height: 80px;
-  --app-viewport-height: calc(100dvh - var(--frame-gutter));
+  --app-viewport-height: calc(100vh - var(--frame-gutter));
   --hero-stage-height: calc(var(--app-viewport-height) - var(--nav-height));
   --col-left: 24vw;
   --col-right: 24vw;
@@ -96,6 +96,21 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@supports (height: 100svh) {
+  :root {
+    --app-viewport-height: calc(100svh - var(--frame-gutter));
+    --hero-stage-height: calc(var(--app-viewport-height) - var(--nav-height));
+  }
+}
+
+body:not(.app-ready) #root {
+  opacity: 0;
+}
+
+body.app-ready #root {
+  opacity: 1;
 }
 
 body::before {
@@ -266,12 +281,12 @@ p {
 @keyframes hero-frame-intro {
   from {
     opacity: 0.15;
-    clip-path: inset(100% 0 0 0 round 0);
+    transform: scaleY(0.18);
   }
 
   to {
     opacity: 1;
-    clip-path: inset(0 0 0 0 round 0);
+    transform: scaleY(1);
   }
 }
 
@@ -606,6 +621,18 @@ body.home-snap-enabled {
 .home-snap-section--hero {
   align-items: stretch;
   min-height: var(--hero-stage-height);
+}
+
+@supports (content-visibility: auto) {
+  .home-snap-section:not(.home-snap-section--hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: var(--hero-stage-height);
+  }
+
+  .route-page > .content-section + .content-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 960px;
+  }
 }
 
 .hero-section {
@@ -1234,7 +1261,6 @@ body.home-snap-enabled {
   border-radius: 32px;
   background: var(--capsule-bg);
   box-shadow: var(--capsule-shadow);
-  backdrop-filter: blur(18px);
   padding: 2.5rem;
   transition:
     background 0.45s var(--ease-smooth),
@@ -1270,7 +1296,6 @@ body.home-snap-enabled {
   border: 1px solid var(--capsule-border);
   background: var(--capsule-bg);
   box-shadow: var(--capsule-shadow);
-  backdrop-filter: blur(18px);
   transition:
     background 0.45s var(--ease-smooth),
     transform 0.45s var(--ease-smooth),
@@ -2685,7 +2710,7 @@ textarea.apple-input {
 
 .skip-link {
   position: absolute;
-  top: -3rem;
+  top: 1rem;
   left: 1rem;
   z-index: 1000;
   padding: 0.7rem 1rem;
@@ -2695,11 +2720,16 @@ textarea.apple-input {
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  transition: top 180ms ease;
+  opacity: 0;
+  transform: translateY(-160%);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .skip-link:focus {
-  top: 1rem;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .editorial-title {
@@ -2773,8 +2803,15 @@ textarea.apple-input {
 @media (max-width: 900px) {
   :root {
     --frame-gutter: 0px;
-    --app-viewport-height: 100dvh;
-    --hero-stage-height: calc(100dvh - var(--nav-height));
+    --app-viewport-height: 100vh;
+    --hero-stage-height: calc(100vh - var(--nav-height));
+  }
+
+  @supports (height: 100svh) {
+    :root {
+      --app-viewport-height: 100svh;
+      --hero-stage-height: calc(100svh - var(--nav-height));
+    }
   }
 
   html.home-snap-enabled,
@@ -2800,7 +2837,7 @@ textarea.apple-input {
 
   .page-shell,
   .app-frame {
-    min-height: 100dvh;
+    min-height: 100vh;
   }
 
   .app-frame {
@@ -3521,9 +3558,7 @@ textarea.apple-input {
     height: 4rem;
     padding: 0 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(10, 10, 10, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 10, 0.96);
   }
 
   .mobile-nav-brand {
@@ -3688,13 +3723,13 @@ textarea.apple-input {
     gap: 1.85rem;
   }
 
-  .mobile-home-hero,
-  .route-page .content-section:first-child .mobile-page-hero,
-  .route-page--contact .contact-direct-shell {
-    min-height: calc(100dvh - 5.15rem);
-    contain: layout paint;
-    align-content: start;
-  }
+    .mobile-home-hero,
+    .route-page .content-section:first-child .mobile-page-hero,
+    .route-page--contact .contact-direct-shell {
+      min-height: calc(100vh - 5.15rem);
+      contain: layout paint;
+      align-content: start;
+    }
 
   .mobile-home-copy,
   .mobile-home-band,
@@ -4873,7 +4908,7 @@ textarea.apple-input {
     .mobile-home-hero,
     .route-page .content-section:first-child .mobile-page-hero,
     .route-page--contact .contact-direct-shell {
-      min-height: calc(100dvh - 4.95rem);
+      min-height: calc(100vh - 4.95rem);
     }
 
     .mobile-home-copy,

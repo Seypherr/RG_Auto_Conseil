@@ -24,6 +24,10 @@ export default function ServicesPage() {
   const [audienceFilter, setAudienceFilter] = useState('all');
   const [showAllServices, setShowAllServices] = useState(false);
   const content = getLocaleContent(servicesPageContent, language);
+  const servicesHeroImageAlt =
+    language === 'fr'
+      ? 'RG Auto Conseil, service automobile premium pour conseil, inspection et amélioration de véhicule'
+      : 'RG Auto Conseil, premium automotive service for advice, inspection and vehicle upgrades';
 
   useEffect(() => {
     setShowAllServices(false);
@@ -52,7 +56,7 @@ export default function ServicesPage() {
               cardTitle={content.heroCardTitle}
               chips={content.heroFlowSteps}
               copy={content.heroIntro}
-              imageAlt="RG Auto Conseil services"
+              imageAlt={servicesHeroImageAlt}
               imageSrc={rgMedia.mercedesServices}
               label={content.heroLabel}
               primaryCta={content.heroPrimaryCta}
@@ -86,7 +90,16 @@ export default function ServicesPage() {
             <div className="services-orbit-stage">
               <article className="services-orbit-spotlight gs-scroll-card">
                 <div className="services-orbit-spotlight-media">
-                  <img alt="RG Auto Conseil services" className="services-orbit-image" decoding="async" fetchpriority="high" src={rgMedia.mercedesServices} />
+                  <img
+                    alt={servicesHeroImageAlt}
+                    className="services-orbit-image"
+                    decoding="async"
+                    fetchpriority="high"
+                    height="1200"
+                    sizes="(max-width: 1180px) 88vw, 44vw"
+                    src={rgMedia.mercedesServices}
+                    width="1600"
+                  />
                   <div className="services-orbit-image-glow" />
                 </div>
                 <div className="services-orbit-spotlight-copy">
@@ -115,7 +128,7 @@ export default function ServicesPage() {
 
             <div className="services-filter-wrap">
               <span className="label services-filter-label">{content.filterLabel}</span>
-              <div className="services-filter-group" role="tablist">
+              <div aria-label={content.filterLabel} className="services-filter-group" role="group">
                 {content.filters.map((filter) => (
                   <button
                     aria-pressed={audienceFilter === filter.value}
