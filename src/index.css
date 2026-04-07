@@ -1589,8 +1589,39 @@ body.home-snap-enabled {
   font-weight: 400;
 }
 
+.review-copy--clamped {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
 .review-copy--plain {
   font-style: normal;
+}
+
+.review-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: -0.65rem 0 1.5rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--accent-label);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.35s var(--ease-smooth),
+    transform 0.35s var(--ease-smooth);
+}
+
+.review-toggle:hover,
+.review-toggle:focus-visible {
+  color: #fff2e7;
+  transform: translateY(-1px);
 }
 
 .review-meta {

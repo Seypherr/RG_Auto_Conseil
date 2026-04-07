@@ -16,7 +16,7 @@ export default function MobileHomeAboutSection({ language }: MobileHomeAboutSect
   const contactPrompt =
     language === 'fr'
       ? "Un projet automobile à sécuriser ou à améliorer ? Échangeons pour trouver l'accompagnement le plus adapté à votre besoin."
-      : 'Need help securing or improving an automotive project? Let’s talk and find the most relevant support for your situation.';
+      : "Need help securing or improving an automotive project? Let's talk and find the most relevant support for your situation.";
 
   return (
     <section className="mobile-home-band mobile-home-band--about mobile-home-band--plain mobile-home-band--left" id="a-propos">
@@ -37,8 +37,8 @@ export default function MobileHomeAboutSection({ language }: MobileHomeAboutSect
         <img
           alt={
             language === 'fr'
-              ? 'Portrait de Gaëtan Roblin, fondateur de RG Auto Conseil et conseiller automobile indépendant'
-              : 'Portrait of Gaëtan Roblin, founder of RG Auto Conseil and independent automotive advisor'
+              ? "Portrait de Gaetan Roblin, conseiller automobile independant RG Auto Conseil en Provence-Alpes-Cote d'Azur"
+              : "Portrait of Gaetan Roblin, independent automotive advisor at RG Auto Conseil in Provence-Alpes-Cote d'Azur"
           }
           decoding="async"
           height="960"

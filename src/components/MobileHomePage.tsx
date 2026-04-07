@@ -4,13 +4,13 @@ import MobileHomeGallerySection from './MobileHomeGallerySection';
 import MobileHomeServicesSection from './MobileHomeServicesSection';
 import { useSite } from '../context/SiteContext';
 
-const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=960', import.meta.url).toString();
+const heroImage = '/media/hero-accueil-rg-auto-conseil.webp';
 
 export default function MobileHomePage() {
   const { language } = useSite();
   const heroImageAlt =
     language === 'fr'
-      ? 'RG Auto Conseil, conseil automobile indépendant avec véhicule premium dans un univers sobre'
+      ? "RG Auto Conseil, conseil automobile independant pour achat de voiture, inspection avant achat et accompagnement premium"
       : 'RG Auto Conseil, independent automotive advice with a premium vehicle in a refined setting';
 
   const heroTitleLines =

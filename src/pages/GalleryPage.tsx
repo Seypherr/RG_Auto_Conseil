@@ -15,7 +15,7 @@ const missionImages = [
   { beforeImage: rgMedia.porscheConsoleLegacy, afterImage: rgMedia.porscheConsole },
   { beforeImage: rgMedia.fordDisplayBase, afterImage: rgMedia.fordCameraDisplay },
   { beforeImage: rgMedia.porscheInteriorWide, afterImage: rgMedia.porscheExterior },
-  { beforeImage: rgMedia.vanRear, afterImage: rgMedia.vanExterior },
+  { beforeImage: rgMedia.dashcamExterior, afterImage: rgMedia.dashcamInterior },
 ];
 
 export default function GalleryPage() {
@@ -24,52 +24,55 @@ export default function GalleryPage() {
   const [activeMissionIndex, setActiveMissionIndex] = useState(0);
   const mobileMissionScrollerRef = useRef<HTMLDivElement | null>(null);
   const content = getLocaleContent(galleryPageContent, language);
+
   const galleryHeroImageAlt =
     language === 'fr'
-      ? 'RG Auto Conseil, intérieur de véhicule illustrant une réalisation automobile premium'
+      ? "RG Auto Conseil, intérieur de véhicule illustrant un projet automobile premium et un conseil avant achat"
       : 'RG Auto Conseil, vehicle interior highlighting a premium automotive project';
+
   const beforeImageAlts =
     language === 'fr'
       ? [
-          'RG Auto Conseil, système d’origine avant montage CarPlay',
-          'RG Auto Conseil, écran d’origine avant installation de caméra de recul',
-          'RG Auto Conseil, véhicule repéré avant conseil avant achat',
-          'RG Auto Conseil, première observation utilisée pour une analyse automobile',
+          "RG Auto Conseil, système d'origine avant montage CarPlay sur véhicule",
+          "RG Auto Conseil, écran d'origine avant installation de caméra de recul",
+          "RG Auto Conseil, véhicule repéré avant conseil automobile et avant achat",
+          "RG Auto Conseil, véhicule vu de l'extérieur avant mise en valeur de l'installation dashcam invisible",
         ]
       : [
           'RG Auto Conseil, original system before CarPlay retrofit',
           'RG Auto Conseil, original screen before rear camera installation',
           'RG Auto Conseil, spotted vehicle before pre-purchase advice',
-          'RG Auto Conseil, initial view used for a vehicle analysis',
+          'RG Auto Conseil, vehicle exterior before the invisible dashcam installation is revealed',
         ];
+
   const afterImageAlts =
     language === 'fr'
       ? [
           'RG Auto Conseil, interface CarPlay installée après intervention',
           'RG Auto Conseil, affichage caméra de recul après installation',
-          'RG Auto Conseil, décision d’achat sécurisée après conseil automobile',
-          'RG Auto Conseil, lecture technique détaillée après analyse automobile',
+          "RG Auto Conseil, décision d'achat sécurisée après conseil automobile",
+          'RG Auto Conseil, dashcam invisible présentée en vue intérieure après installation',
         ]
       : [
           'RG Auto Conseil, CarPlay interface installed after the upgrade',
           'RG Auto Conseil, rear camera display after installation',
           'RG Auto Conseil, secured purchase decision after automotive advice',
-          'RG Auto Conseil, detailed technical reading after vehicle analysis',
+          'RG Auto Conseil, invisible dashcam shown from the interior after installation',
         ];
 
   const mobileMissionSummaries =
     language === 'fr'
       ? [
-          'Une installation CarPlay plus moderne, plus fluide et plus agreable au quotidien.',
-          'Une camera de recul qui apporte plus de confort et de serenite a chaque manoeuvre.',
-          "Un accompagnement avant achat pour verifier les bons points avant de s'engager.",
-          'Une analyse automobile plus claire pour avancer avec une vraie lecture technique.',
+          'Une installation CarPlay plus moderne, plus fluide et plus agréable au quotidien.',
+          'Une caméra de recul qui apporte plus de confort et de sérénité à chaque manoeuvre.',
+          "Un accompagnement avant achat pour vérifier les bons points avant de s'engager.",
+          'Une dashcam invisible intégrée proprement pour renforcer la sécurité et la tranquillité à bord.',
         ]
       : [
           'A more modern CarPlay setup with a smoother and clearer daily experience.',
           'A rear camera installation that brings more confidence to every manoeuvre.',
           'Guidance before purchase to review the right points before committing.',
-          'A clearer automotive analysis to move forward with a proper technical reading.',
+          'A neatly integrated invisible dashcam installation that improves safety and day-to-day peace of mind.',
         ];
 
   function handleMissionScroll(event: Event) {
@@ -224,7 +227,7 @@ export default function GalleryPage() {
                             width="1200"
                           />
                           <div className="mobile-gallery-mission-pane-copy">
-                            <strong>{language === 'fr' ? 'Apres' : 'After'}</strong>
+                            <strong>{language === 'fr' ? 'Après' : 'After'}</strong>
                             <span>{mission.afterLabel}</span>
                           </div>
                         </div>
@@ -235,7 +238,7 @@ export default function GalleryPage() {
               </div>
 
               <div
-                aria-label={language === 'fr' ? 'Navigation des realisations' : 'Projects navigation'}
+                aria-label={language === 'fr' ? 'Navigation des réalisations' : 'Projects navigation'}
                 className="mobile-dots mobile-gallery-dots"
                 role="group"
               >

@@ -1,6 +1,6 @@
 import { buildBreadcrumbSchema } from './seoShared';
 
-const heroImage = new URL('../../Photo_rg_auto_conseil/Photo_Hero.webp?width=1200', import.meta.url).toString();
+const heroImage = '/media/hero-accueil-rg-auto-conseil.webp';
 
 export function getPrivacySeo(language: string) {
   const isEnglish = language === 'en';

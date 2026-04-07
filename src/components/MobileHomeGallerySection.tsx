@@ -14,8 +14,8 @@ export default function MobileHomeGallerySection({ language }: MobileHomeGallery
   const mobileGalleryAlts =
     language === 'fr'
       ? [
-          'RG Auto Conseil, montage CarPlay avant après sur système multimédia automobile',
-          'RG Auto Conseil, installation de caméra de recul sur véhicule avant après',
+          'RG Auto Conseil, montage Apple CarPlay avant apres sur systeme multimedia automobile',
+          'RG Auto Conseil, installation de camera de recul avant apres sur vehicule',
         ]
       : [
           'RG Auto Conseil, CarPlay retrofit before and after on an in-car multimedia system',

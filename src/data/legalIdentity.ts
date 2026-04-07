@@ -10,8 +10,8 @@ export const LEGAL_IDENTITY = {
     en: 'Sole proprietorship',
   },
   registeredOffice: {
-    fr: '57 chemin du canal 83460 Taradeau',
-    en: '57 chemin du canal 83460 Taradeau, France',
+    fr: 'Taradeau',
+    en: 'Taradeau, France',
   },
   sirenOrSiret: {
     fr: '99969806100010',
@@ -24,6 +24,14 @@ export const LEGAL_IDENTITY = {
   publicationDirector: {
     fr: 'Ethan Porcaro',
     en: 'Ethan Porcaro',
+  },
+  publicationDirectorEmail: {
+    fr: 'E.porcaro06@gmail.com',
+    en: 'E.porcaro06@gmail.com',
+  },
+  publicationDirectorPhone: {
+    fr: '07 78 84 01 18',
+    en: '07 78 84 01 18',
   },
   hostName: {
     fr: 'One.com',

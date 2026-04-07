@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StarIcon } from './IconSet';
 
 export default function ReviewCard({
@@ -13,8 +14,13 @@ export default function ReviewCard({
   quoted = true,
   showStars = false,
   starsLabel = '5 stars',
+  expandLabel = 'Voir plus',
+  collapseLabel = 'Voir moins',
+  maxLines = 7,
 }) {
   const starCount = Math.max(0, Math.min(5, Number(rating) || 0));
+  const canExpand = typeof copy === 'string' && copy.length > 220;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <article className={`review-card ${offsetClassName}`.trim()}>
@@ -28,7 +34,22 @@ export default function ReviewCard({
         ) : null}
         {kicker ? <div className="review-kicker">{kicker}</div> : null}
         {title ? <h3 className="review-title">{title}</h3> : null}
-        <p className={`review-copy${quoted ? '' : ' review-copy--plain'}`}>{quoted ? `"${copy}"` : copy}</p>
+        <p
+          className={`review-copy${quoted ? '' : ' review-copy--plain'}${canExpand && !isExpanded ? ' review-copy--clamped' : ''}`}
+          style={canExpand && !isExpanded ? { WebkitLineClamp: String(maxLines) } : undefined}
+        >
+          {quoted ? `"${copy}"` : copy}
+        </p>
+        {canExpand ? (
+          <button
+            type="button"
+            className="review-toggle"
+            aria-expanded={isExpanded}
+            onClick={() => setIsExpanded((current) => !current)}
+          >
+            {isExpanded ? collapseLabel : expandLabel}
+          </button>
+        ) : null}
       </div>
 
       <div className="review-meta">

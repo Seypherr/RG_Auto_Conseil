@@ -26,7 +26,7 @@ export default function ServicesPage() {
   const content = getLocaleContent(servicesPageContent, language);
   const servicesHeroImageAlt =
     language === 'fr'
-      ? 'RG Auto Conseil, service automobile premium pour conseil, inspection et amélioration de véhicule'
+      ? "RG Auto Conseil, service automobile premium pour conseil, inspection avant achat et amélioration de véhicule"
       : 'RG Auto Conseil, premium automotive service for advice, inspection and vehicle upgrades';
 
   useEffect(() => {

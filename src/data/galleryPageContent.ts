@@ -3,11 +3,11 @@ export const galleryPageContent = {
     label: 'Galerie',
     title: ['Des projets visibles, pensés', 'pour donner', 'confiance.'],
     intro:
-      "Découvrez des exemples d'interventions menées avec exigence pour améliorer un véhicule ou sécuriser une décision automobile.",
+      "Découvrez des exemples d'interventions menées avec exigence pour améliorer un véhicule, installer un équipement utile ou sécuriser une décision automobile.",
     heroCardLabel: 'Avant / après',
     heroCardTitle: 'Des résultats lisibles, sans effet démonstratif.',
     heroCardCopy:
-      "Chaque intervention respecte l'identité du véhicule tout en apportant une vraie valeur d'usage, de lecture ou de présentation.",
+      "Chaque intervention respecte l'identité du véhicule tout en apportant une vraie valeur d'usage, de lecture ou de présentation, qu'il s'agisse d'un montage CarPlay, d'une caméra de recul, d'un conseil avant achat ou d'une dashcam.",
     missionsLabel: 'Projets',
     missionsTitle: 'Quelques missions réalisées avec exigence.',
     missions: [
@@ -27,7 +27,7 @@ export const galleryPageContent = {
         vehicle: 'Caméra de recul',
         mission: 'Installation de caméra de recul avant / après',
         outcome:
-          'Un usage plus serein, une meilleure visibilité et un véhicule mieux adapté aux manœuvres du quotidien.',
+          'Un usage plus serein, une meilleure visibilité et un véhicule mieux adapté aux manoeuvres du quotidien.',
         beforeLabel: 'Avant installation',
         afterLabel: 'Après installation',
       },
@@ -43,13 +43,13 @@ export const galleryPageContent = {
       },
       {
         id: '04',
-        label: 'Analyse auto',
-        vehicle: 'Analyse automobile',
-        mission: 'Analyse automobile',
+        label: 'Dashcam',
+        vehicle: 'Installation dashcam',
+        mission: 'Installation de dashcam avant / après',
         outcome:
-          "Un regard plus technique sur l'état, l'usage et la cohérence globale du véhicule pour avancer avec plus de confiance.",
-        beforeLabel: 'Observation initiale',
-        afterLabel: 'Analyse détaillée',
+          'Une installation dashcam discrète et mieux intégrée pour améliorer la sécurité, la tranquillité et la lecture des trajets au quotidien.',
+        beforeLabel: 'Avant',
+        afterLabel: 'Après',
       },
     ],
     contactCta: 'Nous contacter',
@@ -58,11 +58,11 @@ export const galleryPageContent = {
     label: 'Gallery',
     title: ['Visible projects designed', 'to build', 'trust.'],
     intro:
-      'Discover examples of missions carried out with high standards to improve a vehicle or secure an automotive decision.',
+      'Discover examples of missions carried out with high standards to improve a vehicle, install useful equipment or secure an automotive decision.',
     heroCardLabel: 'Before / after',
     heroCardTitle: 'Readable results, without unnecessary showmanship.',
     heroCardCopy:
-      'Each intervention respects the identity of the vehicle while bringing real value in use, clarity or presentation.',
+      'Each intervention respects the identity of the vehicle while bringing real value in use, clarity or presentation, whether it is a CarPlay retrofit, a rear camera, pre-purchase advice or a dashcam.',
     missionsLabel: 'Projects',
     missionsTitle: 'A few missions delivered with high standards.',
     missions: [
@@ -98,13 +98,13 @@ export const galleryPageContent = {
       },
       {
         id: '04',
-        label: 'Vehicle analysis',
-        vehicle: 'Vehicle analysis',
-        mission: 'Vehicle analysis',
+        label: 'Dashcam',
+        vehicle: 'Dashcam installation',
+        mission: 'Dashcam installation before / after',
         outcome:
-          'A more technical reading of the condition, usage and overall coherence of the vehicle to move forward with confidence.',
-        beforeLabel: 'Initial review',
-        afterLabel: 'Detailed analysis',
+          'A cleaner, more discreet dashcam installation that improves safety, confidence and day-to-day driving visibility.',
+        beforeLabel: 'Before',
+        afterLabel: 'After',
       },
     ],
     contactCta: 'Contact us',

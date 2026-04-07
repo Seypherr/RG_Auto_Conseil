@@ -8,8 +8,8 @@ export function getAboutSeo(language: string, image: unknown) {
   return {
     title: isEnglish ? 'About Gaetan Roblin, independent automotive advisor' : 'A propos de Gaetan Roblin, conseiller automobile independant',
     description: isEnglish
-      ? 'Learn about Gaetan Roblin and the independent, reassuring approach behind RG Auto Conseil.'
-      : "Decouvrez Gaetan Roblin et l'approche independante, claire et rassurante de RG Auto Conseil.",
+      ? "Learn about Gaetan Roblin, the independent automotive advisor behind RG Auto Conseil in Provence-Alpes-Cote d'Azur."
+      : "Decouvrez Gaetan Roblin, conseiller automobile independant derriere RG Auto Conseil en Provence-Alpes-Cote d'Azur.",
     path: '/about',
     image,
     type: 'profile',
@@ -26,6 +26,12 @@ export function getAboutSeo(language: string, image: unknown) {
         image: buildAbsoluteUrl(image),
         worksFor: { '@id': `${SITE_URL}/#organization` },
         url: buildAbsoluteUrl('/about'),
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Taradeau',
+          addressRegion: "Provence-Alpes-Cote d'Azur",
+          addressCountry: 'FR',
+        },
         description: `${content.biographyIntro} ${content.biographyCopy}`,
       },
     ],

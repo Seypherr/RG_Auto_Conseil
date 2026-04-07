@@ -4,7 +4,6 @@ import Seo from '../components/Seo';
 import { useSite } from '../context/SiteContext';
 import { LEGAL_IDENTITY } from '../data/legalIdentity';
 import { getLegalSeo } from '../data/legalSeo';
-import { CONTACT_DETAILS } from '../data/siteConfig';
 
 export default function LegalPage() {
   const { isEnglish } = useSite();
@@ -42,8 +41,8 @@ export default function LegalPage() {
           title: 'Publication director and contact',
           list: [
             `Publication director: ${LEGAL_IDENTITY.publicationDirector[language]}`,
-            `Contact email: ${CONTACT_DETAILS.email}`,
-            `Contact phone: ${CONTACT_DETAILS.phoneDisplay}`,
+            `Contact email: ${LEGAL_IDENTITY.publicationDirectorEmail[language]}`,
+            `Contact phone: ${LEGAL_IDENTITY.publicationDirectorPhone[language]}`,
           ],
         },
         {
@@ -112,8 +111,8 @@ export default function LegalPage() {
           title: 'Directeur de la publication et contact',
           list: [
             `Directeur de la publication : ${LEGAL_IDENTITY.publicationDirector[language]}`,
-            `Adresse email : ${CONTACT_DETAILS.email}`,
-            `Telephone : ${CONTACT_DETAILS.phoneDisplay}`,
+            `Adresse email : ${LEGAL_IDENTITY.publicationDirectorEmail[language]}`,
+            `Telephone : ${LEGAL_IDENTITY.publicationDirectorPhone[language]}`,
           ],
         },
         {

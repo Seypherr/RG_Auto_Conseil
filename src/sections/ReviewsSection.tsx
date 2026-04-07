@@ -8,6 +8,8 @@ import { getLocaleContent } from '../utils/getLocaleContent';
 export default function ReviewsSection() {
   const { language } = useSite();
   const content = getLocaleContent(reviewsSectionContent, language);
+  const expandLabel = language === 'en' ? 'See more' : 'Voir plus';
+  const collapseLabel = language === 'en' ? 'See less' : 'Voir moins';
 
   return (
     <section className="content-section reviews-section" id="reviews">
@@ -33,7 +35,16 @@ export default function ReviewsSection() {
 
         <div className="reviews-grid gs-scroll-fade-up">
           {content.cards.map((card) => (
-            <ReviewCard key={`${card.name}-${card.title}`} quoted={false} showStars starsLabel={`${card.rating} stars`} {...card} />
+            <ReviewCard
+              key={`${card.name}-${card.title}`}
+              quoted={false}
+              showStars
+              starsLabel={`${card.rating} stars`}
+              expandLabel={expandLabel}
+              collapseLabel={collapseLabel}
+              maxLines={6}
+              {...card}
+            />
           ))}
         </div>
 

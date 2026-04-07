@@ -2,11 +2,13 @@ export const servicesPageContent = {
   fr: {
     heroLabel: 'Services',
     heroTitle: ['Un conseil clair, de la', 'première question', "à l'action."],
-    heroIntro: '',
+    heroIntro:
+      "RG Auto Conseil accompagne l'achat de voiture d'occasion, l'inspection avant achat et l'installation d'équipements utiles avec une lecture indépendante, lisible et rassurante.",
     heroPrimaryCta: 'Découvrir les services',
     heroCardLabel: 'Vision service',
     heroCardTitle: 'Une lecture directe du besoin au bon service.',
-    heroCardCopy: '',
+    heroCardCopy:
+      "Inspection avant achat, recherche ciblée, montage CarPlay, caméra de recul ou amélioration discrète : chaque service répond à un usage concret et à une décision mieux cadrée.",
     heroFlowLabel: 'Manière de travailler',
     heroFlowTitle: 'Quatre étapes pour passer du doute à une décision claire.',
     heroFlowSteps: ['Comprendre', 'Analyser', 'Conseiller', 'Agir'],
@@ -15,7 +17,7 @@ export const servicesPageContent = {
     servicesLabel: 'Services détaillés',
     servicesTitle: ['Des prestations pensées', 'pour protéger votre', 'décision automobile.'],
     servicesIntro:
-      "Chaque service est présenté de façon simple et professionnelle pour aider des clients non experts à comprendre rapidement la valeur d'un accompagnement automobile indépendant.",
+      "Chaque service est présenté de façon simple et professionnelle pour aider des clients non experts à comprendre rapidement la valeur d'un accompagnement automobile indépendant, que ce soit avant un achat, pendant une recherche ou lors d'une installation d'équipement.",
     filterLabel: 'Filtrer par profil',
     filters: [
       { value: 'all', label: 'Tous' },
@@ -89,11 +91,13 @@ export const servicesPageContent = {
   en: {
     heroLabel: 'Services',
     heroTitle: ['Clear advice, from the', 'first question', 'to action.'],
-    heroIntro: '',
+    heroIntro:
+      'RG Auto Conseil supports used car purchases, pre-purchase inspections and useful equipment installation with an independent, clear and reassuring reading of each decision.',
     heroPrimaryCta: 'Discover the services',
     heroCardLabel: 'Service vision',
     heroCardTitle: 'A direct reading from need to the right service.',
-    heroCardCopy: '',
+    heroCardCopy:
+      'Pre-purchase inspection, targeted sourcing, CarPlay retrofit, rear camera installation or discreet vehicle enhancement: every service answers a concrete need and a better-framed decision.',
     heroFlowLabel: 'How we work',
     heroFlowTitle: 'Four steps to move from doubt to a clear decision.',
     heroFlowSteps: ['Understand', 'Analyse', 'Advise', 'Act'],
@@ -102,7 +106,7 @@ export const servicesPageContent = {
     servicesLabel: 'Detailed services',
     servicesTitle: ['Services designed', 'to protect your', 'automotive decision.'],
     servicesIntro:
-      'Each service is presented clearly and professionally to help non-expert clients quickly understand the value of the proposed support.',
+      'Each service is presented clearly and professionally to help non-expert clients quickly understand the value of independent automotive support, whether before a purchase, during sourcing or during an equipment installation.',
     filterLabel: 'Filter by profile',
     filters: [
       { value: 'all', label: 'All' },

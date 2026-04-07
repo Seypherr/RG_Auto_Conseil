@@ -7,11 +7,11 @@ export function getServicesSeo(language: string, image: unknown) {
 
   return {
     title: isEnglish
-      ? 'Automotive services, inspection and purchase support'
-      : "Services de conseil automobile, inspection et aide a l'achat",
+      ? 'Vehicle inspection, purchase support and automotive equipment services'
+      : "Inspection avant achat, aide a l'achat et montage d'equipements auto",
     description: isEnglish
-      ? 'Explore RG Auto Conseil services: pre-purchase advice, vehicle inspection, listing analysis, sourcing, negotiation and discreet vehicle enhancement.'
-      : "Decouvrez les services RG Auto Conseil : conseil avant achat, inspection de vehicule, analyse d'annonce, recherche ciblee, negociation et amelioration discrete.",
+      ? 'Explore RG Auto Conseil services: pre-purchase advice, used car inspection, listing analysis, vehicle sourcing, seller negotiation, CarPlay, rear camera and discreet upgrades.'
+      : "Decouvrez les services RG Auto Conseil : conseil avant achat, inspection de voiture d'occasion, analyse d'annonce, recherche de vehicule, negotiation, CarPlay, camera de recul et amelioration discrete.",
     path: '/services',
     image,
     type: 'website',
@@ -24,6 +24,7 @@ export function getServicesSeo(language: string, image: unknown) {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         name: isEnglish ? 'Automotive services' : 'Services automobiles',
+        image: buildAbsoluteUrl(image),
         itemListElement: content.services.map((service, index) => ({
           '@type': 'ListItem',
           position: index + 1,

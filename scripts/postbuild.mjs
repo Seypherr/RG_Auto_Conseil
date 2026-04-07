@@ -6,31 +6,37 @@ const publicDir = path.join(rootDir, 'public');
 const distDir = path.join(rootDir, 'dist');
 const distIndex = path.join(distDir, 'index.html');
 const siteUrl = 'https://rgautoconseil.fr';
+const homeHeroPublicPath = '/media/hero-accueil-rg-auto-conseil.webp';
 const defaultLocale = 'fr_FR';
 const lastModified = new Date().toISOString().slice(0, 10);
+const homeMeta = {
+  title: "RG Auto Conseil | Conseil automobile independant et inspection avant achat",
+  description:
+    "RG Auto Conseil accompagne l'achat de voiture d'occasion, l'inspection avant achat, la recherche de vehicule et l'amelioration d'equipements en Provence-Alpes-Cote d'Azur.",
+};
 
 const routeMeta = [
   {
     path: '/services',
-    title: "Services de conseil automobile, inspection et aide a l'achat | RG Auto Conseil",
+    title: "Inspection avant achat, aide a l'achat et montage d'equipements auto | RG Auto Conseil",
     description:
-      "Decouvrez les services RG Auto Conseil : conseil avant achat, inspection de vehicule, analyse d'annonce, recherche ciblee, negociation et amelioration discrete.",
+      "Decouvrez les services RG Auto Conseil : conseil avant achat, inspection de voiture d'occasion, analyse d'annonce, recherche de vehicule, negotiation, CarPlay, camera de recul et amelioration discrete.",
   },
   {
     path: '/about',
     title: 'A propos de Gaetan Roblin, conseiller automobile independant | RG Auto Conseil',
-    description: "Decouvrez Gaetan Roblin et l'approche independante, claire et rassurante de RG Auto Conseil.",
+    description: "Decouvrez Gaetan Roblin, conseiller automobile independant derriere RG Auto Conseil en Provence-Alpes-Cote d'Azur.",
   },
   {
     path: '/gallery',
-    title: 'Galerie automobile, realisations et avant/apres | RG Auto Conseil',
-    description: "Parcourez les realisations RG Auto Conseil avec des exemples avant/apres, des projets d'achat et des ameliorations de vehicule.",
+    title: 'Galerie CarPlay, camera de recul et dashcam avant apres | RG Auto Conseil',
+    description: 'Parcourez les realisations RG Auto Conseil : montage CarPlay, installation de camera de recul, conseil avant achat et integration de dashcam avec exemples avant apres.',
   },
   {
     path: '/contact',
     title: 'Contact RG Auto Conseil, demande de conseil automobile | RG Auto Conseil',
     description:
-      "Contactez RG Auto Conseil pour un conseil avant achat, une inspection de vehicule, une recherche ciblee ou une amelioration discrete en Provence-Alpes-Cote d'Azur.",
+      "Contactez RG Auto Conseil pour un conseil avant achat, une inspection de voiture d'occasion, une recherche de vehicule, un projet CarPlay, camera de recul ou dashcam en Provence-Alpes-Cote d'Azur.",
   },
   {
     path: '/legal-notice',
@@ -48,8 +54,11 @@ function replacePattern(html, pattern, replacement) {
   return pattern.test(html) ? html.replace(pattern, replacement) : html;
 }
 
-function buildSeoBlock({ title, description, canonicalUrl, imageUrl }) {
+function buildSeoBlock({ title, description, canonicalUrl, imageUrl, includePreload = false }) {
   const tags = [
+    `<title>${title}</title>`,
+    `<meta name="description" content="${description}">`,
+    '<meta name="author" content="Ethan Porcaro">',
     `<link rel="canonical" href="${canonicalUrl}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:title" content="${title}">`,
@@ -62,6 +71,11 @@ function buildSeoBlock({ title, description, canonicalUrl, imageUrl }) {
     `<meta name="twitter:description" content="${description}">`,
   ];
 
+  if (includePreload && imageUrl) {
+    const imagePath = imageUrl.replace(siteUrl, '');
+    tags.push(`<link rel="preload" as="image" href="${imagePath}" fetchpriority="high">`);
+  }
+
   if (imageUrl) {
     tags.push(`<meta property="og:image" content="${imageUrl}">`);
     tags.push(`<meta property="og:image:alt" content="RG Auto Conseil">`);
@@ -72,30 +86,24 @@ function buildSeoBlock({ title, description, canonicalUrl, imageUrl }) {
   return tags.join('');
 }
 
-function findAssetHref(prefix) {
-  const file = fs
-    .readdirSync(distDir)
-    .find((entry) => entry.startsWith(prefix) && (entry.endsWith('.webp') || entry.endsWith('.avif') || entry.endsWith('.jpg') || entry.endsWith('.png')));
-
-  return file ? `/${file}` : undefined;
-}
-
 function injectHeadTag(html, tag) {
   return html.replace('</head>', `  ${tag}\n  </head>`);
 }
 
+function stripSeoTags(html) {
+  return html
+    .replace(/<title>[\s\S]*?<\/title>/gi, '')
+    .replace(/<meta\b[^>]*name=["']?description["']?[^>]*>/gi, '')
+    .replace(/<meta\b[^>]*name=["']?author["']?[^>]*>/gi, '')
+    .replace(/<link\b[^>]*rel=["']?canonical["']?[^>]*>/gi, '')
+    .replace(/<link\b[^>]*rel=["']?preload["']?[^>]*as=["']?image["']?[^>]*>/gi, '')
+    .replace(/<meta\b[^>]*property=["']?(og:type|og:title|og:description|og:url|og:site_name|og:locale|og:image|og:image:alt)["']?[^>]*>/gi, '')
+    .replace(/<meta\b[^>]*name=["']?(twitter:card|twitter:title|twitter:description|twitter:image|twitter:image:alt)["']?[^>]*>/gi, '');
+}
+
 function buildRouteHtml(baseHtml, route, imageUrl) {
   const canonicalUrl = `${siteUrl}${route.path}`;
-  let html = baseHtml;
-
-  html = replacePattern(html, /<title>[\s\S]*?<\/title>/i, `<title>${route.title}</title>`);
-  html = replacePattern(html, /<meta\s+name=description\s+content="[^"]*">/i, `<meta name="description" content="${route.description}">`);
-  html = replacePattern(html, /<meta\s+name=author\s+content="[^"]*">/i, '<meta name="author" content="Ethan Porcaro">');
-  html = html.replace(/<link\s+rel=canonical\s+href=[^>]*>/gi, '');
-  html = html.replace(/<meta\s+property=og:[^>]*>/gi, '');
-  html = html.replace(/<meta\s+name=twitter:[^>]*>/gi, '');
-
-  html = html.replace(
+  const html = stripSeoTags(baseHtml).replace(
     /(<body[^>]*>)/i,
     `${buildSeoBlock({
       title: route.title,
@@ -128,6 +136,14 @@ function writeSitemap() {
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent, 'utf8');
 }
 
+function removeUnusedFavicons() {
+  for (const file of fs.readdirSync(distDir)) {
+    if (/^favicon\.[a-f0-9]+\.(jpg|jpeg|png|webp|svg)$/i.test(file)) {
+      fs.rmSync(path.join(distDir, file), { force: true });
+    }
+  }
+}
+
 if (fs.existsSync(publicDir)) {
   fs.cpSync(publicDir, distDir, { force: true, recursive: true });
 }
@@ -137,24 +153,31 @@ if (!fs.existsSync(distIndex)) {
 }
 
 let baseHtml = fs.readFileSync(distIndex, 'utf8');
-const homeHeroHref = findAssetHref('Photo_Hero.');
-const absoluteHeroUrl = homeHeroHref ? `${siteUrl}${homeHeroHref}` : undefined;
+const homeHeroHref = homeHeroPublicPath;
+const absoluteHeroUrl = `${siteUrl}${homeHeroHref}`;
 
-if (homeHeroHref) {
-  baseHtml = replacePattern(baseHtml, /<meta\s+property=og:image[^>]*>/gi, '');
-  baseHtml = replacePattern(baseHtml, /<meta\s+property=og:image:alt[^>]*>/gi, '');
-  baseHtml = replacePattern(baseHtml, /<meta\s+name=twitter:image[^>]*>/gi, '');
-  baseHtml = replacePattern(baseHtml, /<meta\s+name=twitter:image:alt[^>]*>/gi, '');
-  baseHtml = replacePattern(baseHtml, /<meta\s+name=twitter:card\s+content=(?:"[^"]*"|[^\s>]+)>/i, '<meta name="twitter:card" content="summary_large_image">');
-  baseHtml = baseHtml.replace(
-    /(<body[^>]*>)/i,
-    `<link rel="preload" as="image" href="${homeHeroHref}" fetchpriority="high"><meta property="og:image" content="${absoluteHeroUrl}"><meta property="og:image:alt" content="RG Auto Conseil"><meta name="twitter:image" content="${absoluteHeroUrl}"><meta name="twitter:image:alt" content="RG Auto Conseil">$1`,
-  );
-  fs.writeFileSync(distIndex, baseHtml, 'utf8');
-}
+baseHtml = replacePattern(
+  baseHtml,
+  /<link[^>]+rel=icon[^>]*>/i,
+  '<link rel="icon" type="image/jpeg" href="/favicon.jpg">',
+);
+
+baseHtml = stripSeoTags(baseHtml).replace(
+  /(<body[^>]*>)/i,
+  `${buildSeoBlock({
+    title: homeMeta.title,
+    description: homeMeta.description,
+    canonicalUrl: `${siteUrl}/`,
+    imageUrl: absoluteHeroUrl,
+    includePreload: true,
+  })}$1`,
+);
+
+fs.writeFileSync(distIndex, baseHtml, 'utf8');
 
 for (const route of routeMeta) {
   writeRouteHtml(baseHtml, route, absoluteHeroUrl);
 }
 
 writeSitemap();
+removeUnusedFavicons();

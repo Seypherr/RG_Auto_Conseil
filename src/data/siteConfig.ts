@@ -4,8 +4,8 @@ export const CONTACT_DETAILS = {
   phoneDisplay: '06 63 99 07 20',
   phoneHref: 'tel:0663990720',
   serviceArea: {
-    fr: "Provence-Alpes-Côte d'Azur",
-    en: "Provence-Alpes-Côte d'Azur",
+    fr: "Provence-Alpes-Cote d'Azur",
+    en: "Provence-Alpes-Cote d'Azur",
   },
   hours: {
     fr: 'Sur rendez-vous',
@@ -30,17 +30,17 @@ export const MAP_LINKS = {
 };
 
 export const BRAND_ASSETS = {
-  logo: new URL('../../Photo_rg_auto_conseil/RGLOGO.png', import.meta.url).toString(),
+  logo: '/media/logo-rg-auto-conseil.png',
 };
 
 export const BRAND = {
   name: 'RG Auto Conseil.',
   rights: {
-    fr: '© 2026 RG Auto Conseil. Tous droits réservés.',
-    en: '© 2026 RG Auto Conseil. All rights reserved.',
+    fr: '(c) 2026 RG Auto Conseil. Tous droits reserves.',
+    en: '(c) 2026 RG Auto Conseil. All rights reserved.',
   },
   creator: {
-    fr: 'Création par Ethan Porcaro',
+    fr: 'Creation par Ethan Porcaro',
     en: 'Created by Ethan Porcaro',
   },
 };
