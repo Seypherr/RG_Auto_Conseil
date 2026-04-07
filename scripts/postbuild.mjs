@@ -144,6 +144,51 @@ function removeUnusedFavicons() {
   }
 }
 
+function moveBundledAssets() {
+  const jsDir = path.join(distDir, 'assets', 'js');
+  const cssDir = path.join(distDir, 'assets', 'css');
+
+  fs.mkdirSync(jsDir, { recursive: true });
+  fs.mkdirSync(cssDir, { recursive: true });
+
+  for (const entry of fs.readdirSync(distDir)) {
+    const source = path.join(distDir, entry);
+    const stats = fs.statSync(source);
+
+    if (!stats.isFile()) {
+      continue;
+    }
+
+    if (entry.endsWith('.js')) {
+      fs.renameSync(source, path.join(jsDir, entry));
+      continue;
+    }
+
+    if (entry.endsWith('.css')) {
+      fs.renameSync(source, path.join(cssDir, entry));
+    }
+  }
+}
+
+function rewriteHtmlAssetPaths() {
+  const htmlFiles = [distIndex, ...routeMeta.map((route) => path.join(distDir, route.path.replace(/^\//, ''), 'index.html'))];
+
+  for (const filePath of htmlFiles) {
+    if (!fs.existsSync(filePath)) {
+      continue;
+    }
+
+    let html = fs.readFileSync(filePath, 'utf8');
+
+    html = html.replace(/"\/([^"/]+\.js)"/g, '"/assets/js/$1"');
+    html = html.replace(/"\/([^"/]+\.css)"/g, '"/assets/css/$1"');
+    html = html.replace(/src=\/([^/\s>]+\.js)/g, 'src=/assets/js/$1');
+    html = html.replace(/href=\/([^/\s>]+\.css)/g, 'href=/assets/css/$1');
+
+    fs.writeFileSync(filePath, html, 'utf8');
+  }
+}
+
 if (fs.existsSync(publicDir)) {
   fs.cpSync(publicDir, distDir, { force: true, recursive: true });
 }
@@ -181,3 +226,5 @@ for (const route of routeMeta) {
 
 writeSitemap();
 removeUnusedFavicons();
+moveBundledAssets();
+rewriteHtmlAssetPaths();

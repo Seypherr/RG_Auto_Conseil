@@ -15,7 +15,7 @@ export const servicesPageContent = {
     heroPreviewLabel: 'Sélection rapide',
     heroPreviewTitle: 'Aller directement vers le bon service.',
     servicesLabel: 'Services détaillés',
-    servicesTitle: ['Des prestations pensées', 'pour protéger votre', 'décision automobile.'],
+    servicesTitle: ['Des prestations pensées pour', 'protéger votre décision automobile.'],
     servicesIntro:
       "Chaque service est présenté de façon simple et professionnelle pour aider des clients non experts à comprendre rapidement la valeur d'un accompagnement automobile indépendant, que ce soit avant un achat, pendant une recherche ou lors d'une installation d'équipement.",
     filterLabel: 'Filtrer par profil',
@@ -104,7 +104,7 @@ export const servicesPageContent = {
     heroPreviewLabel: 'Quick selection',
     heroPreviewTitle: 'Go straight to the right service.',
     servicesLabel: 'Detailed services',
-    servicesTitle: ['Services designed', 'to protect your', 'automotive decision.'],
+    servicesTitle: ['Services designed to protect', 'your automotive decision.'],
     servicesIntro:
       'Each service is presented clearly and professionally to help non-expert clients quickly understand the value of independent automotive support, whether before a purchase, during sourcing or during an equipment installation.',
     filterLabel: 'Filter by profile',
