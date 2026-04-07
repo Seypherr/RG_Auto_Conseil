@@ -15,7 +15,8 @@
     "dev": "parcel serve index.html --port 5173",
     "build": "parcel build index.html --dist-dir dist --public-url / --no-source-maps",
     "postbuild": "node scripts/postbuild.mjs",
-    "preview": "serve dist -l 4173 -s"
+    "preview": "pnpm run build && wrangler dev",
+    "deploy": "pnpm run build && wrangler deploy"
   },
   "dependencies": {
     "preact": "^10.29.0",
@@ -30,6 +31,7 @@
     "parcel": "^2.15.4",
     "serve": "^14.2.4",
     "sharp": "^0.33.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.80.0"
   }
 }
