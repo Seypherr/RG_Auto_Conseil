@@ -1,8 +1,12 @@
 RewriteEngine On
 
-# Force HTTPS in production.
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+# Force the canonical host and HTTPS in production.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.rgautoconseil\.fr$ [NC]
+RewriteRule ^ https://rgautoconseil.fr%{REQUEST_URI} [L,R=301,NE]
+
+# Redirect the explicit index.html homepage to the canonical root URL.
+RewriteRule ^index\.html$ https://rgautoconseil.fr/ [L,R=301,NE]
 
 # Serve existing files and folders normally.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
